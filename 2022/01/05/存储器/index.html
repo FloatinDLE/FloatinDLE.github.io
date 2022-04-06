@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html  lang=en>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+    <link rel="shortcut icon" href="/images/kou.ico ">
+    
+    
+    <link rel="icon" type="image/png" href="/images/favicon-android.png " sizes="192x192">
+    
+    
+    <link rel="apple-touch-icon" href="/images/favicon-apple.png " sizes="180x180">
+    
+  
+  <!-- title -->
+  <title>地下室 存储器 </title>
+  <!-- styles -->
+  <!-- styles -->
+
+<link rel="stylesheet" href="/styles/global.css">
+
+  <!-- rss -->
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+  <body>
+    <header id="header">
+  
+  <nav class="menu menu--right">
+  
+    <a class="menu__item" href="/">主页</a>
+    <a class="menu__item" href="/archives/">归档</a>
+    <a class="menu__item" href="/categories/">专题</a>
+    <a class="menu__item" href="/tags/">标签</a>
+    <!-- <a class="menu__item" href="/">作品</a> -->
+    <!-- <a class="menu__item" href="/about/">关于</a> -->
+  </nav>
+</header>
+    <main>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post__header">
+  <h1 class="post__title">存储器</h1>
+  
+  
+  <div class="post__meta">
+    
+<time class="post__date" datetime="2022-01-05T01:43:25.000Z" itemprop="datePublished">
+  
+  <i class="blogfont">&#xedff;</i>
+  
+  2022-01-05 09:43:25
+</time>
+
+    
+<div class="post__category">
+  <i class="blogfont">&#xe62d;</i>
+  <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+</div>
+  
+
+    
+
+    <div id="/2022/01/05/%E5%AD%98%E5%82%A8%E5%99%A8/" class="leancloud_visitors post__stat" data-flag-title="存储器">
+  <i class="blogfont">&#xe672;</i>
+  <span class="leancloud-visitors-count">loading...</span>
+</div>
+  </div>
+</header>
+  <aside class="post__aside">
+  <div class="post__actions">
+    <a id="backTop" class="post__top" href="javascript:">
+      <i class="blogfont">&#xe6b1;</i><!-- Top -->
+    </a>
+    <a id="share" class="post__share" href="javascript:">
+      <i class="blogfont">&#xe6c1;</i>
+    </a>
+  </div>
+  <ol class="post__toc"><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E5%88%86%E7%B1%BB"><span class="post__toc-text">分类</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%8C%89%E5%B1%82%E6%AC%A1%E5%88%86"><span class="post__toc-text">按层次分</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%8C%89%E5%AD%98%E5%8F%96%E6%96%B9%E5%BC%8F%E5%88%86"><span class="post__toc-text">按存取方式分</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%8C%89%E5%AD%98%E5%82%A8%E4%BB%8B%E8%B4%A8%E5%88%86"><span class="post__toc-text">按存储介质分</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%8C%89%E4%BF%A1%E6%81%AF%E5%8F%AF%E6%9B%B4%E6%94%B9%E6%80%A7%E5%88%86"><span class="post__toc-text">按信息可更改性分</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%8C%89%E4%BF%A1%E6%81%AF%E5%8F%AF%E4%BF%9D%E5%AD%98%E6%80%A7%E5%88%86"><span class="post__toc-text">按信息可保存性分</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="post__toc-text">性能指标</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="post__toc-text">层次结构</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="post__toc-text">寄存器</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%BC%93%E5%AD%98cache"><span class="post__toc-text">缓存cache</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E4%B8%BB%E5%AD%98"><span class="post__toc-text">主存</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%A3%81%E7%9B%98"><span class="post__toc-text">磁盘</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%85%89%E7%9B%98"><span class="post__toc-text">光盘</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%A3%81%E5%B8%A6"><span class="post__toc-text">磁带</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E5%8D%8A%E5%AF%BC%E4%BD%93%E9%9A%8F%E6%9C%BA%E5%AD%98%E5%8F%96%E5%AD%98%E5%82%A8%E5%99%A8"><span class="post__toc-text">半导体随机存取存储器</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%AD%98%E5%82%A8%E5%85%83%EF%BC%88SRAM%E5%92%8CDRAM%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8C%BA%E5%88%AB%EF%BC%89"><span class="post__toc-text">存储元（SRAM和DRAM的核心区别）</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#RAM"><span class="post__toc-text">RAM</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#ROM"><span class="post__toc-text">ROM</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8"><span class="post__toc-text">主存储器</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#DRAM%E8%8A%AF%E7%89%87%E5%92%8C%E5%86%85%E5%AD%98%E6%9D%A1"><span class="post__toc-text">DRAM芯片和内存条</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%A4%9A%E6%A8%A1%E5%9D%97%E5%AD%98%E5%82%A8%E5%99%A8"><span class="post__toc-text">多模块存储器</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E4%B8%BB%E5%AD%98%E5%92%8CCPU%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BF%9E%E6%8E%A5"><span class="post__toc-text">主存和CPU之间的连接</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E5%A4%96%E9%83%A8%E5%AD%98%E5%82%A8%E5%99%A8"><span class="post__toc-text">外部存储器</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%A3%81%E7%9B%98%E5%AD%98%E5%82%A8%E5%99%A8"><span class="post__toc-text">磁盘存储器</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98%EF%BC%88SSD%EF%BC%89"><span class="post__toc-text">固态硬盘（SSD）</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98%E5%AD%98%E5%82%A8%E5%99%A8Cache"><span class="post__toc-text">高速缓存存储器Cache</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="post__toc-text">基本工作原理</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%92%8C%E4%B8%BB%E5%AD%98%E4%B9%8B%E9%97%B4%E7%9A%84%E6%98%A0%E5%B0%84"><span class="post__toc-text">和主存之间的映射</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E4%B8%BB%E5%AD%98%E5%9D%97%E7%9A%84%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="post__toc-text">主存块的替换算法</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%86%99%E7%AD%96%E7%95%A5"><span class="post__toc-text">写策略</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8"><span class="post__toc-text">虚拟存储器</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="post__toc-text">基本概念</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E9%A1%B5%E5%BC%8F%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8"><span class="post__toc-text">页式虚拟存储器</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%AE%B5%E5%BC%8F%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8"><span class="post__toc-text">段式虚拟存储器</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%AE%B5%E9%A1%B5%E5%BC%8F%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8"><span class="post__toc-text">段页式虚拟存储器</span></a></li></ol></li></ol>
+</aside>
+  <div class="post__content" itemprop="articleBody">
+    <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="按层次分"><a href="#按层次分" class="headerlink" title="按层次分"></a>按层次分</h3><h3 id="按存取方式分"><a href="#按存取方式分" class="headerlink" title="按存取方式分"></a>按存取方式分</h3><ul>
+<li><p>随机存取存储器RAM</p>
+<ul>
+<li>内存条</li>
+</ul>
+</li>
+<li><p>顺序存取存储器SAM</p>
+<ul>
+<li>磁带，串行访问</li>
+</ul>
+</li>
+<li><p>直接存取存储器DAM</p>
+<ul>
+<li>磁盘，前随机后串行</li>
+</ul>
+</li>
+<li><p>相联存储器CAM</p>
+<ul>
+<li>TLB，按内容找，上面都是按地址</li>
+</ul>
+</li>
+</ul>
+<h3 id="按存储介质分"><a href="#按存储介质分" class="headerlink" title="按存储介质分"></a>按存储介质分</h3><ul>
+<li><p>半导体存储器</p>
+<ul>
+<li>主存、Cache</li>
+</ul>
+</li>
+<li><p>磁表面存储器</p>
+<ul>
+<li>磁盘、磁带</li>
+</ul>
+</li>
+<li><p>光存储器</p>
+<ul>
+<li>光盘</li>
+</ul>
+</li>
+</ul>
+<h3 id="按信息可更改性分"><a href="#按信息可更改性分" class="headerlink" title="按信息可更改性分"></a>按信息可更改性分</h3><ul>
+<li><p>读写存储器</p>
+</li>
+<li><p>只读存储器ROM</p>
+<ul>
+<li>BIOS</li>
+</ul>
+</li>
+</ul>
+<h3 id="按信息可保存性分"><a href="#按信息可保存性分" class="headerlink" title="按信息可保存性分"></a>按信息可保存性分</h3><ul>
+<li><p>易失性</p>
+<ul>
+<li>RAM</li>
+</ul>
+</li>
+<li><p>非易失性</p>
+<ul>
+<li>ROM，磁，光</li>
+</ul>
+</li>
+<li><p>破坏性读出</p>
+<ul>
+<li>DRAM</li>
+</ul>
+</li>
+<li><p>非破坏性读出</p>
+<ul>
+<li>SRAM，磁，光</li>
+</ul>
+</li>
+</ul>
+<h3 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h3><ul>
+<li><p>存储容量</p>
+<ul>
+<li>存储字数 X 字长</li>
+</ul>
+</li>
+<li><p>单位成本</p>
+<ul>
+<li>总成本 &#x2F; 总容量</li>
+</ul>
+</li>
+<li><p>存储速度（主存带宽、数据传输率）B&#x2F;s</p>
+<ul>
+<li>数据宽度&#x2F;存储周期</li>
+</ul>
+</li>
+<li><p>存取周期&#x3D;存取时间（读出+写入）+恢复时间</p>
+</li>
+</ul>
+<h2 id="层次结构"><a href="#层次结构" class="headerlink" title="层次结构"></a>层次结构</h2><h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><h3 id="缓存cache"><a href="#缓存cache" class="headerlink" title="缓存cache"></a>缓存cache</h3><h3 id="主存"><a href="#主存" class="headerlink" title="主存"></a>主存</h3><ul>
+<li><p>Cache、主存能与CPU直接交换信息，辅存要通过主存。Cache是主存的副本，主存是辅存的副本。</p>
+<ul>
+<li>三级存储器系统：CPU+Cache-主存+主存-辅存</li>
+</ul>
+</li>
+</ul>
+<h3 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h3><h3 id="光盘"><a href="#光盘" class="headerlink" title="光盘"></a>光盘</h3><h3 id="磁带"><a href="#磁带" class="headerlink" title="磁带"></a>磁带</h3><h2 id="半导体随机存取存储器"><a href="#半导体随机存取存储器" class="headerlink" title="半导体随机存取存储器"></a>半导体随机存取存储器</h2><h3 id="存储元（SRAM和DRAM的核心区别）"><a href="#存储元（SRAM和DRAM的核心区别）" class="headerlink" title="存储元（SRAM和DRAM的核心区别）"></a>存储元（SRAM和DRAM的核心区别）</h3><ul>
+<li>存储元∈存储单元∈存储体；8个存储元&#x3D;1个存储字8bit ；存储体总容量&#x3D;存储单元个数 x 字长</li>
+</ul>
+<h3 id="RAM"><a href="#RAM" class="headerlink" title="RAM"></a>RAM</h3><ul>
+<li><p>SRAM</p>
+<ul>
+<li><p>芯片引脚数&#x3D;地址线数+数据线数+片选线（地址复用时为行通选线+列通选线）+读写控制线（1or2）+接地引脚+电源</p>
+</li>
+<li><p>Cache，双稳态触发器，更快、成本高、集成度低、功耗高，易失，不需要刷新，同时送行列地址，非破坏性读出</p>
+<ul>
+<li>双稳态：1-A高B低；0-A低B高</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DRAM </p>
+<ul>
+<li><p>主存，栅极电容，更慢、成本低、集成度高、功耗低，易失，需要刷新，分两次送行列地址（减少地址线），破坏性读出、需重写（再生）</p>
+</li>
+<li><p>刷新（因为电容的电荷会流失2ms）</p>
+<ul>
+<li><p>以行为单位刷新</p>
+</li>
+<li><p>用硬件刷新（不需CPU），读出一行后再写入，占用一个读写周期。一次完整的刷新过程需占用一个存储周期。</p>
+</li>
+<li><p>什么时候刷新</p>
+<ul>
+<li><p>分散刷新</p>
+<ul>
+<li>一个工作周期前半部分正常读写，后半部分用于刷新</li>
+</ul>
+</li>
+<li><p>集中刷新</p>
+<ul>
+<li>2ms内集中安排时间将所有行逐行刷新，“死区”</li>
+</ul>
+</li>
+<li><p>异步刷新</p>
+<ul>
+<li>前两种的结合，每隔t时间刷新一次，t&#x3D;刷新周期2ms&#x2F;行数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>地址复用技术</p>
+<ul>
+<li>使用n&#x2F;2条地址线(行列最大值）-行&#x2F;列地址缓冲器-行&#x2F;列地址译码器</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="ROM"><a href="#ROM" class="headerlink" title="ROM"></a>ROM</h3><ul>
+<li><p>MROM</p>
+<ul>
+<li>写入后任何人无法改变</li>
+</ul>
+</li>
+<li><p>PROM</p>
+<ul>
+<li>用户写入程序，无法改变</li>
+</ul>
+</li>
+<li><p>EPROM</p>
+<ul>
+<li>可编程，可擦除全部内容改写，改写次数有限</li>
+</ul>
+</li>
+<li><p>Flash Memory</p>
+<ul>
+<li>用MOS管存储信息，写比读慢很多，可在无电下长期保存，可在线进行快速擦除重写，位密度&gt;RAM</li>
+</ul>
+</li>
+<li><p>SSD</p>
+<ul>
+<li>由控制单元和存储单元（Flash芯片）组成</li>
+</ul>
+</li>
+</ul>
+<h2 id="主存储器"><a href="#主存储器" class="headerlink" title="主存储器"></a>主存储器</h2><h3 id="DRAM芯片和内存条"><a href="#DRAM芯片和内存条" class="headerlink" title="DRAM芯片和内存条"></a>DRAM芯片和内存条</h3><ul>
+<li>引脚：输入地址A7<del>A0；数据：D7</del>D0；</li>
+</ul>
+<p>$$<br>片选线：\overline{CS}（低有效）CS（高有效）；读写线：\overline{WE}（低电平写）\overline{WR}（低电平读）<br>$$</p>
+<ul>
+<li><p>双端口RAM</p>
+<ul>
+<li><p>有两组独立的地址线、数据线、控制线可连接两个CPU进行异步访存——多核CPU访问同一根内存条</p>
+<ul>
+<li>可同时读，可不同时存。写时置BUSY信号</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>读写周期</p>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="多模块存储器"><a href="#多模块存储器" class="headerlink" title="多模块存储器"></a>多模块存储器</h3><ul>
+<li><p>单体多字存储器</p>
+<ul>
+<li>只有一个存储体，一次并行读出m个字，可在一个存取周期内从同一地址取出m条指令。不能单独取，必须连续存放</li>
+</ul>
+</li>
+<li><p>多体并行存储器</p>
+<ul>
+<li><p>多体模块，既能并行也能交叉工作</p>
+<ul>
+<li><p>高位交叉编址（顺序方式）</p>
+<ul>
+<li>体号+体内地址（译码)   块内地址连续，仍是串行存取，要等恢复时间</li>
+</ul>
+</li>
+<li><p>低位交叉编址（交叉方式）</p>
+<ul>
+<li>体内地址（译码）+体号  模块号&#x3D;单元地址%模块总数m</li>
+<li>m(交叉存取度)&gt;&#x3D;T(存取周期)&#x2F;r(总线传送周期)  连续存取m个字所需时间&#x3D;T+(m-1)r，第一个字&#x3D;T，流动起来后每个字&#x3D;r</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="主存和CPU之间的连接"><a href="#主存和CPU之间的连接" class="headerlink" title="主存和CPU之间的连接"></a>主存和CPU之间的连接</h3><ul>
+<li><p>连接原理</p>
+<ul>
+<li>数据总线，连接MDR&lt;-&gt;主存，位数与工作频率的乘积与数据传输率成正比；</li>
+<li>地址总线，连接MAR-&gt;主存，位数决定可寻址最大内存空间，不等于主存实际容量；</li>
+<li>控制总线，CPU-(读&#x2F;写)-&gt;主存，指出总线周期类型和本次输入&#x2F;输出操作完成的时刻</li>
+</ul>
+</li>
+<li><p>容量扩展</p>
+<ul>
+<li><p>位扩展法</p>
+<ul>
+<li><p>8片8K×1位的存储芯片—&gt; 1个8K×8位 容量：8KB</p>
+<ul>
+<li>将地址线，CS，WE各连在一起，每片的数据线各连一条数据总线</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>字扩展法</p>
+<ul>
+<li><p>4片16K×8位—&gt;64K×8位</p>
+<ul>
+<li>将14根地址线，数据线和WE各连在一起，剩下两根地址线–2&#x2F;4译码器–4片的CS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>字位同时扩展法</p>
+<ul>
+<li><p>8片16K×4位—&gt;64K×8位</p>
+<ul>
+<li>两片一组位扩展，四组字扩展</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="外部存储器"><a href="#外部存储器" class="headerlink" title="外部存储器"></a>外部存储器</h2><h3 id="磁盘存储器"><a href="#磁盘存储器" class="headerlink" title="磁盘存储器"></a>磁盘存储器</h3><ul>
+<li><p>记录数据</p>
+<ul>
+<li><p>RZ</p>
+</li>
+<li><p>NRZ</p>
+</li>
+<li><p>NRZ1</p>
+</li>
+<li><p>定长记录格式地址</p>
+<ul>
+<li>台号+磁道（柱面）号+盘面（磁头）号+扇区号</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>技术指标</p>
+<ul>
+<li><p>记录密度</p>
+<ul>
+<li><p>道密度</p>
+<ul>
+<li>单位长度有多少同心圆，道距–相邻道的距离</li>
+</ul>
+</li>
+<li><p>位密度</p>
+<ul>
+<li>线密度，单位长度记录二进制位数，内圈最大</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>存储容量</p>
+<ul>
+<li>C&#x3D;nks，n&#x3D;盘面数，k&#x3D;每盘磁道数，s&#x3D;每条磁道上的二进制代码数（相等）</li>
+</ul>
+</li>
+<li><p>平均寻址时间</p>
+<ul>
+<li>&#x3D;（最大寻道时间+最小寻道时间）&#x2F;2+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p> （最大等待时间+最小等待时间）&#x2F;2</p>
+<pre><code>- 数据传输率
+
+    -  =每条磁道容量×转速
+
+- 误码率
+
+    - 利用CRC来校验
+</code></pre>
+<h3 id="固态硬盘（SSD）"><a href="#固态硬盘（SSD）" class="headerlink" title="固态硬盘（SSD）"></a>固态硬盘（SSD）</h3><ul>
+<li>固态硬盘（Solid State Drives）又称固盘，是用固态电子存储芯片阵列而制成的硬盘，由控制单元和存储单元组成。 固态硬盘的存储介质分为闪存（FLASH芯片）、DRAM两种。</li>
+<li>以页为单位读写，整个块被擦除后才能写其中的页，擦除多次会被磨损坏</li>
+</ul>
+<h2 id="高速缓存存储器Cache"><a href="#高速缓存存储器Cache" class="headerlink" title="高速缓存存储器Cache"></a>高速缓存存储器Cache</h2><h3 id="基本工作原理"><a href="#基本工作原理" class="headerlink" title="基本工作原理"></a>基本工作原理</h3><ul>
+<li><p>程序局部性原理</p>
+<ul>
+<li><p>时间</p>
+<ul>
+<li>再次使用（循环）</li>
+</ul>
+</li>
+<li><p>空间</p>
+<ul>
+<li>附近数据（连续存放，数组）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>命中率H</p>
+<ul>
+<li><p>欲访问信息已在cache中的比例</p>
+<ul>
+<li>未命中率（页面失效率）M&#x3D;1-H</li>
+<li>平均访问时间t&#x3D;H▪tc+M(tc+tm) 先找Cache再找主存</li>
+<li>t&#x3D;H▪tc(访问一次Cache所需时间)+M▪tm 一起找</li>
+<li>效率e&#x3D;tc&#x2F;t</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>将主存和cache分块&#x2F;行（一样大）以”块”为单位交换数据</p>
+<ul>
+<li>Cache行的内容是：标记阵列容量（替换算法控制位、脏位、标记项、有效位）+ 每行存储的数据。Cache地址是：块号 + 块内地址(主存地址去掉标记)</li>
+</ul>
+</li>
+<li><p>哈佛Cache：分为指令Cache和数据Cache</p>
+<ul>
+<li>运行CPU在同一个Cache存储周期同时提取指令和数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="和主存之间的映射"><a href="#和主存之间的映射" class="headerlink" title="和主存之间的映射"></a>和主存之间的映射</h3><ul>
+<li><p>全相联映射</p>
+<ul>
+<li><p>主存块可以在cache任何位置</p>
+<ul>
+<li><p>标记|块内地址</p>
+<ul>
+<li>利用率、命中率高，查找慢</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>直接映射</p>
+<ul>
+<li><p>Cache行号&#x3D;主存块号%Cache总块数</p>
+<ul>
+<li>标记（tag&#x3D;m-c）|Cache行号|块内地址</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
+<li><p>组相联映射</p>
+<ul>
+<li><p>Cache组号&#x3D;主存块号%Cache分组数</p>
+<ul>
+<li>标记|组号|块内地址</li>
+</ul>
+</li>
+<li><p>cache 分成大小相同的组，组间直接映射，组内全相联映射</p>
+<ul>
+<li>二路组相联—每组两块</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Cache：1+t+B  主存地址:t+s+b</p>
+<ul>
+<li>主存地址{&#x3D;容量}&#x3D;tag+Cache地址((组号&#x2F;行号+)块内地址)</li>
+</ul>
+</li>
+</ul>
+<h3 id="主存块的替换算法"><a href="#主存块的替换算法" class="headerlink" title="主存块的替换算法"></a>主存块的替换算法</h3><ul>
+<li><p>RAND随机算法</p>
+<ul>
+<li>随机选择，实现简单，命中率低</li>
+</ul>
+</li>
+<li><p>FIFO先进先出算法</p>
+<ul>
+<li><p>替换最先被调入的，简单，没考虑局部性</p>
+<ul>
+<li>抖动现象：频繁换入换出</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>LRU近期最少使用</p>
+<ul>
+<li><p>为每个Cache块设置计数器，非空未命中行+1，命中时命中行清零，替换最大的清零其余行+1</p>
+<ul>
+<li>有2^n行，计数器n位</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>LFU最不经常使用</p>
+<ul>
+<li><p>计数器记录被访问次数，替换最小的，相同则按行号或FIFO</p>
+<ul>
+<li>计数器可能会很大，没有很考虑局部性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="写策略"><a href="#写策略" class="headerlink" title="写策略"></a>写策略</h3><ul>
+<li><p>写命中</p>
+<ul>
+<li><p>写回法</p>
+<ul>
+<li><p>只修改Cache内容，被换出时写回主存</p>
+<ul>
+<li><p>脏位标记是否需写回</p>
+<ul>
+<li>更快，但会不一致</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>全写法（写直通法）</p>
+<ul>
+<li><p>同时写入Cache和主存</p>
+<ul>
+<li>在Cache和主存间加一个写缓冲（FIFO队列），CPU实际同时写入Cache和写缓冲,解决速度不配</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>写一次法</p>
+<ul>
+<li>第一次命中写回主存，其余按写回法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>写不命中</p>
+<ul>
+<li><p>写分配法</p>
+<ul>
+<li><p>把主存块调入Cache中，在Cache中修改</p>
+<ul>
+<li>搭配写回法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>非写分配法</p>
+<ul>
+<li><p>只写入主存，不调入Cache</p>
+<ul>
+<li>搭配全写法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>多级Cache（通常为3）</p>
+<ul>
+<li>L1-&gt;L2：写回法，L2-&gt;主存：全写法，避免写缓冲饱和溢出</li>
+</ul>
+</li>
+</ul>
+<h2 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a>虚拟存储器</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li><p>虚拟在用户体验，通过虚（逻辑）地址将主存和辅存统一编址，只留当前运行中的在主存中</p>
+<ul>
+<li>对应用程序员透明，对系统程序员不透明</li>
+</ul>
+</li>
+<li><p>主存中每字节都有一个选自虚拟地址空间的虚拟地址和一个物理地址</p>
+</li>
+</ul>
+<h3 id="页式虚拟存储器"><a href="#页式虚拟存储器" class="headerlink" title="页式虚拟存储器"></a>页式虚拟存储器</h3><ul>
+<li><p>基本原理</p>
+<ul>
+<li>将程序（进程)分为和一个主存块大小的几个页面（页框、页帧、内存块、物理块、物理页面），每个页框有一个页框号（从0开始）</li>
+</ul>
+</li>
+<li><p>页表</p>
+<ul>
+<li>存放在主存中的虚页号和实页号的对照表</li>
+<li>逻辑页号+主存块号（辅存块号）+有效位(装入位，是否已调入内存)+访问位(替换算法用)+脏位(是否被修改)</li>
+</ul>
+</li>
+<li><p>地址转换</p>
+<ul>
+<li><p>逻辑页号+页内地址-&gt;主存页号（页表中查到）+页内地址（不变）</p>
+<ul>
+<li>TLB分组：逻辑页号低（log2组数）为组号，剩下为标记</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>TLB</p>
+<ul>
+<li>存储近期访问的页表项的副本，相联存储器，更快</li>
+<li>将指令中的地址码拆分为逻辑页号+页内地址，在TLB中查询主存块号，（未命中则通过页表寄存器找到页表，在页表中通过页号找到主存块号并复制到TLB中），将主存块号和页内地址拼接为物理地址，对主存或cache进行访问</li>
+</ul>
+</li>
+</ul>
+<h3 id="段式虚拟存储器"><a href="#段式虚拟存储器" class="headerlink" title="段式虚拟存储器"></a>段式虚拟存储器</h3><ul>
+<li>按功能模块拆分程序，主存不分页，虚拟地址为段号+段内地址；段表项为：段号+段首址+装入位+段长</li>
+</ul>
+<h3 id="段页式虚拟存储器"><a href="#段页式虚拟存储器" class="headerlink" title="段页式虚拟存储器"></a>段页式虚拟存储器</h3><ul>
+<li>先分段再分页，段号+段内页号+页内地址</li>
+</ul>
+
+  </div>
+  
+</article>
+    </main>
+    <footer id="footer">
+  Copyright &copy;
+  2022
+  BONE
+  
+  
+    <a class="social-links" target="_blank" rel="noopener" href="https://github.com/FloatinDLE"><i class="blogfont">&#xe6b7; </i></a>
+  
+    <a class="social-links" href="mailto:bone_n@foxmail.com"><i class="blogfont">&#xe61a; </i></a>
+  
+    <a class="social-links" href="/atom.xml"><i class="blogfont">&#xe640; </i></a>
+  
+  
+</footer>
+    <!-- scripts -->
+
+<script src="/scripts/main.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html  lang=en>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+    <link rel="shortcut icon" href="/images/kou.ico ">
+    
+    
+    <link rel="icon" type="image/png" href="/images/favicon-android.png " sizes="192x192">
+    
+    
+    <link rel="apple-touch-icon" href="/images/favicon-apple.png " sizes="180x180">
+    
+  
+  <!-- title -->
+  <title>地下室 并查集 </title>
+  <!-- styles -->
+  <!-- styles -->
+
+<link rel="stylesheet" href="/styles/global.css">
+
+  <!-- rss -->
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+  <body>
+    <header id="header">
+  
+  <nav class="menu menu--right">
+  
+    <a class="menu__item" href="/">主页</a>
+    <a class="menu__item" href="/archives/">归档</a>
+    <a class="menu__item" href="/categories/">专题</a>
+    <a class="menu__item" href="/tags/">标签</a>
+    <!-- <a class="menu__item" href="/">作品</a> -->
+    <!-- <a class="menu__item" href="/about/">关于</a> -->
+  </nav>
+</header>
+    <main>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post__header">
+  <h1 class="post__title">并查集</h1>
+  
+  
+  <div class="post__meta">
+    
+<time class="post__date" datetime="2022-04-05T01:43:25.000Z" itemprop="datePublished">
+  
+  <i class="blogfont">&#xedff;</i>
+  
+  2022-04-05 09:43:25
+</time>
+
+    
+<div class="post__category">
+  <i class="blogfont">&#xe62d;</i>
+  <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+</div>
+  
+
+    
+
+    <div id="/2022/04/05/%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="leancloud_visitors post__stat" data-flag-title="并查集">
+  <i class="blogfont">&#xe672;</i>
+  <span class="leancloud-visitors-count">loading...</span>
+</div>
+  </div>
+</header>
+  <aside class="post__aside">
+  <div class="post__actions">
+    <a id="backTop" class="post__top" href="javascript:">
+      <i class="blogfont">&#xe6b1;</i><!-- Top -->
+    </a>
+    <a id="share" class="post__share" href="javascript:">
+      <i class="blogfont">&#xe6c1;</i>
+    </a>
+  </div>
+  
+</aside>
+  <div class="post__content" itemprop="articleBody">
+    <p>并查集——用集合中的一个元素代表集合。适用于处理动态连接、具有传递性质的问题</p>
+<span id="more"></span>
+<p>典型应用：Kruskal算法</p>
+<p>主要操作：</p>
+<ul>
+<li><p>初始化：</p>
+<p> <code>void Initial(int s[])&#123;  for&#123;int i=0;i&lt;size;i++)  s[i]=-1;  &#125;</code></p>
+</li>
+<li><p>查询：</p>
+<p> <code>int Find(int s[],int x)&#123;  while(s[x]&gt;=0) x=s[x];  return x;  &#125;</code></p>
+</li>
+<li><p>合并：</p>
+<p> <code>void Union(int s[],int root1,int root2)&#123; s[root2]=root1 &#125;</code></p>
+</li>
+</ul>
+<p>题目：LeetCode <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/evaluate-division/">339.除法求值</a></p>
+<pre><code>class Solution &#123;
+public:
+int findf(vector&lt;int&gt;&amp; f, vector&lt;double&gt;&amp; w, int x) &#123;   //边查询边进行路径压缩（权值更新为到根结点的权值）
+if (f[x] != x) &#123;//如果x不是单元素集
+int father = findf(f, w, f[x]);
+w[x] = w[x] * w[f[x]];//路径压缩，先将权值沿路径上乘
+f[x] = father;//再将父节点改为根节点
+&#125;
+return f[x];
+&#125;
+
+void merge(vector&lt;int&gt;&amp; f, vector&lt;double&gt;&amp; w, int x, int y, double val) &#123;
+int fx = findf(f, w, x);//x的根节点为fx
+int fy = findf(f, w, y);//y的根节点为fy
+f[fx] = fy; //fx的根节点变为fy
+w[fx] = val * w[y] / w[x];//fx的权值变为与fy的倍数。
+//x=val*y,x=w[x]*fx,y=w[y]*fy+fx=w[fx]*f[fx]=w[fx]*fy-&gt;w[fx]=fx/fy=(x/w[x])/(y/w[y])=val*w[y]/w[x]
+&#125;
+
+vector&lt;double&gt; calcEquation(vector&lt;vector&lt;string&gt;&gt;&amp; equations, vector&lt;double&gt;&amp; values, vector&lt;vector&lt;string&gt;&gt;&amp; queries) &#123;
+int nvars = 0;  //字符串个数
+unordered_map&lt;string, int&gt; variables;
+
+int n = equations.size();
+for (int i = 0; i &lt; n; i++) &#123; //给每个出现过的字符串编号
+if (variables.find(equations[i][0]) == variables.end()) &#123;
+variables[equations[i][0]] = nvars++;
+&#125;
+if (variables.find(equations[i][1]) == variables.end()) &#123;
+variables[equations[i][1]] = nvars++;
+&#125;
+&#125;
+vector&lt;int&gt; f(nvars);
+vector&lt;double&gt; w(nvars, 1.0);   //边的权值（每个字符串=倍数（w[字符串编号]）*根（f[字符串编号]）)
+for (int i = 0; i &lt; nvars; i++) &#123;
+f[i] = i;   //初始化并查集，每个只有单元素
+&#125;
+
+for (int i = 0; i &lt; n; i++) &#123;
+int va = variables[equations[i][0]], vb = variables[equations[i][1]];
+merge(f, w, va, vb, values[i]); //连接（合并）分子分母
+&#125;
+vector&lt;double&gt; ret;
+for (const auto&amp; q: queries) &#123;
+double result = -1.0;
+if (variables.find(q[0]) != variables.end() &amp;&amp; variables.find(q[1]) != variables.end()) &#123; //分子分母都出现过
+int ia = variables[q[0]], ib = variables[q[1]]; //ia,ib分别为题目的分子分母
+int fa = findf(f, w, ia), fb = findf(f, w, ib); //查询，fa,fb为根节点。若根节点不同，则二者无交集，答案为-1
+if (fa == fb) &#123;
+result = w[ia] / w[ib];//ia、ib分别与根节点的倍数相除
+&#125;
+&#125;
+ret.push_back(result);
+&#125;
+return ret;
+&#125;
+</code></pre>
+
+  </div>
+  
+</article>
+    </main>
+    <footer id="footer">
+  Copyright &copy;
+  2022
+  BONE
+  
+  
+    <a class="social-links" target="_blank" rel="noopener" href="https://github.com/FloatinDLE"><i class="blogfont">&#xe6b7; </i></a>
+  
+    <a class="social-links" href="mailto:bone_n@foxmail.com"><i class="blogfont">&#xe61a; </i></a>
+  
+    <a class="social-links" href="/atom.xml"><i class="blogfont">&#xe640; </i></a>
+  
+  
+</footer>
+    <!-- scripts -->
+
+<script src="/scripts/main.js"></script>
+
+  </body>
+</html>
