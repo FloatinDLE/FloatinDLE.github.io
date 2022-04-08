@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html  lang=en>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+    <link rel="shortcut icon" href="/images/kou.ico ">
+    
+    
+    <link rel="icon" type="image/png" href="/images/favicon-android.png " sizes="192x192">
+    
+    
+    <link rel="apple-touch-icon" href="/images/favicon-apple.png " sizes="180x180">
+    
+  
+  <!-- title -->
+  <title>地下室 文件管理 </title>
+  <!-- styles -->
+  <!-- styles -->
+
+<link rel="stylesheet" href="/styles/global.css">
+
+  <!-- rss -->
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+  <body>
+    <header id="header">
+  
+  <nav class="menu menu--right">
+  
+    <a class="menu__item" href="/">主页</a>
+    <a class="menu__item" href="/archives/">归档</a>
+    <a class="menu__item" href="/categories/">专题</a>
+    <a class="menu__item" href="/tags/">标签</a>
+    <!-- <a class="menu__item" href="/">作品</a> -->
+    <!-- <a class="menu__item" href="/about/">关于</a> -->
+  </nav>
+</header>
+    <main>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post__header">
+  <h1 class="post__title">文件管理</h1>
+  
+  
+  <div class="post__meta">
+    
+<time class="post__date" datetime="2022-01-13T01:43:25.000Z" itemprop="datePublished">
+  
+  <i class="blogfont">&#xedff;</i>
+  
+  2022-01-13 09:43:25
+</time>
+
+    
+<div class="post__category">
+  <i class="blogfont">&#xe62d;</i>
+  <a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+</div>
+  
+
+    
+
+    <div id="/2022/01/13/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" class="leancloud_visitors post__stat" data-flag-title="文件管理">
+  <i class="blogfont">&#xe672;</i>
+  <span class="leancloud-visitors-count">loading...</span>
+</div>
+  </div>
+</header>
+  <aside class="post__aside">
+  <div class="post__actions">
+    <a id="backTop" class="post__top" href="javascript:">
+      <i class="blogfont">&#xe6b1;</i><!-- Top -->
+    </a>
+    <a id="share" class="post__share" href="javascript:">
+      <i class="blogfont">&#xe6c1;</i>
+    </a>
+  </div>
+  <ol class="post__toc"><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E6%96%87%E4%BB%B6"><span class="post__toc-text">文件</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="post__toc-text">文件的基本概念</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE%E5%92%8C%E7%B4%A2%E5%BC%95%E8%8A%82%E7%82%B9"><span class="post__toc-text">文件的元数据和索引节点</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="post__toc-text">文件的操作</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%9D%E6%8A%A4"><span class="post__toc-text">文件的保护</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="post__toc-text">文件的逻辑结构</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84"><span class="post__toc-text">文件的物理结构</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%94%A8%E6%88%B7%E7%94%A8%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%E6%89%BE%E5%88%B0%E6%95%B0%E6%8D%AE%EF%BC%8C%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84%E7%94%A8%E6%8F%90%E4%BE%9B%E7%9A%84%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%E6%89%BE%E5%88%B0%E7%89%A9%E7%90%86%E5%9D%97"><span class="post__toc-text">用户用逻辑地址找到数据，物理结构用提供的逻辑地址找到物理块</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="post__toc-text">目录</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%9B%AE%E5%BD%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="post__toc-text">目录的基本概念</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%9B%AE%E5%BD%95%E5%88%86%E7%B1%BB"><span class="post__toc-text">目录分类</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%9B%AE%E5%BD%95%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="post__toc-text">目录的操作</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%A1%AC%E9%93%BE%E6%8E%A5%E5%92%8C%E8%BD%AF%E9%93%BE%E6%8E%A5"><span class="post__toc-text">硬链接和软链接</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="post__toc-text">文件系统</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%A4%96%E5%AD%98%E7%A9%BA%E9%97%B2%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95"><span class="post__toc-text">外存空闲空间管理方法</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%85%A8%E5%B1%80%E7%BB%93%E6%9E%84"><span class="post__toc-text">文件系统的全局结构</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="post__toc-text">虚拟文件系统</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%8C%82%E8%BD%BD"><span class="post__toc-text">文件系统挂载</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%8F%90%E9%AB%98%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6"><span class="post__toc-text">提高文件访问速度</span></a></li></ol></li></ol>
+</aside>
+  <div class="post__content" itemprop="articleBody">
+    <h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><h3 id="文件的基本概念"><a href="#文件的基本概念" class="headerlink" title="文件的基本概念"></a>文件的基本概念</h3><ul>
+<li><p>文件：一组有意义的信息&#x2F;数据集合</p>
+</li>
+<li><p>文件的属性</p>
+<ul>
+<li><p>文件名</p>
+<ul>
+<li>同一目录下不允许有同名文件</li>
+</ul>
+</li>
+<li><p>标识符</p>
+<ul>
+<li>唯一，让OS区分文件</li>
+</ul>
+</li>
+<li><p>类型</p>
+</li>
+<li><p>位置</p>
+<ul>
+<li>用户：文件存放路径；OS：在外存中的地址</li>
+</ul>
+</li>
+<li><p>大小</p>
+</li>
+<li><p>创建时间，上次修改时间，文件所有者信息</p>
+</li>
+<li><p>保护信息</p>
+<ul>
+<li>属性：安全，操作权限</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件的元数据和索引节点"><a href="#文件的元数据和索引节点" class="headerlink" title="文件的元数据和索引节点"></a>文件的元数据和索引节点</h3><ul>
+<li><p>索引结点iNode</p>
+<ul>
+<li><p><strong>UNIX文件目录结构：文件名|索引结点指针(→索引结点)</strong></p>
+</li>
+<li><p>索引结点：一种数据结构，存放除文件名外信息。使目录项小很多，大大提升检索速度</p>
+<ul>
+<li>文件主标识符、文件类型、文件存取权限、文件物理地址、文件长度、文件链接计数、文件存取时间</li>
+</ul>
+</li>
+<li><p>打开：只有文件名匹配时才知道其他信息，找到（磁盘索引结点）将索引结点调入内存(内存索引结点，需增加信息)</p>
+<ul>
+<li>索引结点编号、状态(是否上锁、被修改)、访问计数(有几个进程在访问)、逻辑设备号、链接指针</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件的操作"><a href="#文件的操作" class="headerlink" title="文件的操作"></a>文件的操作</h3><ul>
+<li><p>建立</p>
+<ul>
+<li><p>create系统调用( 所需外存空间大小a，文件存放路径b，文件名c(有默认) )</p>
+<ul>
+<li>在外存中找到合适a的空间</li>
+<li>根据b找到目录，在目录中创建目录项</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>删除</p>
+<ul>
+<li><p>delete系统调用( 文件存放路径a，文件名b)</p>
+<ul>
+<li>根据a找到目录项b，使之成为空项</li>
+<li>回收文件所占存储空间</li>
+<li>删除目录项</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>打开</p>
+<ul>
+<li><p>OPEN系统调用( 存放路径a，文件名b，操作类型c )</p>
+<ul>
+<li><p>根据a、b找到目录项，检查用户操作权限</p>
+</li>
+<li><p>将目录项复制到内存中的打开文件表中，之后可以用表中编号找到文件操作</p>
+<ul>
+<li><p><strong>打开文件表</strong></p>
+<ul>
+<li><p><strong>读指针|写指针(目前进行到的位置)|访问权限|系统索引号(文件描述符，返回给用户)</strong></p>
+</li>
+<li><p>系统表</p>
+<ul>
+<li>一个系统只有一张</li>
+</ul>
+</li>
+<li><p>用户表</p>
+<ul>
+<li>每个用户进程都有一张</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>关闭</p>
+<ul>
+<li><p>close系统调用</p>
+<ul>
+<li>删除打开文件表</li>
+<li>回收内存空间</li>
+<li>打开计数器open count-1，若为0则删除打开文件表中的表项</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>读</p>
+<ul>
+<li><p>read系统调用（系统打开文件表索引号a，要读入多少数据b，数据放在内存的哪里c）</p>
+<ul>
+<li>从读指针指向的外存中读入大小为b的数据到内存空间c中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>写</p>
+<ul>
+<li><p>write系统调用( 哪个文件(索引号)a，要写多少b，要写回外存的数据在内存的哪里c )</p>
+<ul>
+<li>从用户指定的c中将b大小的数据写回写指针指向的外存</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件的保护"><a href="#文件的保护" class="headerlink" title="文件的保护"></a>文件的保护</h3><ul>
+<li><p>口令保护</p>
+<ul>
+<li><p>为文件设置一个口令，用户请求访问时必须提供正确口令</p>
+<ul>
+<li>口令存放在FCB或索引结点中</li>
+</ul>
+</li>
+<li><p>优点：保存口令的开销不多，验证口令时间少</p>
+</li>
+<li><p>缺点：正确口令在系统内部，不安全</p>
+</li>
+</ul>
+</li>
+<li><p>加密保护</p>
+<ul>
+<li><p>使用密码对文件加密，访问时提供密码可解密文件</p>
+<ul>
+<li>在系统中是乱码形式</li>
+<li>异或加密：原始数据和密码串异或</li>
+</ul>
+</li>
+<li><p>优点：保密性强，不需在系统中存密码</p>
+</li>
+<li><p>缺点：编码&#x2F;译码需花费时间</p>
+<ul>
+<li>由系统实现将无法拓展</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>访问控制</p>
+<ul>
+<li><p>在每个文件的FCB或索引结点中增加一个访问控制列表，记录哪些用户可以对哪些文件执行哪些操作，对目录进行访问控制也是对其下所有文件</p>
+<ul>
+<li><strong>ACL：用户|读01|写01|执行01|列表清单01(列出文件名和文件属性)|……</strong></li>
+<li>精简访问列表，将用户分组：拥有者、组、其他</li>
+</ul>
+</li>
+<li><p>实现灵活，可以实现复杂的文件保护功能。由系统实现，UNIX采用此法</p>
+</li>
+</ul>
+</li>
+<li><p>△安全管理</p>
+<ul>
+<li><p>系统级</p>
+<ul>
+<li>不允许未经授权用户进入系统，措施：注册登录</li>
+</ul>
+</li>
+<li><p>用户级</p>
+<ul>
+<li><p>对所有用户分类，不同用户对不同文件设置不同权限</p>
+<ul>
+<li>存取控制矩阵：多用户之间存取权限保护</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>目录级</p>
+<ul>
+<li>保护系统中各级目录，与用户权限无关，只有系统核心能写目录</li>
+</ul>
+</li>
+<li><p>文件级</p>
+<ul>
+<li>系统管理员或文件主对文件设置访问权限</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件的逻辑结构"><a href="#文件的逻辑结构" class="headerlink" title="文件的逻辑结构"></a>文件的逻辑结构</h3><ul>
+<li><p>无结构文件</p>
+<ul>
+<li>由二进制或字符流组成（文本文件）</li>
+</ul>
+</li>
+<li><p>有结构文件</p>
+<ul>
+<li><p>由一组相似的记录组成（数据库表）</p>
+<ul>
+<li><p>记录：组相关数据项（基本单位），有一个数据项可作为关键字</p>
+<ul>
+<li>定长记录</li>
+<li>可变长记录</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>分类</p>
+<ul>
+<li><p>顺序文件</p>
+<ul>
+<li><p>记录一个接一个顺序排列，可变长也可定长</p>
+<ul>
+<li><p>顺序存储</p>
+<ul>
+<li><p>逻辑和物理都连续</p>
+</li>
+<li><p>分类</p>
+<ul>
+<li><p>可变长</p>
+<ul>
+<li>无法随机存储</li>
+</ul>
+</li>
+<li><p>定长</p>
+<ul>
+<li><p>可随机存储</p>
+<ul>
+<li><p>串结构</p>
+<ul>
+<li>顺序与key无关，一般按存入时间排序</li>
+</ul>
+</li>
+<li><p>顺序结构</p>
+<ul>
+<li>顺序按key排序，可快速查找(折半查找)</li>
+<li>缺点：增加&#x2F;删除记录困难，要使用日志文件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>链式存储</p>
+<ul>
+<li>逻辑连续、物理不一定连续</li>
+<li>无法随机存取</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>索引文件</p>
+<ul>
+<li><p>由逻辑文件和索引表组成</p>
+<ul>
+<li><p>建立索引表(定长记录的顺序文件)，一个文件可以用不同数据项建多个索引表</p>
+<ul>
+<li><strong>索引表：索引号|长度|指针</strong></li>
+</ul>
+</li>
+<li><p>每增加&#x2F;删除记录都要修改索引表</p>
+</li>
+<li><p>主要用于对信息处理的及时性要求高时</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>顺序索引文件</p>
+<ul>
+<li><p>因为索引表占用太多空间→一组记录对应一个索引表项（组内顺序查找），分组内记录和索引项不按关键字排序，组与组之间有序</p>
+<ul>
+<li><p><strong>索引表：关键字|逻辑地址(主文件中该记录的始址)</strong></p>
+<ul>
+<li>用户定义</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>索引表示属于定长记录的串结构文件</p>
+</li>
+<li><p>速度不慢；记录过多时可以采用多级索引顺序文件来提高检索效率</p>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>n条记录，最好情况有\sqrt{n}组，此时顺序查找平均查找次数&#x3D;\sqrt{n}(偶数)&#x3D;\sqrt{n+1}(奇数)<br>$$</p>
+<pre><code>    - 直接文件
+
+        - 通过哈希函数直接决定记录地址
+</code></pre>
+<h3 id="文件的物理结构"><a href="#文件的物理结构" class="headerlink" title="文件的物理结构"></a>文件的物理结构</h3><ul>
+<li><p>概念</p>
+<ul>
+<li><p>磁盘块</p>
+<ul>
+<li>OS会对磁盘分块，大小与内存块、页面大小相同</li>
+</ul>
+</li>
+<li><p>文件块</p>
+<ul>
+<li><p>文件的逻辑地址也被分块</p>
+<ul>
+<li><p>逻辑块号|块内地址 （用户用）</p>
+<ul>
+<li>映射→物理块号|块内地址</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>分配方式</p>
+<ul>
+<li><p>连续分配</p>
+<ul>
+<li><p>每个文件在磁盘上占有一组连续的块</p>
+</li>
+<li><p>逻辑地址→物理地址：只需转换块号，物理块号&#x3D;起始块号+逻辑块号(和长度比看是否)(起始块号和长度信息都在FCB中)</p>
+</li>
+<li><p>优点</p>
+<ul>
+<li>指出顺序访问和直接访问(随机访问)，移动磁头距离短、时间段，顺序读&#x2F;写速度最快</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>不方便文件拓展(连续空间不够时要全部迁移)，存储空间利用率低，有碎片(外部)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>链接分配</p>
+<ul>
+<li><p>隐式链接</p>
+<ul>
+<li><p>FCB中记录起始块号和结束块号，每块磁盘块中都有指向下一块的指针。读入i号逻辑块，需要i+1次磁盘I&#x2F;O</p>
+</li>
+<li><p>优点</p>
+<ul>
+<li>拓展文件只需挂到链尾，方便拓展，无碎片，利用率高</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>只支持顺序访问，不支持随机访问，查找效率低，指针占空间</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>显式连接</p>
+<ul>
+<li><p>把链接的指针都放在一张表中(一个磁盘一张)，    开机时读入并常驻内存，FCB中只需记录起始块号</p>
+<ul>
+<li><strong>文件分配表FAT：物理块号(表项长度相同时隐含)|下一块(文件结尾为-1)</strong></li>
+</ul>
+</li>
+<li><p>逻辑地址→物理地址：不需读盘操作，只需查FAT(比隐式快很多)</p>
+</li>
+<li><p>优点</p>
+<ul>
+<li>支持顺序访问和随机访问，地址转换比隐式快，无碎片</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>文件分配表占一定空间</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>索引分配</p>
+<ul>
+<li><p>每个文件中一张索引表，索引表存放的磁盘块被称为索引块（文件数据存放的是数据块），FCB中记录索引块位置</p>
+<ul>
+<li><p><strong>索引表：(逻辑块号)|物理块号</strong></p>
+<ul>
+<li>OS建立</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>优点</p>
+<ul>
+<li>支持随机存取，易拓展文件（只需在索引表中增加一项）</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>索引表占空间</li>
+</ul>
+</li>
+<li><p>如果索引表太大，一个磁盘块装不下</p>
+<ul>
+<li><p>链接方案</p>
+<ul>
+<li><p>将多个索引块链接起来</p>
+<ul>
+<li>找最后一块必须先读前面所有块</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>多层索引</p>
+<ul>
+<li><p>一层索引块指向二层索引块</p>
+<ul>
+<li><p>算文件最大长度：如一个磁盘块可装256项索引项，则为256×256×磁盘块大小。</p>
+</li>
+<li><p>1026号放在：1026&#x2F;256&#x3D;4；1026%256&#x3D;2在一级表4号表项指向的二级表中的第2项</p>
+</li>
+<li><p>每次访问需3次I&#x2F;O。k层索引需k+1次I&#x2F;O</p>
+<ul>
+<li>小文件不划算</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>混合索引</p>
+<ul>
+<li><p>顶级索引表：</p>
+<ul>
+<li><p>直接地址</p>
+</li>
+<li><p>……</p>
+</li>
+<li><p>直接地址</p>
+</li>
+<li><p>一级间接</p>
+<ul>
+<li><p>三次I&#x2F;O，指向索引表</p>
+<ul>
+<li>索引表存入内存后减少一次I&#x2F;O</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>二级间接</p>
+<ul>
+<li>四次I&#x2F;O，指向索引表，索引表再指向下一层索引表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>最大长度：8+256+256×256</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户用逻辑地址找到数据，物理结构用提供的逻辑地址找到物理块"><a href="#用户用逻辑地址找到数据，物理结构用提供的逻辑地址找到物理块" class="headerlink" title="用户用逻辑地址找到数据，物理结构用提供的逻辑地址找到物理块"></a>用户用逻辑地址找到数据，物理结构用提供的逻辑地址找到物理块</h3><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="目录的基本概念"><a href="#目录的基本概念" class="headerlink" title="目录的基本概念"></a>目录的基本概念</h3><ul>
+<li><p>目录是一种特殊的文件，由记录该目录下文件的记录项组成，一条记录就是一个FCB</p>
+<ul>
+<li><p>文件控制块（文件目录项）：基本信息(最重要最基本的文件名、存放的物理地址)、存取控制信息、使用信息</p>
+<ul>
+<li>实现按名存取</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="目录分类"><a href="#目录分类" class="headerlink" title="目录分类"></a>目录分类</h3><ul>
+<li><p>单级目录</p>
+<ul>
+<li>整个系统只有一张目录表，每个文件占一个目录项</li>
+<li>不允许重名，不适用于多用户OS</li>
+</ul>
+</li>
+<li><p>两级目录结构</p>
+<ul>
+<li>分为主文件目录MFD和用户文件目录UFD</li>
+<li>允许不同用户文件重名，可以实现访问控制；缺乏灵活性，不能分类</li>
+</ul>
+</li>
+<li><p><strong>多级目录结构(树形目录)</strong></p>
+<ul>
+<li>用户访问文件要用文件路径名(字符串)标识文件，各级目录间用”&#x2F;“隔开，从根目录出发的路径为绝对路径，访问每层目录都需要一次读盘，可以设置当前目录</li>
+<li>不同用户的文件可以重名，不同目录下的文件可以重名，方便分类、文件管理和保护；不便于实现文件共享</li>
+</ul>
+</li>
+<li><p>无环图目录结构</p>
+<ul>
+<li>在树形基础上，增加指向同一节点的有向边。为每一个共享节点设置共享计数器，记录多少地方共享此节点。删除操作，只删除该用户FCB并将计数器-1，共享计数器为0时删除节点。</li>
+<li>方便文件共享，可以用不同文件名指向同一文件或目录。不同于复制文件，系统中只有一份，一个用户的修改会被所有用户观测到</li>
+</ul>
+</li>
+</ul>
+<h3 id="目录的操作"><a href="#目录的操作" class="headerlink" title="目录的操作"></a>目录的操作</h3><ul>
+<li><p>搜索</p>
+</li>
+<li><p>创建&#x2F;删除文件</p>
+<ul>
+<li>同时增删目录项</li>
+</ul>
+</li>
+<li><p>显示目录</p>
+<ul>
+<li>用户可以请求显示该目录中的所有文件和属性</li>
+</ul>
+</li>
+<li><p>修改目录</p>
+</li>
+<li><p>创建目录</p>
+<ul>
+<li>在树形目录结构中，用户可创建目录，在创建子目录</li>
+</ul>
+</li>
+<li><p>删除目录</p>
+<ul>
+<li>不删除非空目录，必须先删除目录中所有文件，递归地删除子目录</li>
+<li>可删除非空目录，子目录和文件一并被删除</li>
+</ul>
+</li>
+<li><p>移动目录</p>
+<ul>
+<li>将文件或子目录，在不同的父目录之间移动，文件路径名也随之改变</li>
+</ul>
+</li>
+</ul>
+<h3 id="硬链接和软链接"><a href="#硬链接和软链接" class="headerlink" title="硬链接和软链接"></a>硬链接和软链接</h3><ul>
+<li><p>基于索引结点的共享方式(硬)</p>
+<ul>
+<li>结点中设置链接计数变量count，表示链接的用户数删除时-1，&#x3D;0时删除</li>
+<li>文件1→硬链接建立时count+1→文件2，两个文件读写指针不必保持相同，各自维护自己的文件描述符fd(索引值，非负整数，指向各用户打开文件表中的一项)</li>
+</ul>
+</li>
+<li><p>基于符号链的共享文件(软)</p>
+<ul>
+<li><p>指向Link型文件，文件中记录真正想访问的文件路径(快捷方式)，OS通过检索目录来找到真正的索引结点，Count+1。若真正结点count&#x3D;0被删，则Link型文件还在但查找失败。</p>
+<ul>
+<li>建立软链时，count直接复制</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>软硬共存，用户自由选择</p>
+</li>
+</ul>
+<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><h3 id="外存空闲空间管理方法"><a href="#外存空闲空间管理方法" class="headerlink" title="外存空闲空间管理方法"></a>外存空闲空间管理方法</h3><ul>
+<li><p>存储空间的划分与初始化</p>
+<ul>
+<li><p>划分</p>
+<ul>
+<li>将物理磁盘划分为一个个文件卷（C盘、D盘），也可以多个物理磁盘合成一个文件卷</li>
+</ul>
+</li>
+<li><p>初始化</p>
+<ul>
+<li>将各文件卷划分为目录区(存放FCB、管理信息)、文件区</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>方法</p>
+<ul>
+<li><p>空闲表法</p>
+<ul>
+<li><p>适用于连续分配</p>
+<ul>
+<li><strong>空闲表：第一个空闲盘块号|空闲盘块数</strong></li>
+</ul>
+</li>
+<li><p>分配</p>
+<ul>
+<li>可采用动态分配的四个算法(XX适应算法)</li>
+</ul>
+</li>
+<li><p>回收</p>
+<ul>
+<li>表项合并</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>空闲链表法</p>
+<ul>
+<li><p>空闲盘块链</p>
+<ul>
+<li><p>以盘块为单位，OS保存链头、链尾指针</p>
+</li>
+<li><p>分配</p>
+<ul>
+<li>从链头摘下盘块分配，并修改链头指针</li>
+</ul>
+</li>
+<li><p>回收</p>
+<ul>
+<li>回收来的依次挂到链尾，并修改链尾指针</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>空闲盘区链</p>
+<ul>
+<li><p>以盘区为单位</p>
+<ul>
+<li>盘区：连续的空闲盘块组成，每个盘区会记录本盘区盘块数和下一空闲盘区指针</li>
+</ul>
+</li>
+<li><p>分配</p>
+<ul>
+<li>采用分配算法，通常采用首次适应算法。从链头开始检查合适盘区，没有合适时可以将不同盘区分配给同一文件，修改相应大小、指针</li>
+</ul>
+</li>
+<li><p>回收</p>
+<ul>
+<li>相邻合并，挂到链尾</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>位示图法</strong></p>
+<ul>
+<li><p>用一位二进制来表示一个盘块的使用情况。在字号和字内位号组成的表中标示。0为未分配</p>
+<ul>
+<li>盘块号&#x3D;字长×字号+字内位号(后n位）</li>
+</ul>
+</li>
+<li><p>分配</p>
+<ul>
+<li>顺序扫描位示图，找到k个相邻或不相邻的0，根据字号、位号推算出盘块号，并分配盘块，将相应位设置为1</li>
+</ul>
+</li>
+<li><p>回收</p>
+<ul>
+<li>根据盘块号计算字、位号，设为0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>成组链接法</p>
+<ul>
+<li><p>目录区中专门有一块超级块，系统启动时放入内存，且要保持内外存数据一致。系统只需要保存指向第一个空闲扇区的指针。</p>
+<ul>
+<li><p>超级块：</p>
+<ul>
+<li><p>记录下一组空闲盘块数量(有上限)</p>
+<ul>
+<li>100</li>
+</ul>
+</li>
+<li><p>空闲块号</p>
+<ul>
+<li>300(最后一组为-1)</li>
+</ul>
+</li>
+<li><p>…………</p>
+</li>
+<li><p>空闲块号</p>
+<ul>
+<li>400,400号中有指向下一组的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>分配</p>
+<ul>
+<li>检查第一个分组块数是否足够，若一组中全部分配出去，要求块内信息复制到超级块</li>
+</ul>
+</li>
+<li><p>回收</p>
+<ul>
+<li>超级块分组没满，插到超级块末尾；满了，将超级块信息复制到新回收的块中，超级块只保留指向新回收块的一项</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件系统的全局结构"><a href="#文件系统的全局结构" class="headerlink" title="文件系统的全局结构"></a>文件系统的全局结构</h3><ul>
+<li>在外存中的结构</li>
+<li>在内存中的结构</li>
+</ul>
+<h3 id="虚拟文件系统"><a href="#虚拟文件系统" class="headerlink" title="虚拟文件系统"></a>虚拟文件系统</h3><ul>
+<li><p>在用户进程和低层文件系统中加入了一个抽象层，即虚拟文件系统VFS</p>
+<ul>
+<li>进程所有的文件操作都通过VFS，由VFS来适配底层各种不同的文件系统，完成实际的文件操作</li>
+</ul>
+</li>
+<li></li>
+<li><p>VFS是物理文件系统与服务之间的一个接口层，对文件系统的所有细节进行抽象并隐藏实现细节，使不同的文件系统在进程看来相同</p>
+<ul>
+<li>用户不需要关心文件系统的具体操作过程，每个文件系统间互不干扰，只调用相应程序来实现其功能</li>
+</ul>
+</li>
+<li><p>VFS作为内核中的一个软件层，提供内核中的抽象功能，只存在于内存中，不存在于任何外存空间。在系统启动时建立，在系统关闭时消亡</p>
+</li>
+</ul>
+<h3 id="文件系统挂载"><a href="#文件系统挂载" class="headerlink" title="文件系统挂载"></a>文件系统挂载</h3><ul>
+<li>磁盘或分区创建好文件系统后，需要挂载mounting到一个目录才能使用</li>
+<li>Windows和MAC系统会自动挂载，在windows上为C盘、D盘</li>
+<li>Linux需要手工进行挂载操作，或配置系统进行自动挂载，使用命令mount来挂载文件系统，umount来卸载已挂载的文件系统</li>
+</ul>
+<h3 id="提高文件访问速度"><a href="#提高文件访问速度" class="headerlink" title="提高文件访问速度"></a>提高文件访问速度</h3><ul>
+<li>提前读、延迟写、为文件分配连续的簇，采用磁盘高速缓存</li>
+</ul>
+
+  </div>
+  
+</article>
+    </main>
+    <footer id="footer">
+  Copyright &copy;
+  2022
+  BONE
+  
+  
+    <a class="social-links" target="_blank" rel="noopener" href="https://github.com/FloatinDLE"><i class="blogfont">&#xe6b7; </i></a>
+  
+    <a class="social-links" href="mailto:bone_n@foxmail.com"><i class="blogfont">&#xe61a; </i></a>
+  
+    <a class="social-links" href="/atom.xml"><i class="blogfont">&#xe640; </i></a>
+  
+  
+</footer>
+    <!-- scripts -->
+
+<script src="/scripts/main.js"></script>
+
+  </body>
+</html>
