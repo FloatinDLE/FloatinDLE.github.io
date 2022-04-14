@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html  lang=en>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+    <link rel="shortcut icon" href="/images/kou.ico ">
+    
+    
+    <link rel="icon" type="image/png" href="/images/favicon-android.png " sizes="192x192">
+    
+    
+    <link rel="apple-touch-icon" href="/images/favicon-apple.png " sizes="180x180">
+    
+  
+  <!-- title -->
+  <title>地下室 物理层 </title>
+  <!-- styles -->
+  <!-- styles -->
+
+<link rel="stylesheet" href="/styles/global.css">
+
+  <!-- rss -->
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+  <body>
+    <header id="header">
+  
+  <nav class="menu menu--right">
+  
+    <a class="menu__item" href="/">主页</a>
+    <a class="menu__item" href="/archives/">归档</a>
+    <a class="menu__item" href="/categories/">专题</a>
+    <a class="menu__item" href="/tags/">标签</a>
+    <!-- <a class="menu__item" href="/">作品</a> -->
+    <!-- <a class="menu__item" href="/about/">关于</a> -->
+  </nav>
+</header>
+    <main>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post__header">
+  <h1 class="post__title">物理层</h1>
+  
+  
+  <div class="post__meta">
+    
+<time class="post__date" datetime="2022-01-16T06:42:05.000Z" itemprop="datePublished">
+  
+  <i class="blogfont">&#xedff;</i>
+  
+  2022-01-16 14:42:05
+</time>
+
+    
+<div class="post__category">
+  <i class="blogfont">&#xe62d;</i>
+  <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">-计算机网络</a>
+</div>
+  
+
+    
+<div class="post__tag">
+  <i class="blogfont">&#xe7ec;</i>
+  <a class="tag-link-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">-计算机基础</a>
+</div>
+
+
+    <div id="/2022/01/16/%E7%89%A9%E7%90%86%E5%B1%82/" class="leancloud_visitors post__stat" data-flag-title="物理层">
+  <i class="blogfont">&#xe672;</i>
+  <span class="leancloud-visitors-count">loading...</span>
+</div>
+  </div>
+</header>
+  <aside class="post__aside">
+  <div class="post__actions">
+    <a id="backTop" class="post__top" href="javascript:">
+      <i class="blogfont">&#xe6b1;</i><!-- Top -->
+    </a>
+    <a id="share" class="post__share" href="javascript:">
+      <i class="blogfont">&#xe6c1;</i>
+    </a>
+  </div>
+  <ol class="post__toc"><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80"><span class="post__toc-text">通信基础</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="post__toc-text">基本概念</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E9%99%90%E5%88%B6%E7%A0%81%E5%85%83%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E7%9A%84%E5%9B%A0%E7%B4%A0"><span class="post__toc-text">限制码元传输速率的因素</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6"><span class="post__toc-text">编码与调制</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F"><span class="post__toc-text">交换方式</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%A5%E4%B8%8E%E8%99%9A%E7%94%B5%E8%B7%AF"><span class="post__toc-text">数据报与虚电路</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8"><span class="post__toc-text">传输介质</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%88%86%E7%B1%BB"><span class="post__toc-text">分类</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E6%8E%A5%E5%8F%A3%E7%89%B9%E6%80%A7"><span class="post__toc-text">物理层接口特性</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E8%AE%BE%E5%A4%87"><span class="post__toc-text">物理层设备</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E4%B8%AD%E7%BB%A7%E5%99%A8"><span class="post__toc-text">中继器</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E9%9B%86%E7%BA%BF%E5%99%A8"><span class="post__toc-text">集线器</span></a></li></ol></li></ol>
+</aside>
+  <div class="post__content" itemprop="articleBody">
+    <h2 id="通信基础"><a href="#通信基础" class="headerlink" title="通信基础"></a>通信基础</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li><p>信道</p>
+<ul>
+<li><p>表示向某一个方向传送信息的媒体，一条通信线路往往包括一条发送信道和一条接收信道</p>
+<ul>
+<li><p>根据传输方向分</p>
+<ul>
+<li><p>单工通信</p>
+<ul>
+<li>单向通信，一条信道</li>
+</ul>
+</li>
+<li><p>半双工通信</p>
+<ul>
+<li>双向交替通信，两条信道</li>
+</ul>
+</li>
+<li><p>全双工通信</p>
+<ul>
+<li>双向同时通信，两条信道</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>根据传输信号类型分</p>
+<ul>
+<li><p>数字信道</p>
+<ul>
+<li>直接传输二进制脉冲信号</li>
+</ul>
+</li>
+<li><p>模拟信道</p>
+<ul>
+<li>传输模拟信号,如调幅或调频波</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>信源</p>
+<ul>
+<li><p>源点设备产生的数据，源点、源站</p>
+<ul>
+<li>基带信号：信源发出的没有经过调制的原始电信号，基带信号可分为数字基带信号和模拟基带信号（相应地，信源也分为数字信源和模拟信源），其由信源决定。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>发送器</p>
+<ul>
+<li>源点生成的数字比特流需发送器编码后才能在传输系统中传输。如调制器。很多计算机内置调制解调器，用户看不见</li>
+</ul>
+</li>
+<li><p>接收器</p>
+<ul>
+<li>还原比特流，如解调器</li>
+</ul>
+</li>
+<li><p>信宿</p>
+<ul>
+<li>终点设备从接收器获取传送来的数字比特流，然后把信息输出，终点、目的站</li>
+</ul>
+</li>
+<li><p>信号</p>
+<ul>
+<li><p>数据的电气或电磁的表现，传输介质上的形式。数据是运送消息的实体。</p>
+<ul>
+<li><p>模拟信号</p>
+<ul>
+<li>连续信号，代表消息的参数取值是连续的，在每个时间都能找到对应的信号点</li>
+</ul>
+</li>
+<li><p>数字信号</p>
+<ul>
+<li>离散信号，参数的取值是零散的，不能在每个时间找到对应信号点</li>
+<li>代表不同离散值的基本波形就是码元，一个固定时长内的信号波形表示一位k进制数，这个时长内的信号为k进制码元，该时长称为码元宽度。二进制只有两种码元01</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>速率</p>
+<ul>
+<li><p>码元传输速率</p>
+<ul>
+<li><p>波形速率，单位时间内数字通信系统所传输的码元个数（脉冲个数、信号变化次数）。</p>
+<ul>
+<li><p>单位是波特。1Baud表示每秒传输一个码元，码元速率与进制数无关</p>
+<ul>
+<li>1个码元含有n比特信息量&#x3D;码元有效离散值为2ⁿ个&#x3D;2ⁿ相位调制</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>信息传输速率</p>
+<ul>
+<li><p>比特率，数据率。单位时间内数字通信系统所传输的二进制码元个数（比特数）</p>
+<ul>
+<li><p>单位是比特&#x2F;秒</p>
+<ul>
+<li>&#x3D;波特率×log₂n</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>波特率</p>
+<ul>
+<li><p>&#x3D;比特率 &#x2F; 每符号所含比特数</p>
+<ul>
+<li>信号每秒的变化次数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>信道利用率</p>
+<ul>
+<li><p>即信道效率，发送方在一个发送周期(发送传输时间+往返时延RTT+接收传输时间)内，有效地发送数据的时间占整个发送周期的比率</p>
+<ul>
+<li>发送周期T，共发送L比特数据，数据传输率为C，信道利用率&#x3D;(L&#x2F;C)&#x2F;T</li>
+<li>信道利用率最大，在发送周期T中连续不断发送</li>
+<li>帧长最小时，需要的帧序号编码数自然多与512B。如果就以512B计算，那么得到的最小帧序号数在128B的帧长下，达不到最大的信道利用率。因为帧序号数目的限制，连续发送的数目有限。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>信道吞吐量</p>
+<ul>
+<li>信道利用率 × 发送方发送速率</li>
+</ul>
+</li>
+<li><p>传输方式</p>
+<ul>
+<li><p>并行传输</p>
+<ul>
+<li><p>字符编码的各位（比特）同时传输，也就是使用多根并行的数据线一次同时传输多个比特。</p>
+<ul>
+<li><p>距离短、速度快</p>
+<ul>
+<li>计算机内部</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>串行传输</p>
+<ul>
+<li><p>将组成字符的各位串行依次地传输，使用一根数据线传输数据，一次传输1个比特，多个比特需要一个接一个依次传输；在串行传输中又分为同步传输和异步传输。</p>
+<ul>
+<li>距离长、速度慢</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>通信方式</p>
+<ul>
+<li><p>同步传输</p>
+<ul>
+<li><p>数据以块或帧的形式发送。此传输是全双工类型。在发送者和接收者之间强制性同步</p>
+<ul>
+<li>快，成本高</li>
+</ul>
+</li>
+<li><p>在同步传输中，数据之间没有间隙。与异步传输相比，传输大量数据更加有效和可靠。</p>
+</li>
+</ul>
+</li>
+<li><p>异步传输</p>
+<ul>
+<li><p>在异步传输中，数据以字节或字符的形式发送。该传输是半双工型传输。在该传输中，在数据的起始位和停止位都添加了奇偶校验位。它不需要同步。</p>
+<ul>
+<li>慢，成本低</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="限制码元传输速率的因素"><a href="#限制码元传输速率的因素" class="headerlink" title="限制码元传输速率的因素"></a>限制码元传输速率的因素</h3><ul>
+<li><p>信道能通过的频率范围</p>
+<ul>
+<li><p>高频分类受到衰减，每一码元的时间界限模糊——码间串扰</p>
+</li>
+<li><p>奈奎斯特定理</p>
+<ul>
+<li>在理想条件下，为了避免码间串扰，码元传输速率的上限值。</li>
+<li>C-理想低通（没有噪声、带宽有限）信道下的极限数据传输率W-理想低通信道的带宽（Hz）；2W-极限码元传输速率；  V-每个码元的离散电平数目（有多少种不同的码元，16进制log2，需4位二进制表示）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>C&#x3D;2Wlog_2V (单位：b&#x2F;s)<br>$$</p>
+<pre><code>        - 每秒钟振动一次为1赫兹
+
+    - 码元传输速率是有上限的，一旦超过会出现严重的码间串扰，是接收端对码元的识别成为不可能
+
+        - 使每个码元携带更多信息，采用多元制的调制方式
+
+    - 频带越宽，速率上限越大
+</code></pre>
+<ul>
+<li><p>信噪比</p>
+<ul>
+<li><p>噪声是对此次传输无意义的信号，如果信号较强，噪声影响就小</p>
+</li>
+<li><p>香农定理</p>
+<ul>
+<li>带宽受限且有高斯白噪声烦扰的信道极限传输率，以此速率传输可以做到不产生误差</li>
+<li>C-信道极限信息传输率；W-信道带宽；S-信道传输信号的平均功率；N-信道内部高斯噪声功率</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>C&#x3D;Wlog_2(1+\frac{S}{N}) (单位：b&#x2F;s)<br>$$</p>
+<pre><code>        - S/N=1000，信噪比=30db。S提高到一定值，N会提升得更快
+</code></pre>
+<p>$$<br>信噪比&#x3D;10log_{10}(\frac{S}{N}) (单位：db)<br>$$</p>
+<pre><code>    - 只要信息的传输速率低于信道的极限传输速率，就一定存在某种办法来实现无差错的传输
+    - 若W和S/N没有上限，则C也没有上限
+</code></pre>
+<h3 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h3><ul>
+<li><p>数据变为数字信号——编码数据变为模拟信号——调制</p>
+<ul>
+<li>基带信号直接传送到通信线路(数字信道)——基带传输</li>
+<li>基带信号经过调制后送到通信线路(模拟信道)——频带传输</li>
+<li>借助频带传输，将链路容量分解成多个信道，每个信道携带不同信号——宽带传输</li>
+</ul>
+</li>
+<li><p>数字数据编码为数字信号</p>
+<p>  - </p>
+<pre><code>  - 归零制编码RZ
+
+      - 每个时钟周期中间，跳为低电平
+
+          - 跳太多
+
+  - 非归零制编码NRZ
+
+      - 高1低0
+
+          - 频率太低，每秒跳动次数少
+          - 不能从波形本身中提取信号时钟频率，没有自同步能力
+
+  - 反向非归零制编码NRZ1
+
+      - 信号翻转为0，不变为1
+
+          - USB2.0
+
+  - 曼彻斯特编码
+
+      - 一个时钟周期分为两部分，前高后低为1，前低后高为0
+
+          - 有自同步能力
+          - 以太网
+
+  - 差分曼彻斯特编码
+
+      - 码元为1，前半不跳；码元为0，前半翻转；中间必跳。方向变得无所谓
+
+          - 局域网
+
+  - 4B/5B编码
+
+      - 每四位为一组，按4B/5B编码规则转换成相应的5位码，共32种，16种4位码+16种控制码
+</code></pre>
+</li>
+<li><p>数字数据调制为模拟信号</p>
+<ul>
+<li><p>0和1的差距不明显，发送中受干扰会无法识别</p>
+<ul>
+<li><p>调幅AM</p>
+<ul>
+<li><p>&#x3D;幅移键控ASK。0无载波输出，1有载波输出</p>
+<ul>
+<li>抗干扰能力差</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>调频FM</p>
+<ul>
+<li><p>&#x3D;频移键控FSK。波形个数不同，0疏1密</p>
+<ul>
+<li>抗干扰能力强，应用广泛</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>调相PM</p>
+<ul>
+<li><p>&#x3D;相移键控PSK，初始相位不同，0从中间向上(0度)，1从中间向下(180度)。频率、振幅都相同</p>
+<ul>
+<li>分绝对调相和相对调相</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>正交振幅调制QAM</p>
+<ul>
+<li>在频率相同的前提下，将ASK和PSK结合，形成叠加信号。数据传输率R&#x3D;Blog₂(mn)。B-波特率；采用m个相位，每个相位有n种振幅</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>模拟数据编码为数字信号</p>
+<ul>
+<li><p>对音频信号进行编码的脉码调制PCM</p>
+<ul>
+<li><p>采样</p>
+<ul>
+<li>采样定理（奈奎斯特定理）：这里带宽是最高频率与最低频率之差(Hz)，采样频率必须大于原始信号最大频率的2倍，才能保证无失真。</li>
+<li>采样是对模拟信号进行周期性扫描，把时间上的连续信号变离散。</li>
+</ul>
+</li>
+<li><p>量化</p>
+<ul>
+<li>把采样取得的电平幅值按照分级标度转化为数字值，并取整数</li>
+</ul>
+</li>
+<li><p>编码</p>
+<ul>
+<li>把量化结果转换为二进制代码</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>模拟数据调制为模拟信号</p>
+<ul>
+<li><p>电话机和本地局交换机</p>
+<ul>
+<li>可以采用频分复用技术</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="交换方式"><a href="#交换方式" class="headerlink" title="交换方式"></a>交换方式</h3><ul>
+<li><p>电路交换</p>
+<ul>
+<li><p>在进行数据传输前，两个结点必须先建立一条专用物理通信路径(可逐段连成)。在传输期间一直被独占，通信结束后才被释放</p>
+<ul>
+<li>连接建立+数据传输+连接释放</li>
+<li>在任何结点都采取直通方式</li>
+</ul>
+</li>
+<li><p>优点</p>
+<ul>
+<li><p>通信时延小</p>
+<ul>
+<li>双方专用，数据直达。传输数据量大时，优势明显</li>
+</ul>
+</li>
+<li><p>有序传输</p>
+</li>
+<li><p>没有冲突</p>
+</li>
+<li><p>适用范围广</p>
+<ul>
+<li>既适用于传输模拟信号，又适用于传输数字信号</li>
+</ul>
+</li>
+<li><p>实时性强</p>
+<ul>
+<li>通路建立后可以随时通信</li>
+</ul>
+</li>
+<li><p>控制简单</p>
+<ul>
+<li>交换设备（交换机等）控制简单</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li><p>建立连接时间长</p>
+</li>
+<li><p>线路独占</p>
+<ul>
+<li>信道利用率低</li>
+</ul>
+</li>
+<li><p>灵活性差</p>
+<ul>
+<li>出了故障后要重新建立连接</li>
+</ul>
+</li>
+<li><p>难以规格化</p>
+<ul>
+<li>不同类型终端很难相互通信</li>
+</ul>
+</li>
+<li><p>不能保证数据误差错地传送</p>
+<ul>
+<li>不具备差错控制能力</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>报文交换</p>
+<ul>
+<li><p>数据交换的单位是报文，报文携带有目标地址、源地址等信息，在交换结点采用存储转发</p>
+<ul>
+<li>早期电报通信网，现在被分组取代</li>
+</ul>
+</li>
+<li><p>优点</p>
+<ul>
+<li><p>无需建立连接</p>
+</li>
+<li><p>动态分配线路</p>
+<ul>
+<li>交换设备选择一条合适的空闲线路</li>
+</ul>
+</li>
+<li><p>提高线路可靠性</p>
+<ul>
+<li>一条坏了选另一条</li>
+</ul>
+</li>
+<li><p>提高线路利用率</p>
+</li>
+<li><p>提供多目标服务</p>
+<ul>
+<li>可以发送给多个目的地址</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li><p>多了转发时延</p>
+</li>
+<li><p>网络结点需要较大缓存空间</p>
+<ul>
+<li><p>对报文大小无限制</p>
+<ul>
+<li>不能用于实时语音数据传输</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>分组交换</p>
+<ul>
+<li><p>将大数据块分组，加上源地址、目的地址和编号等信息，构成分组</p>
+<ul>
+<li>尤其适合于计算机之间的突发式数据通信</li>
+<li>端到端通路由多段链路组成时，合适</li>
+</ul>
+</li>
+<li><p>优点</p>
+<ul>
+<li><p>无需建立连接</p>
+</li>
+<li><p>线路利用率高</p>
+</li>
+<li><p>简化了存储管理</p>
+<ul>
+<li>相对于报文交换，分组长度固定，缓冲区大小固定</li>
+</ul>
+</li>
+<li><p>加速传输</p>
+<ul>
+<li><p>前一个分组的转发和后一个分组的存储可以并行，因缓冲区不足而等待发送的概率和时间少</p>
+<ul>
+<li>流水线！经过n个交换机，每段链路传输需时t，m个分组只需(m+n)t</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>减少了出错概率和重发数据量</p>
+<ul>
+<li>分组短</li>
+</ul>
+</li>
+<li><p>减少传输时延</p>
+<ul>
+<li>改进报文交换的直接结果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li><p>存在传输时延</p>
+<ul>
+<li>结点交换机必须有更强的处理能力</li>
+</ul>
+</li>
+<li><p>需要传输额外信息量</p>
+<ul>
+<li>增大5%~10%</li>
+</ul>
+</li>
+<li><p>采用数据报时，会出现失序、丢失或重复分组</p>
+</li>
+<li><p>采用虚电路时，多呼叫建立、数据传输、虚电路释放三个过程</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据报与虚电路"><a href="#数据报与虚电路" class="headerlink" title="数据报与虚电路"></a>数据报与虚电路</h3><ul>
+<li><p>虚电路VC</p>
+<ul>
+<li><p>将数据报方式与电路交换方式结合。</p>
+<ul>
+<li>在分组发送前，建立一条逻辑上的虚电路。虚电路是虚的，因为物理电路并不是两个结点专用的</li>
+</ul>
+</li>
+<li><p>发送分组前必须建立连接，路由选择在此时进行</p>
+</li>
+<li><p>提供可靠通信，还可以对两个端点进行流量控制</p>
+<ul>
+<li>可以由网络负责，也可由主机负责</li>
+</ul>
+</li>
+<li><p>分组只包含虚电路标识符，终点地址仅在建立连接时使用</p>
+</li>
+<li><p>所有通过故障结点的虚电路均不能工作</p>
+</li>
+</ul>
+</li>
+<li><p>数据报(&#x3D;分组)</p>
+<ul>
+<li><p>发送分组前不需建立连接，发送方可随时发送，接收方可随时接收</p>
+</li>
+<li><p>网络尽最大努力交付；为每个分组独立选择路由，分组不一定能按序到达目的结点</p>
+<ul>
+<li>由用户主机负责端到端的差错处理和流量控制</li>
+</ul>
+</li>
+<li><p>分组中要包括完整的发送端和接收端地址，完成独立传输</p>
+</li>
+<li><p>分组在交换结点存储转发时，需排队等候处理。通信量较大或发生拥塞时，时延大，交换结点可丢弃分组</p>
+</li>
+<li><p>网络有冗余路径，出现故障时更新转发表</p>
+</li>
+<li><p>存储转发延时较小</p>
+</li>
+<li><p>收发双方不独占链路</p>
+</li>
+<li><p>出错率高的传输系统应该采用数据报方式，不怕结点故障</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="传输介质"><a href="#传输介质" class="headerlink" title="传输介质"></a>传输介质</h2><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
+<li><p>双绞线</p>
+<ul>
+<li><p>最古老又最常用的传输媒体，由两根并排绞合、相互绝缘的铜导线组成</p>
+<ul>
+<li>绞合是为了减少两根导线相互的电磁干扰，减少干扰</li>
+</ul>
+</li>
+<li><p>双绞线外加上金属屏蔽层</p>
+<ul>
+<li><p>屏蔽双绞线STP</p>
+<ul>
+<li>贵，不如用光纤</li>
+</ul>
+</li>
+<li><p>无屏蔽层</p>
+<ul>
+<li><p>非屏蔽双绞线UTP</p>
+<ul>
+<li>最常用的是5类线(绞合度)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>功能多，便宜。在局域网和传统电话网中普遍使用，距离不能太远。数字信号和模拟信号都可</p>
+<ul>
+<li>要用中继器将失真信号整形</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>同轴电缆</p>
+<ul>
+<li><p>有内导体、绝缘层、外导体绝缘层、绝缘保护套，有很好的抗干扰性，广泛用于传输较高速率的数据。</p>
+<ul>
+<li>比双绞线带宽高得多，贵得多，难用</li>
+</ul>
+</li>
+<li><p>局域网初期用同轴电缆，现在都用双绞线，</p>
+</li>
+</ul>
+</li>
+<li><p>光纤</p>
+<ul>
+<li><p>由非常透明的石英玻璃拉成细丝，由光纤、包层组成。光线碰到包层会折射回纤芯，不断重复传输下去。</p>
+</li>
+<li><p>多个不同角度入射的光线在同一条光纤中传输</p>
+<ul>
+<li><p>多模光纤</p>
+<ul>
+<li><p>只适用于近距离传播，比双绞线长</p>
+<ul>
+<li>光的全反射特性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>将光纤直径减小到一个波长，使光线一直向前，不发生反射</p>
+<ul>
+<li><p>单模光纤</p>
+<ul>
+<li>损耗小，适合远距离运输，不必采用中继器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>有光脉冲为1，没有为0。光的频率非常高，光纤通信系统的传输带宽远远大于其他传输媒体</p>
+</li>
+</ul>
+</li>
+<li><p>无线传输介质</p>
+<ul>
+<li><p>无线电波</p>
+<ul>
+<li><p>可以传输很大距离，向所有方向散播，无需对准方向</p>
+<ul>
+<li>WLAN无线网</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>微波、红外线、激光</p>
+<ul>
+<li><p>需要发送方和接收方之间存在一条视线通路，有很强的方向性，都沿直线传播</p>
+</li>
+<li><p>红外线和激光</p>
+<ul>
+<li>需要把信号转换成红外光信号和激光信号，再直接在空间中传播</li>
+</ul>
+</li>
+<li><p>微波</p>
+<ul>
+<li><p>容量大，沿直线传播，在地面传播距离有限，需要中继站。</p>
+</li>
+<li><p>卫星通信</p>
+<ul>
+<li>利用地球同步卫星做中继，三个同步卫星可以覆盖整个地球</li>
+<li>成本高、传播时延长、受气候影响大、保密性差、误码率高</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="物理层接口特性"><a href="#物理层接口特性" class="headerlink" title="物理层接口特性"></a>物理层接口特性</h3><ul>
+<li><p>机械特性</p>
+<ul>
+<li>物理连接的边界点。引线数目、引脚数量、排列情况等</li>
+</ul>
+</li>
+<li><p>电气特性</p>
+<ul>
+<li>传输二进制时，线路上限号的电压高低、阻抗匹配、传输速率、距离限制等</li>
+</ul>
+</li>
+<li><p>功能特性</p>
+<ul>
+<li>某一电平的电压表示何种意义，接口部件的信号线（数据线、控制线、定时线等）的用途</li>
+</ul>
+</li>
+<li><p>规程特性</p>
+<ul>
+<li>各条物理线路的工作过程和时序关系</li>
+</ul>
+</li>
+<li><p>接口标准</p>
+<ul>
+<li>EIA RS-232-C、ADSL、SONET&#x2F;SDH</li>
+</ul>
+</li>
+</ul>
+<h2 id="物理层设备"><a href="#物理层设备" class="headerlink" title="物理层设备"></a>物理层设备</h2><h3 id="中继器"><a href="#中继器" class="headerlink" title="中继器"></a>中继器</h3><ul>
+<li><p>转发器，功能是将信号整形放大再转发出去，消除失真，扩大网络传输距离</p>
+<ul>
+<li>处理数据对象是信号</li>
+</ul>
+</li>
+<li><p>原理信号再生（并非放大——放大器）</p>
+</li>
+<li><p>有两个端口，连接的一般是相同的媒体，在同一局域网中。因为工作在物理层，所以不能连接两个局域网。两端的网络部分是网段，不是子网。</p>
+<ul>
+<li><p>两个网段的数据传输率和数据链路层协议都要相同</p>
+<ul>
+<li>物理层互联、</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>数据链路层互通</p>
+<ul>
+<li>一个以太网规范：串联的中继器不能超过4个，4个中继器串联的5段介质中只有3段可以挂接计算机，其余只能用作扩展通信范围。（5-4-3规则）</li>
+</ul>
+<h3 id="集线器"><a href="#集线器" class="headerlink" title="集线器"></a>集线器</h3><ul>
+<li><p>多接口中继器</p>
+<ul>
+<li><p>一个端口收到数据信号后，hub将其整形放大，使之再生到发送时的状态，再转发到除输入端口外的所有工作状态端口。</p>
+<ul>
+<li>如果有多个端口输入，输出时会发生冲突，所有数据无效</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>只起信号放大和转发作用，目的是扩大网络传播范围。信号传输方向固定，是标准的共享式设备</p>
+</li>
+<li><p>主要使用双绞线组建共享网络，在交换式网络中直接与交换机相连。把所有结点的通信集中在以hub为中心的结点上，对结点相连的工作站进行集中管理。</p>
+</li>
+<li><p>每个端口连接同一网络的不同网段，只能在半双工状态下工作。</p>
+<ul>
+<li>一个带宽为10Mb&#x2F;s的集线器上接8台计算机，8台计算机同时工作时，每台计算机带宽为1.25Mb&#x2F;s</li>
+<li>同属一个冲突域，也同属一个广播域</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  
+</article>
+    </main>
+    <footer id="footer">
+  Copyright &copy;
+  2022
+  BONE
+  
+  
+    <a class="social-links" target="_blank" rel="noopener" href="https://github.com/FloatinDLE"><i class="blogfont">&#xe6b7; </i></a>
+  
+    <a class="social-links" href="mailto:bone_n@foxmail.com"><i class="blogfont">&#xe61a; </i></a>
+  
+    <a class="social-links" href="/atom.xml"><i class="blogfont">&#xe640; </i></a>
+  
+  
+</footer>
+    <!-- scripts -->
+
+<script src="/scripts/main.js"></script>
+
+  </body>
+</html>

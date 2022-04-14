@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html  lang=en>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+    <link rel="shortcut icon" href="/images/kou.ico ">
+    
+    
+    <link rel="icon" type="image/png" href="/images/favicon-android.png " sizes="192x192">
+    
+    
+    <link rel="apple-touch-icon" href="/images/favicon-apple.png " sizes="180x180">
+    
+  
+  <!-- title -->
+  <title>地下室 网络层 </title>
+  <!-- styles -->
+  <!-- styles -->
+
+<link rel="stylesheet" href="/styles/global.css">
+
+  <!-- rss -->
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+  <body>
+    <header id="header">
+  
+  <nav class="menu menu--right">
+  
+    <a class="menu__item" href="/">主页</a>
+    <a class="menu__item" href="/archives/">归档</a>
+    <a class="menu__item" href="/categories/">专题</a>
+    <a class="menu__item" href="/tags/">标签</a>
+    <!-- <a class="menu__item" href="/">作品</a> -->
+    <!-- <a class="menu__item" href="/about/">关于</a> -->
+  </nav>
+</header>
+    <main>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post__header">
+  <h1 class="post__title">网络层</h1>
+  
+  
+  <div class="post__meta">
+    
+<time class="post__date" datetime="2022-01-18T06:42:05.000Z" itemprop="datePublished">
+  
+  <i class="blogfont">&#xedff;</i>
+  
+  2022-01-18 14:42:05
+</time>
+
+    
+<div class="post__category">
+  <i class="blogfont">&#xe62d;</i>
+  <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">-计算机网络</a>
+</div>
+  
+
+    
+<div class="post__tag">
+  <i class="blogfont">&#xe7ec;</i>
+  <a class="tag-link-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">-计算机基础</a>
+</div>
+
+
+    <div id="/2022/01/18/%E7%BD%91%E7%BB%9C%E5%B1%82/" class="leancloud_visitors post__stat" data-flag-title="网络层">
+  <i class="blogfont">&#xe672;</i>
+  <span class="leancloud-visitors-count">loading...</span>
+</div>
+  </div>
+</header>
+  <aside class="post__aside">
+  <div class="post__actions">
+    <a id="backTop" class="post__top" href="javascript:">
+      <i class="blogfont">&#xe6b1;</i><!-- Top -->
+    </a>
+    <a id="share" class="post__share" href="javascript:">
+      <i class="blogfont">&#xe6c1;</i>
+    </a>
+  </div>
+  <ol class="post__toc"><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="post__toc-text">功能</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%BC%82%E6%9E%84%E7%BD%91%E7%BB%9C%E4%BA%92%E8%81%94"><span class="post__toc-text">异构网络互联</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E8%B7%AF%E7%94%B1%E4%B8%8E%E8%BD%AC%E5%8F%91"><span class="post__toc-text">路由与转发</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="post__toc-text">拥塞控制</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#SDN%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="post__toc-text">SDN基本概念</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95"><span class="post__toc-text">路由算法</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%88%86%E7%B1%BB"><span class="post__toc-text">分类</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E8%B7%9D%E7%A6%BB%E2%80%94%E5%90%91%E9%87%8F%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95"><span class="post__toc-text">距离—向量路由算法</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E9%93%BE%E8%B7%AF%E7%8A%B6%E6%80%81%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95"><span class="post__toc-text">链路状态路由算法</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%B1%82%E6%AC%A1%E8%B7%AF%E7%94%B1"><span class="post__toc-text">层次路由</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#IPv4"><span class="post__toc-text">IPv4</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#IPv4%E5%88%86%E7%BB%84"><span class="post__toc-text">IPv4分组</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#IPv4%E5%9C%B0%E5%9D%80%E4%B8%8ENAT"><span class="post__toc-text">IPv4地址与NAT</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91%E4%B8%8E%E6%9E%84%E9%80%A0%E8%B6%85%E7%BD%91"><span class="post__toc-text">划分子网与构造超网</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE"><span class="post__toc-text">网络层协议</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#IPv6"><span class="post__toc-text">IPv6</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="post__toc-text">主要特点</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%9C%B0%E5%9D%80"><span class="post__toc-text">地址</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%90%91IPv4%E7%9A%84%E8%BF%87%E6%B8%A1"><span class="post__toc-text">向IPv4的过渡</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE"><span class="post__toc-text">路由协议</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E8%87%AA%E6%B2%BB%E7%B3%BB%E7%BB%9FAS"><span class="post__toc-text">自治系统AS</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%9F%9F%E5%86%85%E8%B7%AF%E7%94%B1%E4%B8%8E%E5%9F%9F%E9%97%B4%E8%B7%AF%E7%94%B1"><span class="post__toc-text">域内路由与域间路由</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#RIP%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE"><span class="post__toc-text">RIP路由协议</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#OSPF%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE"><span class="post__toc-text">OSPF路由协议</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#BGP%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE"><span class="post__toc-text">BGP路由协议</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#IP%E7%BB%84%E6%92%AD"><span class="post__toc-text">IP组播</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="post__toc-text">概念</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%BB%84%E6%92%AD%E5%9C%B0%E5%9D%80"><span class="post__toc-text">组播地址</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#IGMP%E4%B8%8E%E7%BB%84%E6%92%AD%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95"><span class="post__toc-text">IGMP与组播路由算法</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E7%A7%BB%E5%8A%A8IP"><span class="post__toc-text">移动IP</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="post__toc-text">概念</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E9%80%9A%E4%BF%A1%E8%BF%87%E7%A8%8B"><span class="post__toc-text">通信过程</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E5%A4%87"><span class="post__toc-text">网络层设备</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E7%BB%84%E6%88%90%E5%92%8C%E5%8A%9F%E8%83%BD"><span class="post__toc-text">路由器的组成和功能</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text"></span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E8%B7%AF%E7%94%B1%E8%A1%A8%E4%B8%8E%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91"><span class="post__toc-text">路由表与路由转发</span></a></li></ol></li></ol>
+</aside>
+  <div class="post__content" itemprop="articleBody">
+    <h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><h3 id="异构网络互联"><a href="#异构网络互联" class="headerlink" title="异构网络互联"></a>异构网络互联</h3><ul>
+<li><p>使用中继系统</p>
+<ul>
+<li>在网络层采用标准化协议IP，使所有网络成为一个虚拟IP网络（互联网）</li>
+</ul>
+</li>
+</ul>
+<h3 id="路由与转发"><a href="#路由与转发" class="headerlink" title="路由与转发"></a>路由与转发</h3><ul>
+<li><p>路由选择</p>
+<ul>
+<li><p>确定哪一条路径。</p>
+<ul>
+<li>控制层面(网络层抽象划分)</li>
+</ul>
+</li>
+<li><p>根据特定的路由选择协议构造出路由表，定期和相邻路由器交换路由信息，来维护路由表</p>
+</li>
+<li><p>按照复杂的分布式算法，和从邻居那里的得知的新变化，动态地改变所选择的路由</p>
+</li>
+</ul>
+</li>
+<li><p>分组转发</p>
+<ul>
+<li><p>当一个分组到达时所采取的动作。</p>
+<ul>
+<li>数据层面</li>
+</ul>
+</li>
+<li><p>处理通过路由器的数据流，关键操作是转发表查询，转发，相关的队列管理和任务调度</p>
+<ul>
+<li>转发表从路由表得出，可以不做区分</li>
+</ul>
+</li>
+<li><p>路由器根据转发表将IP数据报从合适端口转发</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h3><ul>
+<li><p>拥塞</p>
+<ul>
+<li><p>在某段时间，对网络中某一资源的需求超过了该资源能提供的可用部分，使网络性能变坏</p>
+</li>
+<li><p>判断是否拥塞</p>
+<ul>
+<li>随着网络负载的增加，网络吞吐量明显小于正常吞吐量——轻度拥塞</li>
+<li>吞吐量随着网络负载的增加而下降——拥塞</li>
+<li>网络负载继续增大，吞吐量降到零——死锁</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>拥塞控制</p>
+<ul>
+<li><p>防止过多的数据注入到网络中，是一个全局性的过程（流量控制是点到点）</p>
+<ul>
+<li>硬件有上限，需求无上限</li>
+</ul>
+</li>
+<li><p>控制方法</p>
+<ul>
+<li><p>开环控制</p>
+<ul>
+<li><p>在设计网络时，事先将所有拥塞因素考虑周到，力求不产生拥塞。一旦启动就不再修改。</p>
+</li>
+<li><p>手段</p>
+<ul>
+<li>确定合适可接收新流量</li>
+<li>可丢弃分组和丢弃哪些分组</li>
+<li>何种调度决策</li>
+<li>不考虑当前网络状态</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>闭环控制</p>
+<ul>
+<li>事先不考虑，采用监测网络系统监视，及时发现哪里发生拥塞，并将信息传到合适地方，以便调整网络系统运行。基于反馈环路的概念</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="SDN基本概念"><a href="#SDN基本概念" class="headerlink" title="SDN基本概念"></a>SDN基本概念</h3><ul>
+<li><p>软件定义网络。创新的网络架构，分离出集中式的控制层面和分布式的数据层面。</p>
+</li>
+<li><p>有一个逻辑上的远程控制器，掌握整个网络的状态，计算出最佳路由，通过OpenFlow协议将转发表下发给路由器</p>
+<ul>
+<li>路由器不需要路由选择软件，不再相互交换路由信息，只进行转发分组。</li>
+</ul>
+</li>
+<li><p>接口</p>
+<ul>
+<li><p>北向接口</p>
+<ul>
+<li>向上层应用开发者提供的编程接口</li>
+</ul>
+</li>
+<li><p>南向接口</p>
+<ul>
+<li>控制器和转发设备建立双向会话的接口，通过不同的南向接口协议可以兼容不同的硬件设备并实现上层应用逻辑</li>
+</ul>
+</li>
+<li><p>东西向接口</p>
+<ul>
+<li>控制器集群内部控制器之间的通信接口，用于增强整个控制平面的可靠性和可拓展性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>优点</p>
+<ul>
+<li>有利于控制层面的全局优化，和高性能的网络转发</li>
+<li>灵活可编程与性能的平衡</li>
+<li>降低成本</li>
+</ul>
+</li>
+<li><p>问题</p>
+<ul>
+<li>安全风险，集中管理易受攻击</li>
+<li>瓶颈问题，网络规模扩大后，集中的控制器可能跟不上</li>
+</ul>
+</li>
+</ul>
+<h2 id="路由算法"><a href="#路由算法" class="headerlink" title="路由算法"></a>路由算法</h2><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
+<li><p>静态路由算法    非自适应路由算法</p>
+<ul>
+<li><p>网络管理员手动配置路由信息，网络变化时需管理用手工修改，不适合大型或复杂的网络环境</p>
+</li>
+<li><p>简单，可靠，在负荷稳定、拓扑变化不大的网络中运行效果很好</p>
+<ul>
+<li>用于军事系统和较小的商业网络</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>动态路由算法  自适应路由算法</p>
+<ul>
+<li><p>路由器上的路由表是通过交换信息，按一定算法优化出来的，会不断更新</p>
+</li>
+<li><p>能改善网络性能，有助于流量控制；算法复杂会增加网络负担，对动态变化反应太快会引起动荡，太慢会影响一致性</p>
+</li>
+<li><p>常用动态路由算法</p>
+<ul>
+<li>距离—向量路由算法</li>
+<li>链路状态路由算法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="距离—向量路由算法"><a href="#距离—向量路由算法" class="headerlink" title="距离—向量路由算法"></a>距离—向量路由算法</h3><ul>
+<li><p>所有结点定期将整个路由选择表，传给相邻结点</p>
+<ul>
+<li>RIP算法</li>
+</ul>
+</li>
+<li><p>路由选择表</p>
+<ul>
+<li>每条路径的目的地(另一结点)</li>
+<li>路径的代价(距离，跳数，每经过一个路由器+1)</li>
+</ul>
+</li>
+<li><p>何时更新</p>
+<ul>
+<li>被告知本结点路由表中不存在的新路由</li>
+<li>有比当前使用路由更短的路由，替换</li>
+</ul>
+</li>
+<li><p>每次更新都将全部路由表传给邻居，更新报文大小与结点个数成正比，大的通信子网会导致信息数量很大</p>
+</li>
+<li><p>最常见的距离-向量路由算法——RIP算法，在应用层的RIP协议中</p>
+</li>
+</ul>
+<h3 id="链路状态路由算法"><a href="#链路状态路由算法" class="headerlink" title="链路状态路由算法"></a>链路状态路由算法</h3><ul>
+<li><p>每个参与算法的结点都具有完全的网络拓扑信息。</p>
+<ul>
+<li>OSPF算法</li>
+</ul>
+</li>
+<li><p>结点任务：</p>
+<ul>
+<li>主动测试所有邻接节点状态；</li>
+<li>定期将链路状态传播给所有结点。</li>
+<li>每当链路状态报文到达，更新，发生变化就用Dijsktra算法计算最短路径</li>
+</ul>
+</li>
+<li><p>特征</p>
+<ul>
+<li>洪泛法。想本自治系统所有路由器发送信息。所有相邻套娃</li>
+<li>发送的信息是，相邻的所有路由器的链路状态。OSPF包括费用、距离、时延、带宽(RIP是跳数)</li>
+<li>只有发生变化时，路由器才向所有路由器发送此消息</li>
+</ul>
+</li>
+<li><p>优点</p>
+<ul>
+<li>每个路由结点，都用同样的原始数据独立计算路径。不依赖中间结点，易于查找故障。</li>
+<li>报文仅运载来自单个节点的、关于直接链路的信息，大小与路由结点数目无关，易于扩展</li>
+</ul>
+</li>
+<li><p>有可能遇到路由环路问题</p>
+</li>
+</ul>
+<h3 id="层次路由"><a href="#层次路由" class="headerlink" title="层次路由"></a>层次路由</h3><ul>
+<li><p>将整个互联网分为较小的自治系统(一个自治系统包含很多局域网)，每个自治系统自主决定路由选择协议，在需要通信时用一个协议来屏蔽差异</p>
+</li>
+<li><p>路由选择协议分类</p>
+<ul>
+<li><p>内部网关协议IGP</p>
+<ul>
+<li>域内路由选择，一个自治系统内部，具体协议为RIP、OSPF</li>
+</ul>
+</li>
+<li><p>外部网关协议EGP</p>
+<ul>
+<li>域间路由选择，不同自治系统的路由器间，具体协议为BGP</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="IPv4"><a href="#IPv4" class="headerlink" title="IPv4"></a>IPv4</h2><h3 id="IPv4分组"><a href="#IPv4分组" class="headerlink" title="IPv4分组"></a>IPv4分组</h3><ul>
+<li><p>格式</p>
+<ul>
+<li><p>首部</p>
+<ul>
+<li><p><strong>版本4bit|首部长度4|区分服务8|总长度16|标识16|标志3|片偏移13|                          生存时间8|协议8|首部校验和16|              源地址32|                                               目的地址32|                                           可选字段(长度可变)|填充</strong></p>
+</li>
+<li><p>版本：4</p>
+</li>
+<li><p>首部长度：以4B为单位，最大值为15×4&#x3D;60B。不使用可选字段，最常用首部为20B</p>
+</li>
+<li><p>区分服务：服务类型，没用上</p>
+</li>
+<li><p>总长度：首部+数据部分之和，以1B为单位，最大值为2^16-1&#x3D;65535B，但不能超过MTU1500B</p>
+</li>
+<li><p>标识：计数器，每产生一个数据报就+1。为了超过最大长度分片时，能正确重组</p>
+</li>
+<li><p>标志：MF|DF|没意义的一位。MF&#x3D;1，还有分片；MF&#x3D;0，最后一片。DF&#x3D;1，不能分片；DF&#x3D;0允许分片</p>
+</li>
+<li><p>片偏移：该片在原分组中的相对位置，每个分片长度为8B，片偏移的单位为8B&#x3D;该片首字节的在原数据报中的位置&#x2F;8</p>
+</li>
+<li><p>生存时间：TTL，数据报在网络中的寿命，在源点设置，防止数据报无限制地在网络中兜圈子。原来是秒，现在是跳数，最大255，设置为1则只能在本局域网中传送</p>
+</li>
+<li><p>协议：此数据报携带的数据使用何种协议，让IP层知道应将数据部分上交给哪个协议</p>
+<ul>
+<li>ICMP-1，TCP-6，UDP—17</li>
+</ul>
+</li>
+<li><p>首部校验和：只检验数据报的首部，不检验数据部分，每经过一个路由器都要重新计算，不采用CRC</p>
+</li>
+<li><p>源地址和目的地址：IP地址</p>
+</li>
+</ul>
+</li>
+<li><p>数据部分</p>
+</li>
+</ul>
+</li>
+<li><p>数据报分片</p>
+<ul>
+<li>路由器将数据报分片，每个数据最大1480B(+20B&#x3D;1500B)，标识不变，DF&#x3D;0，MF除最后一片外&#x3D;1，片偏移计算。</li>
+</ul>
+</li>
+<li><p>转发分组流程</p>
+<ul>
+<li><p>从数据报首部提取源地址D，目的地址N</p>
+</li>
+<li><p>N与此路由器直接相连，直接交付；否则间接交付</p>
+</li>
+<li><p>路由表中有D的特定主机路由，把数据报传给下一跳路由；否则下一步</p>
+<ul>
+<li>特定主机路由，有多个路由器可选，指定一条出路</li>
+</ul>
+</li>
+<li><p>路由表中有到达N的路由，把数据报传给下一跳路由，否则下一步</p>
+</li>
+<li><p>路由表中有一个默认路由，把数据报给它，否则下一步</p>
+<ul>
+<li>不知道怎么去，规定去R2，它可能知道</li>
+</ul>
+</li>
+<li><p>报告转发分组出错</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="IPv4地址与NAT"><a href="#IPv4地址与NAT" class="headerlink" title="IPv4地址与NAT"></a>IPv4地址与NAT</h3><ul>
+<li><p>地址</p>
+<ul>
+<li><p>分类</p>
+<ul>
+<li><p>网络类别</p>
+<ul>
+<li><p>共32位 </p>
+<ul>
+<li><p>最大可用网络数</p>
+<ul>
+<li><p>第一个可用网路号</p>
+<ul>
+<li><p>最后一个可用</p>
+<ul>
+<li>每个网络中的最大主机数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>A 1~126</p>
+<ul>
+<li><p><strong>0|网络号|主机号24位</strong></p>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>2^7-1<br>$$</p>
+<pre><code>                - 1
+
+                    - 126
+
+                        - 
+</code></pre>
+<p>$$<br>2^{24}-2<br>$$</p>
+<pre><code>    - B 128~191
+
+        - **10|网络号|主机号16位**
+
+            - 
+</code></pre>
+<p>$$<br>2^{14}-1<br>$$</p>
+<pre><code>                - 128.1
+
+                    - 191.255
+
+                        - 
+</code></pre>
+<p>$$<br>2^{16}-2<br>$$</p>
+<pre><code>    - C 192~223
+
+        - **110|网络号|主机号8位**
+
+            - 
+</code></pre>
+<p>$$<br>2^{21}-1<br>$$</p>
+<pre><code>                - 192.0.1
+
+                    - 223.255.255
+
+                        - 
+</code></pre>
+<p>$$<br>2^{8}-2<br>$$</p>
+<pre><code>    - D 224~239
+
+        - 1110|多播地址
+
+    - E 240~255
+
+        - 1111|今后使用
+
+- 特殊用途
+
+    - 网络号全0
+
+        - 主机号全0
+
+            - 在本网络上的本主机
+
+                - 只用于源地址
+
+    - 网络号全0，主机号为id
+
+        - 在本网络上的某台主机
+
+            - 只用于源地址
+
+    - 网络号全1，主机号全1
+
+        - 在本网络上进行广播（各路由器均不转发）
+
+            - 只用于目的地址
+
+    - 网络号为id，主机号全1
+
+        - 对id网络上的所有主机进行广播
+
+            - 只用于目的地址
+
+    - 网络号为127，主机号非全0全1
+
+        - 用于本地软件环回测试（在网卡内测试自己的协议和链路有没问题）
+
+- 特点
+
+    - 每个IP地址都由网络号和主机号组成，即是一种分两个等级的地址结构，好处：
+
+        - IP地址管理机构只分配网络号，主机号自行分配，方便管理
+        - 路由器只根据网络号来转发分组，不考虑主机号，使路由表项目大幅减少，减小了路由表所占存储空间以及查找路由表的时间
+
+    - IP地址标志着一台主机(或路由器)和一条链路的接口IP地址是分配给接口的
+
+        - 一台主机连接两个网络时需要两个不同网络号的IP地址，称为多归属主机。
+        - 一个路由器至少连接了两个网络，所以一个路由器至少有两个不同的IP地址
+
+    - 一个网络指具有相同网络号的主机的集合，用转发器或网桥连接起来的局域网仍为一个网络，具有相同的网络号
+    - 所有被分配到网络号的网络都是平等的，互联网同等对待每一个IP地址
+</code></pre>
+<ul>
+<li><p>网络地址转换NAT</p>
+<ul>
+<li><p>将专用网络地址转换为公用地址，从而对外隐藏内部管理的IP地址，整个专用网只需一个IP地址就可与因特网联通，节省IP地址的消耗</p>
+</li>
+<li><p>私有IP地址&#x3D;可重用地址，只用于LAN不用于WAN</p>
+<ul>
+<li><p>1个A类网段</p>
+<ul>
+<li>10.0.0.0~10.255.255.255</li>
+</ul>
+</li>
+<li><p>16个B类网段</p>
+<ul>
+<li>172.16.0.0~172.31.255.255</li>
+</ul>
+</li>
+<li><p>256个C类网段</p>
+<ul>
+<li>192.168.0.0~192.168.255.255</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>使用时须在路由器上安装NAT软件，NAT路由器至少有一个有效的外部全球地址。使用NAT转换表将本地地址和全球地址互相转换</p>
+<ul>
+<li>WAN端{全球IP地址：端口}  | LAN端{本地IP地址：端口}</li>
+</ul>
+</li>
+<li><p>普通路由器在转发IP数据报时不改变其源地址和目的地址，仅工作在网络层</p>
+<ul>
+<li>NAT路由器在转发时一定更换IP地址，需要查看和转换传输层端口</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="划分子网与构造超网"><a href="#划分子网与构造超网" class="headerlink" title="划分子网与构造超网"></a>划分子网与构造超网</h3><ul>
+<li><p>子网划分</p>
+<ul>
+<li><p>思路</p>
+<ul>
+<li>将物理网络划分为若干个子网，属于一个单位内部的事，对外仍表现为一个网络</li>
+<li>从主机号中借若干位作为子网号，变成三级IP地址</li>
+<li>从其他网络发给本单位的，先根据网络号找到本单位网络的路由器，再按子网号找到子网再交给主机</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>子网掩码</p>
+<ul>
+<li><p>从IP数据报首部中的IP地址看不出是否进行了子网划分</p>
+</li>
+<li><p>用连续的1对应网络号和子网号，连续的0 对应主机号，只需将IP地址和子网掩码逐位相”与”，就可以得出相应子网的网络地址</p>
+</li>
+<li><p>两个路由器交换路由信息时，必须把自己所在网络的子网掩码告诉对方，路由表中必须包含</p>
+<ul>
+<li>目的网络地址、子网掩码、下一跳地址</li>
+</ul>
+</li>
+<li><p>同属一个子网的所有主机和路由器端口，必须设置相同的子网掩码。</p>
+</li>
+<li><p>分组转发算法变为</p>
+<ul>
+<li>从分组的首部提取IP地址D</li>
+<li>对与路由器直接相连的网络逐个检查，用各网络的子网掩码和D逐位相“与”，看结果是否与各网络地址匹配，匹配则直接交付</li>
+<li>若路由表中有目的地址为D的特定主机路由，则将分组传给下一跳路由器</li>
+<li>将路由表中每一项中的子网掩码和D相”与”，结果若和该项的网络地址匹配，则将分组发给该项指明的下一跳路由器</li>
+<li>若有默认路由，则发给默认路由</li>
+<li>报告转发分组出错</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CIDR</p>
+<ul>
+<li><p>变长子网掩码的基础上消除传统A、B、C类网络划分，并在软件的支持下实现超网构造的一种IP地址划分方法</p>
+</li>
+<li><p>特点</p>
+<ul>
+<li><p>使用“网络前缀”的概念代替子网，IP地址成为无分类的两级编址：{&lt;网络前缀&gt;,&lt;主机号&gt;}</p>
+<ul>
+<li>斜线记法，CIDR记法：IP地址&#x2F;网络前缀所占比特数，相当于子网掩码中连续1的个数</li>
+</ul>
+</li>
+<li><p>使用的网络前缀相同的连续IP地址组成“CIDR地址块”，一个地址块可以表示很多地址。</p>
+<ul>
+<li>路由聚集或构造超网，使得路由表中的一个项目可以表示多个原来传统分类地址的路由（前缀相同的聚合成一条路由），有利于减少路由器之间的路由选择信息的交换，从而提高网络性能</li>
+</ul>
+</li>
+<li><p>CIDR地址块中的地址数一定是2的整数次幂，实际可指派地址为2ⁿ-2，n表示主机号的位数，网络前缀越短，地址数越多。和子网使网络号变长不同</p>
+<ul>
+<li>主机号全0代表网络号，全1代表广播地址</li>
+</ul>
+</li>
+<li><p>前缀长度的灵活性，上层网络的前缀长度较短，内部可以采用延长网络前缀的方法来灵活地划分子网</p>
+</li>
+</ul>
+</li>
+<li><p>最长前缀匹配(最佳匹配)</p>
+<ul>
+<li>查找路由表时可能会得到不止一个匹配结果，应从匹配结果中选择网络前缀最长的路由，更具体</li>
+</ul>
+</li>
+<li><p>查找路由表</p>
+<ul>
+<li>二叉线索，自上而下地按层次查找</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="网络层协议"><a href="#网络层协议" class="headerlink" title="网络层协议"></a>网络层协议</h3><ul>
+<li><p>IP分组经过多次路由转发到达目标网络后，改为在目标LAN中通过MAC地址以广播方式寻址</p>
+<ul>
+<li>IP数据报在被路由器转发时，会被路由器解封再重新封装，2层封装的MAC地址会被不断改变</li>
+</ul>
+</li>
+<li><p>ARP协议</p>
+<ul>
+<li><p>地址解析协议，IP地址到MAC地址的映射</p>
+<ul>
+<li>ARP地址解析是自动进行的</li>
+</ul>
+</li>
+<li><p>每台主机都设有一个ARP高速缓存，用来存放ARP表，使用ARP协议来动态维护ARP表</p>
+</li>
+<li><p>工作原理</p>
+<ul>
+<li><p>A欲向B发送→在自己的ARP高速缓存中查找有无B的IP地址</p>
+<ul>
+<li>有，将对应的硬件地址写入MAC帧，再通过局域网将此MAC帧发往此硬件地址；</li>
+<li>没有，将FF-FF-FF-FF-FF-FF作为目的MAC地址封装→广播ARP请求分组→同一个局域网内所有主机收到ARP请求，B收到后向A发出响应ARP分组，分组中包含自己的IP与MAC地址映射关系→A收到后将此映射写入ARP缓存，根据查询到的地址发送MAC帧</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ARP用于解决同一局域网上的地址映射问题，不在同一局域网则要找到路由器的硬件地址，发给路由器让它在下一个网络里找</p>
+</li>
+<li><p>4种典型情况</p>
+<ul>
+<li><p>发送方是主机，要发给同一网络上的另一主机</p>
+<ul>
+<li>ARP找到目的主机硬件地址</li>
+</ul>
+</li>
+<li><p>发送方是主机，要发给另一网络的主机</p>
+<ul>
+<li>ARP找到本网络路由器的地址，剩下工作由路由器完成</li>
+</ul>
+</li>
+<li><p>发送方是路由器，要发给本网络的主机</p>
+<ul>
+<li>ARP找到目的主机硬件地址</li>
+</ul>
+</li>
+<li><p>发送方是路由器，要发给另一网络的主机</p>
+<ul>
+<li>ARP找到本网络路由器的地址，剩下工作由路由器完成</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DHCP协议</p>
+<ul>
+<li><p>动态主机配置协议，给主机动态地分配IP地址，提供了即插即用的联网机制</p>
+<ul>
+<li>应用层协议，基于UDP，通过客户&#x2F;服务器方式工作</li>
+</ul>
+</li>
+<li><p>工作原理</p>
+<ul>
+<li><p>使用C&#x2F;S方式。需要IP地址的主机，在启动时向DHCP服务器广播发送发现报文，该主机成为DHCP客户。本地网络上的所有主机都能收到此广播，只有DHCP服务器回答，DHCP服务器在数据库中查找该计算机的配置信息，找到就回答找到的信息；找不到，从服务器的IP地址池中取出一个地址分配给计算机</p>
+</li>
+<li><p>交换过程</p>
+<ul>
+<li>DHCP客户机广播“DHCP发现”消息，试图找到DHCP服务器</li>
+<li>服务器收到后，向网络广播“DHCP提供”消息，其中包括提供给客户的IP地址和相关配置信息</li>
+<li>客户机收到消息，如果接收提供的参数，则广播“DHCP请求”消息，向服务器请求提供IP地址</li>
+<li>DHCP广播“DHCP确认”信息，将IP地址分配给客户</li>
+</ul>
+</li>
+<li><p>DHCP允许一个网络中有多个DHCP服务器，客户机会选择最先到达的应答消息</p>
+</li>
+<li><p>DHCP分配的IP地址时临时的，客户可使用时间称为租用期，由服务器决定或客户在报文中提出要求</p>
+</li>
+<li><p>通过广播交互的原因</p>
+<ul>
+<li>客户端没有标识自己身份的IP地址，不能通过单播的形式交互，也因此不能用TCP</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ICMP协议</p>
+<ul>
+<li><p>网际控制报文协议，让主机或路由器报告差错或异常情况。</p>
+<ul>
+<li>IP层协议</li>
+</ul>
+</li>
+<li><p>ICMP报文作为IP层数据报的数据，加上首部发送出去</p>
+</li>
+<li><p>报文种类</p>
+<ul>
+<li><p>ICMP差错报告报文</p>
+<ul>
+<li><p>用于目标主机或路上的路由器，向源主机报告</p>
+</li>
+<li><p>报文类型</p>
+<ul>
+<li><p>终点不可达报文</p>
+</li>
+<li><p>源点抑制报文</p>
+<ul>
+<li>由于拥塞而丢弃数据报时，源点收到后放慢发送速率</li>
+</ul>
+</li>
+<li><p>时间超过报文</p>
+<ul>
+<li>TTL</li>
+</ul>
+</li>
+<li><p>参数问题报文</p>
+<ul>
+<li>数据报的首部中有字段不正确</li>
+</ul>
+</li>
+<li><p>改变路由报文</p>
+<ul>
+<li>下次应将数据报发往其他路由器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>不报告的情况</p>
+<ul>
+<li>ICMP报文差错</li>
+<li>第一个分片的所有后续数据报片</li>
+<li>组播地址的数据报</li>
+<li>特殊地址的数据报(全0等)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ICMP询问报文</p>
+<ul>
+<li>回送请求和回答报文</li>
+<li>时间戳请求和回答报文</li>
+<li>掩码地址请求和回答报文</li>
+<li>路由器询问和通告报文</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>应用</p>
+<ul>
+<li><p>分组网间探测PING，测试主机间连通性</p>
+<ul>
+<li><p>工作在应用层，未使用传输层的TCP或UDP</p>
+<ul>
+<li>回送请求和回答报文</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Traceroute(UNIX,在win中是tracert)，跟踪分组经过的路由</p>
+<ul>
+<li><p>工作在网络层</p>
+<ul>
+<li>时间超过报文</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h2><h3 id="主要特点"><a href="#主要特点" class="headerlink" title="主要特点"></a>主要特点</h3><ul>
+<li><p>更大的地址空间</p>
+<ul>
+<li>从IPv4的32位增大到了128位，地址空间是IPv4的2^96倍，绝对够用</li>
+</ul>
+</li>
+<li><p>扩展的地址层次</p>
+</li>
+<li><p>灵活的首部格式</p>
+<ul>
+<li>简化了IP分组头，包含8个域（IPv4包含12个）</li>
+</ul>
+</li>
+<li><p>改进的选项</p>
+<ul>
+<li>更好地支持选项，</li>
+</ul>
+</li>
+<li><p>允许协议继续扩充</p>
+</li>
+<li><p>支持即插即用(自动配置)</p>
+</li>
+<li><p>支持资源的预分配</p>
+</li>
+<li><p>不允许在路由分片</p>
+</li>
+<li><p>首部长度必须是8B的整数倍</p>
+<ul>
+<li>IPv4是4B的整数倍</li>
+</ul>
+</li>
+<li><p>增大了安全性。</p>
+<ul>
+<li>身份验证和保密功能是IPv6的关键特征</li>
+</ul>
+</li>
+</ul>
+<h3 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h3><ul>
+<li><p>分类</p>
+<ul>
+<li><p>单播</p>
+</li>
+<li><p>多播</p>
+</li>
+<li><p>任播</p>
+<ul>
+<li>新增类型，目的站是一组计算机，交付时只交付距离最近的一台</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>表示</p>
+<ul>
+<li><p>用冒号分隔每16位(4位16进制)，每个域开头的0可缩为0，相连的0可用双冒号::表示，在一个地址中只能出现一次</p>
+<ul>
+<li>4BF5::BA5F:39A:A:2176</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>分级</p>
+<ul>
+<li><p>第一级(顶级)</p>
+<ul>
+<li>全球都知道的公共拓扑</li>
+</ul>
+</li>
+<li><p>第二级(场点级)</p>
+<ul>
+<li>指明单个场点</li>
+</ul>
+</li>
+<li><p>第三级</p>
+<ul>
+<li>指明单个接口</li>
+</ul>
+</li>
+<li><p>为了路由器更快查找路由</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="向IPv4的过渡"><a href="#向IPv4的过渡" class="headerlink" title="向IPv4的过渡"></a>向IPv4的过渡</h3><ul>
+<li><p>只能采用逐步演进的方法，IPv6必须能向后兼容，必须能接收转发IPv4分组</p>
+<ul>
+<li><p>向前兼容（Forward Compatibility）：指老版本的软／硬件可以使用新版本的软／硬件产生的数据。</p>
+<ul>
+<li>CD光盘</li>
+</ul>
+</li>
+<li><p>向后兼容（Backward Compatibility）：指新版本的软／硬件可以使用老版本的软／硬件产生的数据。</p>
+<ul>
+<li>OS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>策略</p>
+<ul>
+<li><p>双协议栈</p>
+<ul>
+<li>在一台设备上同时装有IPv4和IPv6协议栈，就能与两种同时通信。一个路由器可在不同接口上分别配置IPv4和IPv6.</li>
+</ul>
+</li>
+<li><p>隧道技术</p>
+<ul>
+<li>将整个IPv6数据报封装到IPv4数据报的数据部分，使IPv6数据报可以在IPv4网络的隧道中传输</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="路由协议"><a href="#路由协议" class="headerlink" title="路由协议"></a>路由协议</h2><h3 id="自治系统AS"><a href="#自治系统AS" class="headerlink" title="自治系统AS"></a>自治系统AS</h3><ul>
+<li>单一技术管理下的一组路由器，这些路由器使用一种路由选择协议和度量确定分组及分组间的路由</li>
+<li>一个自治系统中的所有网络都由一个行政单位管理，所有路由器都连通</li>
+</ul>
+<h3 id="域内路由与域间路由"><a href="#域内路由与域间路由" class="headerlink" title="域内路由与域间路由"></a>域内路由与域间路由</h3><ul>
+<li><p>自治系统内部的路由选择——域内路由选择</p>
+<ul>
+<li><p>内部网关协议IGP</p>
+<ul>
+<li>与互联网中其他自治系统选择什么路由无关，使用得最多，如RIP和OSPF</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>自治系统之间的路由选择——域间路由选择</p>
+<ul>
+<li><p>外部网关协议EGP</p>
+<ul>
+<li>使用得最多的是BGP-4</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="RIP路由协议"><a href="#RIP路由协议" class="headerlink" title="RIP路由协议"></a>RIP路由协议</h3><ul>
+<li><p>路由信息协议，分布式的基于距离向量的路由选择协议，最大优点是简单</p>
+<ul>
+<li>应用层协议，使用UDP，选择最少路由器路径</li>
+<li>信息作为UDP报文的数据部分</li>
+</ul>
+</li>
+<li><p>规定</p>
+<ul>
+<li><p>每个路由器都要维护从它自身到每个目的网络的距离纪录</p>
+<ul>
+<li>路由表：目的网络| 距离 |下一跳路由器</li>
+</ul>
+</li>
+<li><p>距离&#x3D;跳数，一个路由器到直连网络的距离为1，每经过一个路由器+1</p>
+</li>
+<li><p>优先选择跳数少的路径</p>
+</li>
+<li><p>一条路径最多只能包含15个路由器(15跳)。距离等于16时，表示网络不可达</p>
+<ul>
+<li>是为了不出现环路，只适用于小型互联网</li>
+</ul>
+</li>
+<li><p>任意两个使用RIP协议的路由器间每30秒广播一次路由更新信息，动态维护路由表</p>
+</li>
+<li><p>不支持子网掩码的广播，每个网络中的子网掩码必须相同</p>
+<ul>
+<li>RIP2支持子网掩码和CIDR</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>特点</p>
+<ul>
+<li>仅和相邻路由器交换信息</li>
+<li>路由器交换的是自己的路由表，即当前路由器所知道的全部信息</li>
+<li>按固定时间间隔交换路由信息</li>
+</ul>
+</li>
+<li><p>距离向量算法</p>
+<ul>
+<li><p>地址为X的相邻路由器发来的RIP报文，对报文中的路由表信息，所有下一跳改为X，距离+1</p>
+</li>
+<li><p>对每个项目</p>
+<ul>
+<li><p>自己路由表中没有目的网络N的</p>
+<ul>
+<li>把该项目添加到路由表</li>
+</ul>
+</li>
+<li><p>自己路由表中有N，下一跳为X</p>
+<ul>
+<li>用收到的项目替换原项目</li>
+</ul>
+</li>
+<li><p>路由表中有N，下一跳不是X</p>
+<ul>
+<li><p>收到的距离小于原距离</p>
+<ul>
+<li>替换</li>
+</ul>
+</li>
+<li><p>收到的距离大于原距离</p>
+<ul>
+<li>跳过</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>180秒还没收到相邻路由器的更新路由表，把此相邻路由器记为不可达路由器（把距离设为16）</p>
+</li>
+<li><p>返回</p>
+</li>
+</ul>
+</li>
+<li><p>优点</p>
+<ul>
+<li>实现简单、开销小、收敛过程快</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>最大距离为15限制了网络规模</li>
+<li>交换的是完整路由表，网络规模越大，开销越大</li>
+<li>网络出现故障时，会出现慢收敛现象（需要较长时间才能将故障信息告知所有路由器），坏消息传得慢</li>
+</ul>
+</li>
+</ul>
+<h3 id="OSPF路由协议"><a href="#OSPF路由协议" class="headerlink" title="OSPF路由协议"></a>OSPF路由协议</h3><ul>
+<li><p>开放最短路径优先协议，分布式链路状态路由算法的典型代表</p>
+<ul>
+<li>网络层协议，不使用UDP或TCP，直接用IP数据报传送</li>
+<li>信息作为IP数据报的数据部分</li>
+</ul>
+</li>
+<li><p>与RIP的区别</p>
+<ul>
+<li><p>用洪泛法向本自治系统中的所有路由器发送消息</p>
+<ul>
+<li>RIP—相邻路由器</li>
+</ul>
+</li>
+<li><p>发送的信息是与本路由器相邻的所有路由器的链路状态</p>
+</li>
+<li><p>当链路发送变化时才用洪泛法发送消息，一个路由器的链路状态只涉及与相邻路由器的连通状态，与整个互联网无关</p>
+<ul>
+<li>不会出现坏消息传得慢</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>特点</p>
+<ul>
+<li><p>OSPF对不同链路，可以根据IP分组的不同服务类型，设置成不同的代价</p>
+<ul>
+<li>对不同类型业务可以计算出不同路由，非常灵活</li>
+</ul>
+</li>
+<li><p>到同一个目的网络有多条相同代价的路径，可将通信量分配给这几条路径</p>
+<ul>
+<li>多路径间的负载均衡</li>
+</ul>
+</li>
+<li><p>在OSPF路由器间交换的分组具有鉴别功能</p>
+<ul>
+<li>保证了仅在可信赖的路由器间交换链路状态信息</li>
+</ul>
+</li>
+<li><p>支持可变长度的子网划分和无分类编址CIDR</p>
+</li>
+<li><p>每个链路状态都带上一个32位序号，序号越大，状态越新</p>
+</li>
+</ul>
+</li>
+<li><p>基本工作原理</p>
+<ul>
+<li><p>所有路由器最终能建立一个链路状态数据库，是全网的拓扑结构图，在全网范围一致</p>
+<ul>
+<li>根据数据库使用Dijsktra算法计算最优路径，构造自己的路由表，表中不存储完整路径，只存下一跳</li>
+</ul>
+</li>
+<li><p>OSPF将一个自治系统划分为更小的范围——区域，一个局域的路由器只知道本区域拓扑。处在上层的域为主干区域，负责连通下层和其他自治域</p>
+<ul>
+<li>好处：使用洪泛法时，网络上的通信量减少</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>分组类型</p>
+<ul>
+<li><p>问候分组</p>
+<ul>
+<li><p>发现和维护邻站可达性</p>
+<ul>
+<li>每隔10秒两个相邻路由器间交换一次</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据库描述分组</p>
+<ul>
+<li><p>向邻站给出自己的链路状态数据库中的所有链路状态项目的摘要信息</p>
+<ul>
+<li>路由器刚开始工作时</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>链路状态请求分组</p>
+<ul>
+<li><p>向对方请求发送某些链路状态项目的详细信息</p>
+<ul>
+<li>知道摘要后请求发送自己缺少的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>链路状态更新分组</p>
+<ul>
+<li><p>用洪泛法对全网更新链路状态</p>
+<ul>
+<li>网络运行中，一个路由器的链路状态发生变化时</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>链路状态确认分组</p>
+<ul>
+<li><p>对链路更新分组的确认</p>
+<ul>
+<li>每隔三十分钟刷新一次数据库中的链路状态</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>（随便乱放的）</p>
+</li>
+</ul>
+<h3 id="BGP路由协议"><a href="#BGP路由协议" class="headerlink" title="BGP路由协议"></a>BGP路由协议</h3><ul>
+<li><p>边界网关协议，不同自治系统的路由器之间交换路由信息的协议，采用的是路径向量的路由选择协议，只求比较好不求最佳</p>
+<ul>
+<li>应用层协议，基于TCP</li>
+</ul>
+</li>
+<li><p>工作原理</p>
+<ul>
+<li>每个自治系统的管理员要选择至少一个路由器作为该自治系统的”BGP发言人”</li>
+</ul>
+</li>
+</ul>
+<p> (或边界路由器)<br>    - 一个BGP发言人与其他系统的发言人，建立TCP连接，在此连接上交换BGP报文以建立BGP会话，再通过BGP会话交换路由信息<br>    - 每个BGP发言人必须同时运行BGP和该AS所用的内部网关协议</p>
+<ul>
+<li><p>特点</p>
+<ul>
+<li><p>BGP交换路由信息的结点数量级&#x3D;自治系统的数量级</p>
+</li>
+<li><p>每个自治系统的发言人数目很少，使自治系统间的路由选择不过分复杂</p>
+</li>
+<li><p>BGP支持CIDR</p>
+<ul>
+<li>BGP路由表中包括：目的网络前缀 | 下一跳路由地址 | 到达目的网络所要经过的自治系统序列</li>
+</ul>
+</li>
+<li><p>在BGP刚运行时，BGP的邻站交换整个BGP路由表，以后只在发生变化时更新</p>
+<ul>
+<li>BGP首次整个路由表，非首次只交换变化部分</li>
+<li>OSPF只在变化时交换，但交换的是所有链路状态</li>
+<li>RIP定时交换自己的全部信息，路由表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>报文类型</p>
+<ul>
+<li><p>打开报文</p>
+<ul>
+<li>与邻站另一个BGP发言人建立关系</li>
+</ul>
+</li>
+<li><p>更新报文</p>
+<ul>
+<li>发送某一路由的信息，列出要撤销的多余路由</li>
+</ul>
+</li>
+<li><p>保活报文</p>
+<ul>
+<li>确认打开报文并周期性地证实邻站关系</li>
+</ul>
+</li>
+<li><p>通知报文</p>
+<ul>
+<li>发送检测到的差错</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="IP组播"><a href="#IP组播" class="headerlink" title="IP组播"></a>IP组播</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><p>让源计算机一次发送的单个分组可以抵达一个组地址标识的若干目标主机，并被正确接收</p>
+<ul>
+<li>仅应用于UDP</li>
+</ul>
+</li>
+<li><p>为什么用组播</p>
+<ul>
+<li><p>有的应用程序需要把一个分组发送给多个目的主机。给多个主机标识组播地址，网络把分组的副本投递给每台主机。</p>
+<ul>
+<li>主机可以选择加入或离开一个组，一台主机可以同时属于多个组</li>
+<li>使用IGMP协议加入，使用该协议通知本地路由器要接收某个组播地址分组的愿望。通过扩展路由器的路由选择和转发功能，可以实因特网互联</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>主机组播时仅发送一份数据，数据在传送路径分岔时将分组复制后继续转发。组播需要运行组播协议的组播路由器支持</p>
+<ul>
+<li>大大减轻网络负载和发送者的负担</li>
+</ul>
+</li>
+</ul>
+<h3 id="组播地址"><a href="#组播地址" class="headerlink" title="组播地址"></a>组播地址</h3><ul>
+<li><p>IPv4的D类地址就是组播地址，每个D类地址标志一个组播组</p>
+<ul>
+<li>224.0.0.0~239.255.255.255</li>
+</ul>
+</li>
+<li><p>注意</p>
+<ul>
+<li>首部中的的协议字段为2，表明使用IGMP</li>
+<li>组播数据报尽最大努力交付</li>
+<li>只能用于目的地址，不能用于源地址</li>
+<li>不产生ICMP差错报文，PING组播地址将不会收到响应</li>
+<li>并非所有D类地址都可作为组播地址</li>
+</ul>
+</li>
+<li><p>两种组播</p>
+<ul>
+<li><p>在本局域网上硬件组播</p>
+<ul>
+<li><p>以太网组播地址只有23位可用，而D类地址有28位，所以前5位不能构成以太网硬件地址(MAC地址)</p>
+</li>
+<li><p>因为IP地址与MAC地址映射不唯一，所以收到组播数据报的主机还要在IP层利用软件过滤，将不要接收的丢掉</p>
+<ul>
+<li>组播帧由网卡NIC决定是否接收广播帧由NIC接收，交给OS，然后由CPU决定是否接收</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>在因特网范围内进行组播，最后阶段还是要使用硬件组播交付</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="IGMP与组播路由算法"><a href="#IGMP与组播路由算法" class="headerlink" title="IGMP与组播路由算法"></a>IGMP与组播路由算法</h3><ul>
+<li><p>因特网组管理协议+组播路由选择协议(最小代价)</p>
+</li>
+<li><p>IGMP让组播路由器知道本局域网上是否有主机参加或退出了某个组播组</p>
+<ul>
+<li>TCP&#x2F;IP的一部分</li>
+</ul>
+</li>
+<li><p>工作阶段</p>
+<ul>
+<li><p>当主机A加入新的组播组时，A向组播组的组播地址发送一个IGMP报文，声明自己要成为该组成员。</p>
+<ul>
+<li>本地的组播路由器收到IGMP报文后，将组成员关系转发给其他组播路由器</li>
+</ul>
+</li>
+<li><p>组成员关系是动态的，本地组播路由器周期性地探寻本地主机是否退出。</p>
+<ul>
+<li>只要某个组有一台主机响应，组播路由器就认为该组活跃；若几次探询后仍无一台主机响应，则不再将该组成员关系转发给其他组播路由器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>组播路由选择</p>
+<ul>
+<li><p>找出以源主机为根结点的组播转发树</p>
+<ul>
+<li>每个分组在每个链路上只传送一次，路由器不会重复接收</li>
+<li>不同的多播组对应不同的多播转发树；同一个多播组，不同源点有不同转发树</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>三种路由算法</p>
+<ul>
+<li>基于链路状态的路由选择</li>
+<li>基于距离-向量的路由选择</li>
+<li>建立在任何路由器协议之上的协议无关组播</li>
+</ul>
+</li>
+</ul>
+<h2 id="移动IP"><a href="#移动IP" class="headerlink" title="移动IP"></a>移动IP</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><p>支持移动性的因特网体系结构与协议共称为移动IP</p>
+<ul>
+<li>移动IP技术是指，移动结点以固定的IP地址，实现跨越不同网段的漫游功能，并保证基于网络IP的网络权限在漫游过程中不发生任何改变</li>
+</ul>
+</li>
+<li><p>目标</p>
+<ul>
+<li><p>把分组自动地投递给移动结点</p>
+<ul>
+<li>移动结点是指，把连接点从一个网络或子网改变到另一个网络或子网中的主机</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>功能实体</p>
+<ul>
+<li><p>移动结点</p>
+<ul>
+<li>具有永久IP地址的移动结点</li>
+</ul>
+</li>
+<li><p>移动代理</p>
+<ul>
+<li><p>归属代理(本地代理)</p>
+<ul>
+<li><p>在归属网络中代表移动结点执行移动管理功能的实体。</p>
+<ul>
+<li>归属网络：一个移动结点的永久居所</li>
+</ul>
+</li>
+<li><p>根据移动用户的转交地址，采用隧道技术转交移动结点的数据包</p>
+</li>
+<li><p>维护本地结点的当前位置信息</p>
+<ul>
+<li><p>转交地址</p>
+<ul>
+<li>移动绑定：本地地址与转交地址的联合</li>
+<li>移动结点得到一份新的转交地址时，通过绑定让本地代理即时了解移动结点的当前位置</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>外埠代理(外埠代理)</p>
+<ul>
+<li>在外部网络中帮助移动结点完成移动管理功能的实体</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>与移动自组网络的区别</p>
+<ul>
+<li><p>移动自组网络是将移动性扩展到无线领域中的自治系统，具有自己独特的路由选择协议，可以不和因特网相连</p>
+<ul>
+<li>移动IP使漫游的主机连接到因特网，核心网络功能只能基于因特网中的一些网络协议</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>与动态IP的区别</p>
+<ul>
+<li>动态IP指，局域网中的计算机可以通过网络中的DHCP服务器动态地获得IP地址，不需用户在计算机的网络设置中指定IP地址</li>
+</ul>
+</li>
+</ul>
+<h3 id="通信过程"><a href="#通信过程" class="headerlink" title="通信过程"></a>通信过程</h3><ul>
+<li><p>移动IP为移动主机设置了两个IP地址，主地址和辅地址(转交地址)</p>
+</li>
+<li><p>移动结点在本地网时，按传统的TCP&#x2F;IP方式进行通信</p>
+</li>
+<li><p>移动结点漫游到一个外地网络时，移动结点需向本地注册当前的位置地址，这个位置地址就是转交地址<br> (可以是外部代理的地址或动态配置的地址)</p>
+<ul>
+<li><p>本地代理接收来自转交地址的注册后，会构建一条通向转交地址的隧道，将截获的发给移动结点的IP分组，通过隧道送到转交地址处</p>
+<ul>
+<li>在转交地址解除隧道封装，恢复原始的IP分组，最后送到移动结点，这样移动结点就能在外网收到发给它的IP分组</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>移动结点在外网通过外网的路由器或外部代理，向通信对端发送IP数据包</p>
+</li>
+<li><p>移动结点来到另一个外网，向本地代理更新注册的转交地址，就可继续通信</p>
+</li>
+<li><p>移动结点回到本地网，向本地代理注销转交地址，移动结点又回到传统的TCP&#x2F;IP方式通信</p>
+</li>
+</ul>
+<h2 id="网络层设备"><a href="#网络层设备" class="headerlink" title="网络层设备"></a>网络层设备</h2><h3 id="路由器的组成和功能"><a href="#路由器的组成和功能" class="headerlink" title="路由器的组成和功能"></a>路由器的组成和功能</h3><ul>
+<li><p>路由器是一种具有多个输入&#x2F;输出端口的专用计算机</p>
+</li>
+<li><p>任务</p>
+<ul>
+<li><p>连接不同的网络(异构网络)并完成路由转发</p>
+<ul>
+<li>路由器隔离了广播域。</li>
+<li>路由器可以连接不同的LAN，不同的VLAN，不同的WAN，把LAN和WAN互联。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>组成</p>
+<ul>
+<li><p>从结构上看</p>
+<ul>
+<li><p>路由选择</p>
+<ul>
+<li><p>控制部分，核心构件是路由选择处理机</p>
+<ul>
+<li>其任务是根据所选定的路由选择协议，构造出路由表；定期和相邻路由器交换信息，更新和维护路由表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>分组转发</p>
+<ul>
+<li><p>交换结构</p>
+<ul>
+<li><p>关键部件，根据转发表处理分组，将某个输入端口进入的分组从一个合适的输出端口转发出去</p>
+<ul>
+<li>通过存储器交换</li>
+<li>通过总线交换</li>
+<li>通过互联网交换</li>
+</ul>
+</li>
+<li><p>交换结构本身是一个网络</p>
+</li>
+</ul>
+</li>
+<li><p>一组输入端口</p>
+<ul>
+<li>将在物理层收到比特流中，提取出链路层帧，进而从帧中提取出网络层数据报</li>
+</ul>
+</li>
+<li><p>一组输出端口</p>
+<ul>
+<li>与输入接口相反的操作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>从模型角度看</p>
+<ul>
+<li><p>网络层</p>
+<ul>
+<li>一个存储转发设备可以互联两个在该层次上，使用不同协议的网络</li>
+</ul>
+</li>
+<li><p>数据链路层</p>
+<ul>
+<li>网桥可以互联两个物理层和数据链路层不同的网段</li>
+</ul>
+</li>
+<li><p>物理层</p>
+<ul>
+<li>中继器不能互联，因为它是直通式设备，不是存储转发设备</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>功能</p>
+<ul>
+<li><p>分组转发</p>
+<ul>
+<li>处理通过路由器的数据流，关键操作是转发表查询、转发、相关的队列管理和任务调度</li>
+</ul>
+</li>
+<li><p>路由计算</p>
+<ul>
+<li>通过和其他路由器进行基于路由协议的交互，完成路由表的计算</li>
+</ul>
+</li>
+<li><p>路由器检测到拥塞时，可以合理丢弃IP分组</p>
+</li>
+</ul>
+</li>
+<li><p>与网桥的区别</p>
+<ul>
+<li><p>路由器是面向协议的，提供多种协议支持，依据网络地址进行操作</p>
+<ul>
+<li>网桥与高层协议无关</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="路由表与路由转发"><a href="#路由表与路由转发" class="headerlink" title="路由表与路由转发"></a>路由表与路由转发</h3><ul>
+<li><p>路由表</p>
+<ul>
+<li><p>根据路由算法得出，主要用于路由选择，  包含到互联网的默认路由，总是由软件实现</p>
+<ul>
+<li><strong>目的网络IP地址 | 子网掩码 | 下一跳IP地址 | 接口</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>转发表</p>
+<ul>
+<li><p>根据路由表得出，可以使用一个默认路由来代表相同的下一跳项目，可以通过软件或特殊硬件实现</p>
+<ul>
+<li><strong>目的地址 | 下一跳</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>转发与路由选择</p>
+<ul>
+<li><p>转发是，路由器根据转发表把IP数据报从合适端口转发出去，只涉及一个路由器</p>
+<ul>
+<li>分组转发实际是靠直接查找转发表，而不是路由表</li>
+</ul>
+</li>
+<li><p>路由选择，涉及很多路由器</p>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  
+</article>
+    </main>
+    <footer id="footer">
+  Copyright &copy;
+  2022
+  BONE
+  
+  
+    <a class="social-links" target="_blank" rel="noopener" href="https://github.com/FloatinDLE"><i class="blogfont">&#xe6b7; </i></a>
+  
+    <a class="social-links" href="mailto:bone_n@foxmail.com"><i class="blogfont">&#xe61a; </i></a>
+  
+    <a class="social-links" href="/atom.xml"><i class="blogfont">&#xe640; </i></a>
+  
+  
+</footer>
+    <!-- scripts -->
+
+<script src="/scripts/main.js"></script>
+
+  </body>
+</html>

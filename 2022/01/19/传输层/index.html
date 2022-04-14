@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html  lang=en>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+    <link rel="shortcut icon" href="/images/kou.ico ">
+    
+    
+    <link rel="icon" type="image/png" href="/images/favicon-android.png " sizes="192x192">
+    
+    
+    <link rel="apple-touch-icon" href="/images/favicon-apple.png " sizes="180x180">
+    
+  
+  <!-- title -->
+  <title>地下室 传输层 </title>
+  <!-- styles -->
+  <!-- styles -->
+
+<link rel="stylesheet" href="/styles/global.css">
+
+  <!-- rss -->
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+  <body>
+    <header id="header">
+  
+  <nav class="menu menu--right">
+  
+    <a class="menu__item" href="/">主页</a>
+    <a class="menu__item" href="/archives/">归档</a>
+    <a class="menu__item" href="/categories/">专题</a>
+    <a class="menu__item" href="/tags/">标签</a>
+    <!-- <a class="menu__item" href="/">作品</a> -->
+    <!-- <a class="menu__item" href="/about/">关于</a> -->
+  </nav>
+</header>
+    <main>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post__header">
+  <h1 class="post__title">传输层</h1>
+  
+  
+  <div class="post__meta">
+    
+<time class="post__date" datetime="2022-01-19T06:42:05.000Z" itemprop="datePublished">
+  
+  <i class="blogfont">&#xedff;</i>
+  
+  2022-01-19 14:42:05
+</time>
+
+    
+<div class="post__category">
+  <i class="blogfont">&#xe62d;</i>
+  <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">-计算机网络</a>
+</div>
+  
+
+    
+<div class="post__tag">
+  <i class="blogfont">&#xe7ec;</i>
+  <a class="tag-link-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">-计算机基础</a>
+</div>
+
+
+    <div id="/2022/01/19/%E4%BC%A0%E8%BE%93%E5%B1%82/" class="leancloud_visitors post__stat" data-flag-title="传输层">
+  <i class="blogfont">&#xe672;</i>
+  <span class="leancloud-visitors-count">loading...</span>
+</div>
+  </div>
+</header>
+  <aside class="post__aside">
+  <div class="post__actions">
+    <a id="backTop" class="post__top" href="javascript:">
+      <i class="blogfont">&#xe6b1;</i><!-- Top -->
+    </a>
+    <a id="share" class="post__share" href="javascript:">
+      <i class="blogfont">&#xe6c1;</i>
+    </a>
+  </div>
+  <ol class="post__toc"><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E6%8F%90%E4%BE%9B%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="post__toc-text">传输层提供的服务</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8A%9F%E8%83%BD"><span class="post__toc-text">传输层功能</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E5%AF%BB%E5%9D%80%E4%B8%8E%E7%AB%AF%E5%8F%A3"><span class="post__toc-text">传输层寻址与端口</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E4%B8%8E%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1"><span class="post__toc-text">无连接服务与面向连接服务</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#UDP%E5%8D%8F%E8%AE%AE"><span class="post__toc-text">UDP协议</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#UDP%E6%95%B0%E6%8D%AE%E6%AE%B5"><span class="post__toc-text">UDP数据段</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#UDP%E6%A0%A1%E9%AA%8C"><span class="post__toc-text">UDP校验</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#TCP%E5%8D%8F%E8%AE%AE"><span class="post__toc-text">TCP协议</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%89%B9%E7%82%B9"><span class="post__toc-text">特点</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#TCP%E6%8A%A5%E6%96%87%E6%AE%B5"><span class="post__toc-text">TCP报文段</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#TCP%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86"><span class="post__toc-text">TCP连接管理</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#TCP%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93"><span class="post__toc-text">TCP可靠传输</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#TCP%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E4%B8%8E%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="post__toc-text">TCP流量控制与拥塞控制</span></a></li></ol></li></ol>
+</aside>
+  <div class="post__content" itemprop="articleBody">
+    <h2 id="传输层提供的服务"><a href="#传输层提供的服务" class="headerlink" title="传输层提供的服务"></a>传输层提供的服务</h2><h3 id="传输层功能"><a href="#传输层功能" class="headerlink" title="传输层功能"></a>传输层功能</h3><ul>
+<li><p>1、为运行在不同主机之上的进程之间提供逻辑通信(端到端的通信)</p>
+<ul>
+<li>网络层提供主机之间的逻辑通信</li>
+</ul>
+</li>
+<li><p>2、复用和分用</p>
+<ul>
+<li><p>复用：发送方不同的应用进程，可使用同一个传输层协议传送数据</p>
+<ul>
+<li>网络层：发送方不同协议的数据，都可以封装成IP数据报</li>
+</ul>
+</li>
+<li><p>分用：接收方的传输层在剥去报文首部后，能够把这些数据正确交付到各应用进程</p>
+<ul>
+<li>网络层：接收方剥去首部后，交付给相应协议</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>3、差错检测</p>
+<ul>
+<li><p>首部和数据部分</p>
+<ul>
+<li>网络层只检验首部</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>4、提供两种不同的传输协议(TCP和UDP)</p>
+<ul>
+<li>网络层无法同时实现两种(虚电路或数据报选一种)</li>
+</ul>
+</li>
+<li><p>Tips</p>
+<ul>
+<li>传输层是面向通信部分的最高层，也是用户功能的最低层</li>
+<li>通信子网中没有传输层</li>
+</ul>
+</li>
+</ul>
+<h3 id="传输层寻址与端口"><a href="#传输层寻址与端口" class="headerlink" title="传输层寻址与端口"></a>传输层寻址与端口</h3><ul>
+<li><p>端口的作用</p>
+<ul>
+<li><p>端口是传输层服务访问点(TSAP)，标识主机中的应用程序</p>
+</li>
+<li><p>能够让各应用进程通过端口，将数据向下交付给传输层；以及让传输层知道应当将其报文段的数据通过端口，向上交付给相应进程</p>
+</li>
+<li><p>传输层使用的是软件端口，是应用层的各种协议进程与传输实体进行层间交互的一种地址</p>
+<ul>
+<li>硬件端口，是路由器或交换机上的，不同硬件设备进行交互的端口</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>端口号</p>
+<ul>
+<li><p>端口号长度为16位，能够表示65536个端口号。</p>
+</li>
+<li><p>端口号只有本地意义，即只标识本计算机应用层中的各进程</p>
+</li>
+<li><p>分类</p>
+<ul>
+<li><p>服务端使用的端口号</p>
+<ul>
+<li><p>熟知端口号</p>
+<ul>
+<li>0~1023，IANA将这些端口号分配给了TCP&#x2F;IP最重要的一些应用进程</li>
+<li>FTP-21；TELNET-23；SMTP-25；DNS-53；TFTP-69；HTTP-80；SNMP-161</li>
+</ul>
+</li>
+<li><p>登记端口号</p>
+<ul>
+<li>1024~49151，供没有熟知端口号的应用进程使用，用前要先在IANA登记，以防重复</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>客户端使用的端口号</p>
+<ul>
+<li>49152~65535，仅在客户进程运行时才动态地选择，通信结束后就不复存在，可供其他客户进程使用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>套接字</p>
+<ul>
+<li><p>在网络中采用发送方和接收方的套接字组合来识别端点，实际上是一个通信端点，唯一地标识网络中一台主机上的一个进程。</p>
+<ul>
+<li>套接字&#x3D;（主机IP地址，端口号）</li>
+</ul>
+</li>
+<li><p>在网络通信中，报文段需包含源端口号和目的端口号</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="无连接服务与面向连接服务"><a href="#无连接服务与面向连接服务" class="headerlink" title="无连接服务与面向连接服务"></a>无连接服务与面向连接服务</h3><ul>
+<li><p>无连接服务</p>
+<ul>
+<li><p>实体间的通信不需先建立好连接，需要通信时直接把信息发送到网络上，尽最大努力交付</p>
+<ul>
+<li>UDP，提供一条不可靠的逻辑信道</li>
+<li>仅在IP之上提供多路复用、对数据的差错功能</li>
+<li>简单，执行速度快，实时性好</li>
+<li>TFTP、DNS、SNMP、RTP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>面向连接服务</p>
+<ul>
+<li><p>进行通信前先建立连接；通信中，实时监控和管理连接；通信结束，释放连接</p>
+<ul>
+<li>TCP，提供一条全双工的可靠逻辑信道</li>
+<li>不提供广播和组播服务</li>
+<li>增加许多开销，占用许多处理机资源</li>
+<li>适用于可靠性高重要的场合，FTP、HTTP、TELNET等</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>IP与UDP数据报的区别</p>
+<ul>
+<li><p>UDP数据报在传输层的端到端逻辑信道中传输，封装成IP数据报在网络层传输时，对路由器不可见</p>
+<ul>
+<li>IP数据报要在网络层经过路由器的存储转发</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>TCP与网络层虚电路的区别</p>
+<ul>
+<li><p>TCP报文必须在传输层传输，对路由器不可见</p>
+<ul>
+<li>虚电路所经过的交换结点都必须保存虚电路状态信息</li>
+</ul>
+</li>
+<li><p>传输层采用TCP不影响网络层提供无连接服务</p>
+<ul>
+<li>在网络层采用虚电路，则无法提供无连接服务</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h2><h3 id="UDP数据段"><a href="#UDP数据段" class="headerlink" title="UDP数据段"></a>UDP数据段</h3><ul>
+<li><p>UDP概述</p>
+<ul>
+<li><p>优点</p>
+<ul>
+<li><p>无需建立连接</p>
+<ul>
+<li>时延小，速度快</li>
+</ul>
+</li>
+<li><p>无连接状态</p>
+<ul>
+<li>不用维护连接，跟踪参数。专用应用服务器使用UDP时能支持更多的活动客户机</li>
+</ul>
+</li>
+<li><p>分组首部开销小</p>
+<ul>
+<li>TCP-20B，UDP-8B</li>
+</ul>
+</li>
+<li><p>应用层能更好地控制要发送的数据和发送时间</p>
+<ul>
+<li>没有拥塞控制，拥塞不会影响主机的发送效率</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>所有维护传输的可靠性工作，需要用户在应用层完成</p>
+</li>
+<li><p>UDP是面向报文的，对报文不拆分不合并 ，一次交付一个完整报文，因此报文是UDP数据处理的最小单位</p>
+</li>
+</ul>
+</li>
+<li><p>UDP的首部格式</p>
+<ul>
+<li><p>UDP首部</p>
+<ul>
+<li><p><strong>源端口2B| 目的端口2B| 长度2B| 校验和2B</strong></p>
+</li>
+<li><p>源端口</p>
+<ul>
+<li>在需要对方回信时选用，不需要可用全0</li>
+</ul>
+</li>
+<li><p>目的端口</p>
+<ul>
+<li><p>必须使用</p>
+<ul>
+<li>接收方发现目的端口号不正确，就丢弃报文，并由ICMP发送“端口不可达”差错报告</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>长度</p>
+<ul>
+<li>UDP数据报的总长度，最小值为8</li>
+</ul>
+</li>
+<li><p>校验和</p>
+<ul>
+<li>可选，不想计算就设为全0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>用户数据</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="UDP校验"><a href="#UDP校验" class="headerlink" title="UDP校验"></a>UDP校验</h3><ul>
+<li><p>计算校验和时，要先在UDP数据报之前加12B的伪首部。伪首部既不下传也不上交，不发送，自用</p>
+<ul>
+<li><strong>伪首部：源IP地址4B| 目的IP地址4B| 0| 17| UDP长度2B</strong></li>
+</ul>
+</li>
+<li><p>1.发送方把全0放入校验和字段，并添加伪首部，把UDP数据报视为许多16位的字连接起来</p>
+<ul>
+<li>若UDP数据部分不是偶数个字节，在数据部分末尾增加一个全0字节(此字节不发送)</li>
+</ul>
+</li>
+<li><p>2.发送方按二进制反码，将这些16位的字相加，把和的二进制反码写入校验和字段</p>
+</li>
+<li><p>3.接收方把收到的UDP数据报加上伪首部(不是偶数自己再补全0)，按二进制反码计算出和，无差错则结果为1；否则丢弃，也可以附上错误报告交付给上层</p>
+</li>
+<li><p>检错能力不强；但简单，处理速度快</p>
+</li>
+</ul>
+<h2 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li><p>面向连接的传输层协议</p>
+</li>
+<li><p>每条TCP连接只能有两个端点，只能是点对点的</p>
+</li>
+<li><p>提供可靠的交付服务，无差错、不丢失、不重复、不失序</p>
+</li>
+<li><p>提供全双工通信，通信双方任何时候都能发送数据，在两段设有发送缓存和接收缓存，临时存放双向通信数据</p>
+<ul>
+<li><p>发送缓存</p>
+<ul>
+<li>发送应用程序准备发送的数据</li>
+<li>TCP已发送但未收到确认的数据</li>
+</ul>
+</li>
+<li><p>接收缓存</p>
+<ul>
+<li>按序到达但尚未被接收应用程序读取的数据</li>
+<li>不按序到达的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>面向字节流</p>
+<ul>
+<li>应用程序和TCP交互，一次一个大小不等的数据块。TCP仅将数据视为一连串无结构的字节流</li>
+</ul>
+</li>
+</ul>
+<h3 id="TCP报文段"><a href="#TCP报文段" class="headerlink" title="TCP报文段"></a>TCP报文段</h3><ul>
+<li><p>既可以用来运载数据，又可以用来建立连接、释放连接、应答</p>
+</li>
+<li><p>TCP首部</p>
+<ul>
+<li><p><strong>源端口2B| 目的端口2B| 序号4B| 确认号4B| 数据偏移4bit| 保留字段6bit| URG|ACK|PSH|RST|SYN|FIN-1b| 窗口2B| 校验和2B| 紧急指针2B| 选项| 填充</strong></p>
+<ul>
+<li>最短20B，长度为4B的整数倍</li>
+</ul>
+</li>
+<li><p>序号字段</p>
+<ul>
+<li>TCP为每个字节都编上一个序号，序号字段里的是本报文段数据的第一个字节的序号</li>
+</ul>
+</li>
+<li><p>确认号字段</p>
+<ul>
+<li><p>期望收到对方的下一个报文段数据的第一字节的序号</p>
+<ul>
+<li>若确认号为N，则前N-1的数据都已正确收到</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据偏移&#x3D;首部长度</p>
+<ul>
+<li><p>TCP报文段数据的起始处，距离TCP报文段的起始处有多远，即首部长度</p>
+<ul>
+<li>单位为4B。为15，则首部长60B</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>保留字段</p>
+<ul>
+<li>以后用，现在置为0</li>
+</ul>
+</li>
+<li><p>紧急位URG</p>
+<ul>
+<li>&#x3D;1，表示该报文段中有紧急数据，应尽快传送，相当于高优先级。需和紧急指针配套使用</li>
+</ul>
+</li>
+<li><p>确认位ACK</p>
+<ul>
+<li>&#x3D;1，确认号字段有效；&#x3D;0，无效。在连接建立后，所有传送的报文段都必须把ACK置1</li>
+</ul>
+</li>
+<li><p>推送位PSH</p>
+<ul>
+<li>接收TCP收到PSH&#x3D;1的报文段，尽快交付给接收应用进程；否则要等整个缓存都填满后才向上交付</li>
+</ul>
+</li>
+<li><p>复位位RST</p>
+<ul>
+<li>&#x3D;1，表明TCP连接中出现严重差错，必须释放连接，再重新建立运输连接</li>
+</ul>
+</li>
+<li><p>同步位SYN</p>
+<ul>
+<li><p>&#x3D;1，表示这是一个连接请求或连接接收报文</p>
+<ul>
+<li>SYN&#x3D;1，ACK&#x3D;0：连接请求报文。若接收方同意建立连接，则在响应报文中使用SYN&#x3D;1，ACK&#x3D;1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>终止位FIN</p>
+<ul>
+<li>&#x3D;1，表示此报文段的发送方的数据已发送完毕，要求释放传输连接</li>
+</ul>
+</li>
+<li><p>窗口字段</p>
+<ul>
+<li><p>现在允许对方发送的数据量。单位为字节。</p>
+<ul>
+<li>因为接收方的数据缓存空间有限</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>校验和</p>
+<ul>
+<li>同时校验首部和数据，和UDP一样，要加上伪首部(只需将UDP伪首部的协议字段的17改为6)</li>
+</ul>
+</li>
+<li><p>紧急指针字段</p>
+<ul>
+<li><p>本报文段中紧急数据共有多少字节</p>
+<ul>
+<li>从第一个字节到紧急指针所指字节就是紧急数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>选项字段</p>
+<ul>
+<li>长度可变。最初只规定了一种选项，最大报文长度MSS，是指数据字段的最大长度</li>
+</ul>
+</li>
+<li><p>填充字段</p>
+<ul>
+<li>使首部长度为4B的整数倍</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>TCP数据部分</p>
+</li>
+</ul>
+<h3 id="TCP连接管理"><a href="#TCP连接管理" class="headerlink" title="TCP连接管理"></a>TCP连接管理</h3><ul>
+<li><p>要解决的问题</p>
+<ul>
+<li>每一方都能确知对方的存在</li>
+<li>允许双方协商一些参数，如最大窗口值、是否使用窗口扩大选项、时间戳选项、服务质量</li>
+<li>能够对运输实体资源进行分配，如缓存大小、连接表中的项目</li>
+</ul>
+</li>
+<li><p>TCP把连接作为最基本的抽象</p>
+<ul>
+<li>每条TCP连接有两个端点，端点叫做套接字或插口。同一个IP地址、端口号可以有多个不同的TCP连接，</li>
+</ul>
+</li>
+<li><p>连接的建立</p>
+<ul>
+<li><p>采用客户机&#x2F;服务器方式，主动发起连接建立的应用程序为客户机，被动等待的为服务器</p>
+<ul>
+<li><p>三次握手</p>
+<ul>
+<li>能听见吗→我能听见，你呢→我也听到了</li>
+<li>SYN&#x3D;1,seq&#x3D;x→SYN&#x3D;1,ACK&#x3D;1,seq&#x3D;y,ack&#x3D;x+1→ACK&#x3D;1,seq&#x3D;x+1,ack&#x3D;y+1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>1.客户机的TCP向服务器的TCP发送一个连接请求报文段，不含应用层数据，SYN&#x3D;1，随机选择一个起始序号x。不携带数据，但要消耗一个序号</p>
+</li>
+<li><p>2.S的TCP收到后，如同意建立连接，向C发回确认，开始为该TCP连接分配TCP缓存和变量。在确认报文段中，SYN&#x3D;1，ACK&#x3D;1，确认号字段为x+1，随机产生初始序号y。不携带数据，但要消耗一个序号</p>
+<ul>
+<li>服务器资源在此时分配，客户端还没分配，易受SYN洪泛攻击</li>
+</ul>
+</li>
+<li><p>3.C收到S的确认，再向S给出确认，开始为该连接分配缓存和变量。确认报文ACK&#x3D;1，序号字段x+1，确认号字段y+1。可以携带数据；若不携带则不消耗序号</p>
+</li>
+</ul>
+</li>
+<li><p>连接的释放</p>
+<ul>
+<li><p>四次握手</p>
+<ul>
+<li>我说完了，你呢→知道你说完了，我还有话要说→我也说完了→拜拜</li>
+<li>FIN&#x3D;1,seq&#x3D;x→ACK&#x3D;1,seq&#x3D;y,ack&#x3D;x+1→FIN&#x3D;1,ACK&#x3D;1,seq&#x3D;z,ack&#x3D;y+1→ACK&#x3D;1,seq&#x3D;y+1,ack&#x3D;z+1</li>
+</ul>
+</li>
+<li><p>1.客户端打算关闭连接，向TCP发送一个连接释放报文段，并停止发送数据。报文段FIN&#x3D;1，seq&#x3D;x，等于前面已传送的数据的最后一个字节序号+1。不携带数据，但要消耗一个序号</p>
+</li>
+<li><p>2.S收到连接释放报文段后即发出确认，确认号ack&#x3D;x+1，自己的序号是y，等于前面已传送的数据的最后一个字节序号+1。</p>
+<ul>
+<li>此时从C到S的连接已经释放，TCP连接处于半关闭状态。</li>
+</ul>
+</li>
+<li><p>3.S也没有要发的数据，通知TCP释放连接，发出FIN&#x3D;1的连接释放报文段</p>
+</li>
+<li><p>4.C收到后必须发出确认，ACK&#x3D;1，seq&#x3D;y+1,ack&#x3D;z+1。</p>
+<ul>
+<li>此时TCP连接还没释放，必须等(时间等待及时器设置的时间)2MSL后，C才进入连接关闭状态</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>连接和释放时的ACK、SYN、FIN一定等于1</p>
+</li>
+</ul>
+<h3 id="TCP可靠传输"><a href="#TCP可靠传输" class="headerlink" title="TCP可靠传输"></a>TCP可靠传输</h3><ul>
+<li><p>序号</p>
+</li>
+<li><p>确认</p>
+<ul>
+<li>默认使用累计确认，只确认到第一个丢失字节前的字节</li>
+</ul>
+</li>
+<li><p>重传</p>
+<ul>
+<li><p>超时</p>
+<ul>
+<li><p>TCP采用一种自适应算法，计算超时计时器的重传时间RTO</p>
+<ul>
+<li>RTT&#x3D;发出到收到确认的时间，TCP保留RTT的一个加权平均往返时间RTTs，会随RTT变化而变化，RTO应略大于RTTs</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>冗余ACK</p>
+<ul>
+<li><p>发送方在超时事件发生之前通过注意到冗余确认，来检测丢包情况。</p>
+<ul>
+<li>TCP规定，每当比期望序号大时，就发送一个冗余ACK再次强调自己的期望序号</li>
+</ul>
+</li>
+<li><p>TCP规定，当发送方收到对同一个报文段的3个冗余ACK时，认为跟在这个报文段之后的报文段已丢失(不是还没到)。立即重传认为丢失的报文段，为快速重传技术</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="TCP流量控制与拥塞控制"><a href="#TCP流量控制与拥塞控制" class="headerlink" title="TCP流量控制与拥塞控制"></a>TCP流量控制与拥塞控制</h3><ul>
+<li><p>流量控制</p>
+<ul>
+<li><p>基于滑动窗口协议的流量控制机制</p>
+</li>
+<li><p>接收方根据自己接收缓存大小，动态调整发送方的发送窗口大小，即调整在TCP报文段中的窗口值大小，称其为接收窗口rwnd</p>
+<ul>
+<li>发送方根据对当前网路拥塞程序的估计而确定窗口值，称为拥塞窗口cwnd。反应当前的网络容量，未拥塞就增大；拥塞就减小。大小与时延带宽积有关</li>
+</ul>
+</li>
+<li><p>实际发送窗口大小取rwnd和cwnd中的最小值</p>
+</li>
+<li><p>与链路层流量控制的区别</p>
+<ul>
+<li>数据链路层的滑动窗口协议的窗口大小不能动态变化</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>拥塞控制</p>
+<ul>
+<li><p>拥塞控制是为了防止过多数据注入网络，是一个全局性的过程</p>
+</li>
+<li><p>慢开始</p>
+<ul>
+<li>TCP刚连接好时，先令cwnd&#x3D;1，每收到一个对新报文段的确认，就将cwnd+1，即增大一个MSS</li>
+<li>每经过一个传输轮次(即RTT)，cwnd就会加倍，呈指数式增长。一直增大到规定的慢开始门限ssthresh，开始改用拥塞避免算法</li>
+</ul>
+</li>
+<li><p>拥塞避免</p>
+<ul>
+<li><p>cwnd每经过一个RTT就增加一个MSS，而不是加倍，使cwnd改为线性增长。</p>
+<ul>
+<li>出现一次超时(网络拥塞)时，慢开始门限减为当前cwnd的一半</li>
+</ul>
+</li>
+<li><p>加法增大，乘法减小</p>
+</li>
+<li><p>cwnd&lt;ssthresh</p>
+<ul>
+<li>使用慢开始算法</li>
+</ul>
+</li>
+<li><p>cwnd&gt;ssthresh</p>
+<ul>
+<li>停止使用慢开始，改用拥塞控制</li>
+</ul>
+</li>
+<li><p>cwnd&#x3D;ssthresh</p>
+<ul>
+<li>可使用慢开始，通常使用拥塞控制</li>
+</ul>
+</li>
+</ul>
+</li>
+<li></li>
+<li><p>快重传</p>
+<ul>
+<li>连续收到3个冗余ACK，就重传</li>
+</ul>
+</li>
+<li><p>快恢复</p>
+<ul>
+<li><p>连续收到3个冗余ACK，那ssthresh设置为出现拥塞时的cwnd的一半，并将cwnd也设为此值，然后开始执行拥塞避免算法</p>
+<ul>
+<li>跳过了从1开始的慢开始过程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  
+</article>
+    </main>
+    <footer id="footer">
+  Copyright &copy;
+  2022
+  BONE
+  
+  
+    <a class="social-links" target="_blank" rel="noopener" href="https://github.com/FloatinDLE"><i class="blogfont">&#xe6b7; </i></a>
+  
+    <a class="social-links" href="mailto:bone_n@foxmail.com"><i class="blogfont">&#xe61a; </i></a>
+  
+    <a class="social-links" href="/atom.xml"><i class="blogfont">&#xe640; </i></a>
+  
+  
+</footer>
+    <!-- scripts -->
+
+<script src="/scripts/main.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html  lang=en>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+    <link rel="shortcut icon" href="/images/kou.ico ">
+    
+    
+    <link rel="icon" type="image/png" href="/images/favicon-android.png " sizes="192x192">
+    
+    
+    <link rel="apple-touch-icon" href="/images/favicon-apple.png " sizes="180x180">
+    
+  
+  <!-- title -->
+  <title>地下室 计算机网络概述 </title>
+  <!-- styles -->
+  <!-- styles -->
+
+<link rel="stylesheet" href="/styles/global.css">
+
+  <!-- rss -->
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+  <body>
+    <header id="header">
+  
+  <nav class="menu menu--right">
+  
+    <a class="menu__item" href="/">主页</a>
+    <a class="menu__item" href="/archives/">归档</a>
+    <a class="menu__item" href="/categories/">专题</a>
+    <a class="menu__item" href="/tags/">标签</a>
+    <!-- <a class="menu__item" href="/">作品</a> -->
+    <!-- <a class="menu__item" href="/about/">关于</a> -->
+  </nav>
+</header>
+    <main>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post__header">
+  <h1 class="post__title">计算机网络概述</h1>
+  
+  
+  <div class="post__meta">
+    
+<time class="post__date" datetime="2022-01-15T06:42:05.000Z" itemprop="datePublished">
+  
+  <i class="blogfont">&#xedff;</i>
+  
+  2022-01-15 14:42:05
+</time>
+
+    
+<div class="post__category">
+  <i class="blogfont">&#xe62d;</i>
+  <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">-计算机网络</a>
+</div>
+  
+
+    
+<div class="post__tag">
+  <i class="blogfont">&#xe7ec;</i>
+  <a class="tag-link-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">-计算机基础</a>
+</div>
+
+
+    <div id="/2022/01/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/" class="leancloud_visitors post__stat" data-flag-title="计算机网络概述">
+  <i class="blogfont">&#xe672;</i>
+  <span class="leancloud-visitors-count">loading...</span>
+</div>
+  </div>
+</header>
+  <aside class="post__aside">
+  <div class="post__actions">
+    <a id="backTop" class="post__top" href="javascript:">
+      <i class="blogfont">&#xe6b1;</i><!-- Top -->
+    </a>
+    <a id="share" class="post__share" href="javascript:">
+      <i class="blogfont">&#xe6c1;</i>
+    </a>
+  </div>
+  <ol class="post__toc"><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E5%BF%B5"><span class="post__toc-text">计算机网络概念</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="post__toc-text">定义</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E4%BA%92%E8%81%94%E7%BD%91%E5%8F%91%E5%B1%95%E7%9A%84%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="post__toc-text">互联网发展的三个阶段</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E7%BB%84%E6%88%90"><span class="post__toc-text">组成</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="post__toc-text">功能</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%88%86%E7%B1%BB"><span class="post__toc-text">分类</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%A0%87%E5%87%86%E5%8C%96"><span class="post__toc-text">标准化</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="post__toc-text">性能指标</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="post__toc-text">计算机网络体系结构</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84"><span class="post__toc-text">计算机网络分层结构</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="post__toc-text">接口</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E6%9C%8D%E5%8A%A1"><span class="post__toc-text">服务</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#%E5%8D%8F%E8%AE%AE"><span class="post__toc-text">协议</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link" href="#ISO-x2F-OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8BTCP-x2F-IP%E6%A8%A1%E5%9E%8B"><span class="post__toc-text">ISO&#x2F;OSI参考模型TCP&#x2F;IP模型</span></a></li></ol></li></ol>
+</aside>
+  <div class="post__content" itemprop="articleBody">
+    <h2 id="计算机网络概念"><a href="#计算机网络概念" class="headerlink" title="计算机网络概念"></a>计算机网络概念</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li><p>广义</p>
+<ul>
+<li><p>能实现远程信息处理或进一步达到资源共享的系统</p>
+<ul>
+<li>计网发展的低级阶段</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>资源共享</p>
+<ul>
+<li><p>以能够互相共享资源的方式互联起来的自治计算机系统的集合</p>
+<ul>
+<li>目的：资源共享</li>
+<li>组成单元：多台独立的自治计算机</li>
+<li>必须遵守网络协议</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>用户透明性</p>
+<ul>
+<li><p>一个能为用户自动管理资源的网络操作系统，且对用户是透明的，用户像使用超级计算机一样使用网络</p>
+<ul>
+<li>分布式系统，未来目标</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="互联网发展的三个阶段"><a href="#互联网发展的三个阶段" class="headerlink" title="互联网发展的三个阶段"></a>互联网发展的三个阶段</h3><ul>
+<li><p>从单个网络APRANET向互连网发展的过程</p>
+<ul>
+<li>1969年第一个分组交换网APRANET</li>
+<li>1983年TCP&#x2F;IP成为ARPAnet上的标准协议，为互联网的诞生时间</li>
+<li>1990年APRANET关闭</li>
+</ul>
+</li>
+<li><p>建成了三级结构的互联网</p>
+<ul>
+<li>1985年NSF建设了NSFNET，分为主干网、地区网和校园网(企业网)</li>
+</ul>
+</li>
+<li><p>逐渐形成多层次ISP结构的互联网</p>
+<ul>
+<li>1993年开始NSFNET组件被商用互联网主干网替代，ISP分为主干ISP、地区ISP、本地ISP。IXP诞生</li>
+</ul>
+</li>
+</ul>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><ul>
+<li><p>从组成部分</p>
+<ul>
+<li><p>硬件</p>
+<ul>
+<li>主机(端系统)、通信链路(双绞线、光纤)、交换设备(路由器、交换机)、通信处理机(网卡)</li>
+</ul>
+</li>
+<li><p>软件</p>
+<ul>
+<li>网络操作系统、邮件接发程序、FTP程序等</li>
+</ul>
+</li>
+<li><p>协议</p>
+<ul>
+<li>计算机网络的核心，规定了网络传输数据时所遵循的规范</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>从工作方式</p>
+<ul>
+<li><p>边缘部分</p>
+<ul>
+<li>所有连接到网上、供用户直接使用的主机，用来进行通信和资源共享</li>
+</ul>
+</li>
+<li><p>核心部分</p>
+<ul>
+<li>大量网络和连接网络的路由器，为边缘提供连通性和交换服务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>从功能组成</p>
+<ul>
+<li><p>通信子网</p>
+<ul>
+<li>由各种传输介质、通信设备和相应网络协议组成，使网络具有数据传输、交换、控制和存储能力</li>
+</ul>
+</li>
+<li><p>资源子网</p>
+<ul>
+<li>实现资源共享的设备及其软件的集合，向用户提供其他计算机上的硬件、软件和数据资源。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ul>
+<li><p>数据通信</p>
+<ul>
+<li>最基本最重要的功能</li>
+</ul>
+</li>
+<li><p>资源共享</p>
+<ul>
+<li>软件、数据、硬件共享</li>
+</ul>
+</li>
+<li><p>分布式处理</p>
+<ul>
+<li>将任务分配给不同计算机系统，提高利用率</li>
+</ul>
+</li>
+<li><p>提高可靠性</p>
+<ul>
+<li>各计算机通过网络互为替代机（替补）</li>
+</ul>
+</li>
+<li><p>负载均衡</p>
+<ul>
+<li>工作任务均衡分配</li>
+</ul>
+</li>
+</ul>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
+<li><p>按分布范围</p>
+<ul>
+<li><p>广域网</p>
+<ul>
+<li>因特网的核心部分，几十千米到几千千米，高速链路，使用交换技术</li>
+</ul>
+</li>
+<li><p>城域网</p>
+<ul>
+<li>几个街区甚至城市，50km，采用以太网技术</li>
+</ul>
+</li>
+<li><p>局域网</p>
+<ul>
+<li>几十到几千米，使用广播技术</li>
+</ul>
+</li>
+<li><p>个人区域网</p>
+<ul>
+<li>10m，个人将设备用无线连接</li>
+</ul>
+</li>
+<li><p>(多处理器系统)</p>
+<ul>
+<li>CPU之间小于1m，不称为网络</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>按传输技术</p>
+<ul>
+<li><p>广播式网络</p>
+<ul>
+<li>所有计算机共享一个公共通信通道，通过检查目的地址决定是否接受，局域网和广域网中的无线、卫星通信网络</li>
+<li>不存在路由选择问题，可以不要网络层</li>
+</ul>
+</li>
+<li><p>点对点网络</p>
+<ul>
+<li>每条物理线路连接一对计算机，广域网</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>按拓扑结构</p>
+<ul>
+<li><p>总线形</p>
+<ul>
+<li>用单根传输线连接。建网容易，增减结点方便，节省线路；重负载时通信效率不高，故障敏感</li>
+</ul>
+</li>
+<li><p>星形</p>
+<ul>
+<li>每个终端都以单独线路与中央设备(交换机或路由器)相连。成本高，中心结点故障敏感。</li>
+</ul>
+</li>
+<li><p>环形</p>
+<ul>
+<li>所有计算机接口设备连成一个环，可以是单环也可以是双环，环中信号单向传输。令牌环局域网</li>
+</ul>
+</li>
+<li><p>网状形</p>
+<ul>
+<li>每个结点至少有两条路径与其他结点相连，多用于广域网，分规则型和非规则型。可靠性高；控制复杂，线路成本高</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>按使用者</p>
+<ul>
+<li><p>公用网</p>
+<ul>
+<li>电信公司出资建造，只要交钱就可以使用</li>
+</ul>
+</li>
+<li><p>专用网</p>
+<ul>
+<li>为满足本单位特殊业务而建造的网络，不向单位外的人提供服务，如铁路、电力、军队等部门。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>按交换技术</p>
+<ul>
+<li><p>电路交换网络</p>
+<ul>
+<li>在源节点和目的结点建立一条专用通路，包括建立连接、传输数据、断开连接单个阶段。如传统电话网络</li>
+<li>整个报文的比特流在源点和目的地连续，数据直接传送，时延小；线路利用率低，不便于差错控制</li>
+</ul>
+</li>
+<li><p>报文交换网络</p>
+<ul>
+<li>用户数据+原地址+目的地址+校验码等封装成报文。报文可经过相邻结点存储转发到目的。</li>
+<li>整个报文先到相邻结点，全部存储后再查转发表转发。较为充分利用线路容量，可以实现不同链路的数据率转换，实现格式转换，实现一对多、多对一访问，实现差错控制；增大资源开销，增加缓冲时延，需要额外控制机制，缓冲区难以管理</li>
+</ul>
+</li>
+<li><p>分组交换网络</p>
+<ul>
+<li><p>将数据分为固定长度数据块，在每个数据块上加地址和校验码成组，以存储转发方式传输</p>
+</li>
+<li><p>单个分组到相邻结点分组转发。不仅具备报文交换网络的优点，还有缓冲易于管理，包的平均时延更小，网络占用的平均缓冲区更少，更易于标准化，更适合应用的优点。</p>
+<ul>
+<li>现在的主流网络</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>按传输介质</p>
+<ul>
+<li><p>有线</p>
+<ul>
+<li>双绞线、同轴电缆</li>
+</ul>
+</li>
+<li><p>无线</p>
+<ul>
+<li>蓝牙、微波、无线电</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h3><ul>
+<li><p>RFC成为因特网正式标准的阶段</p>
+<ul>
+<li><p>因特网草案</p>
+<ul>
+<li>还不是RFC文档</li>
+</ul>
+</li>
+<li><p>建议标准</p>
+<ul>
+<li>开始成为RFC文档</li>
+</ul>
+</li>
+<li><p>草案标准</p>
+</li>
+<li><p>因特网标准</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h3><ul>
+<li><p>速率</p>
+<ul>
+<li>数据率或比特率。传送数据的速率。最高数据率称为带宽。b&#x2F;s</li>
+</ul>
+</li>
+<li><p>带宽</p>
+<ul>
+<li><p>数字信道所能传送的最高数据率。bit&#x2F;s</p>
+<ul>
+<li>通信线路允许通过的信号频带范围。Hz</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>吞吐量</p>
+<ul>
+<li>单位时间内通过某个网络(或信道、接口)的实际数据率。bit&#x2F;s（或帧、字节）</li>
+</ul>
+</li>
+<li><p>时延</p>
+<ul>
+<li><p>发送时延</p>
+<ul>
+<li><p>从发送分组第一个比特起，到最后一个比特发送完的时间，也叫传播时延</p>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>&#x3D;\frac{分组长度bit}{信道宽度(发送速率）bit&#x2F;s}<br>$$</p>
+<pre><code>- 传播时延
+
+    - 一个比特从链路的一端传播到另一端所需时间
+
+        - 
+</code></pre>
+<p>$$<br>&#x3D;\frac{信道长度m}{电磁波在信道上的传播速率m&#x2F;s}<br>$$</p>
+<pre><code>- 处理时延
+
+    - 在交换机存储转发所需时间，如差错检查、找路由器
+
+- 排队时延
+
+    - 分组在进入路由器后要在输入队列排队，路由器确定转发端口后要在输出队列排队
+
+- 总时延
+
+    - 以上四种之和，排队和处理时延一般可忽略不计
+</code></pre>
+<ul>
+<li><p>时延带宽积</p>
+<ul>
+<li><p>以比特为单位的链路长度，第一个比特到达终点时发送端已发出多少个比特</p>
+<ul>
+<li>&#x3D;传播时延 × 带宽</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>往返时延</p>
+<ul>
+<li><p>从发送到收到确认的时间</p>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>有效数据率&#x3D;\frac{数据长度}{发送时间+RTT}<br>$$</p>
+<ul>
+<li><p>信道利用率</p>
+<ul>
+<li><p>某一信道有百分之多少的时间是有数据通过的</p>
+<ul>
+<li>信道利用率过高会产生非常大的时延</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>网络当前时延&#x3D;\frac{网络空闲时的时延}{1-信道利用率}<br>$$</p>
+<h2 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h2><h3 id="计算机网络分层结构"><a href="#计算机网络分层结构" class="headerlink" title="计算机网络分层结构"></a>计算机网络分层结构</h3><ul>
+<li><p>分层原则</p>
+<ul>
+<li>每层实现一种相对独立的功能，降低大系统复杂度</li>
+<li>各层之间界面自然清晰，易于理解，相互交流尽可能少</li>
+<li>各层功能的精确定义独立于具体的实现方法，可以采用最合适的技术实现</li>
+<li>保持下层对上层的独立性，上层单向使用下层提供的服务</li>
+<li>整个分层结构应能促进标准化工作</li>
+</ul>
+</li>
+<li><p>各层完成的主要功能</p>
+<ul>
+<li><p>差错控制</p>
+<ul>
+<li>相应层次对等方的通信更加可靠</li>
+</ul>
+</li>
+<li><p>流量控制</p>
+<ul>
+<li>发送端的发送速率必须要使接收端来得及接收</li>
+</ul>
+</li>
+<li><p>分段和重装</p>
+<ul>
+<li>在发送段将数据块划分，在接收端还原</li>
+</ul>
+</li>
+<li><p>复用和分用</p>
+<ul>
+<li>发送端几个高层会话复用一条低层连接，在接收端再进行分用</li>
+</ul>
+</li>
+<li><p>连接建立和释放</p>
+<ul>
+<li>交换数据前先建立一条逻辑连接，传送结束后释放连接</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><ul>
+<li><p>同一结点内相邻两层间交换信息的连接点，是一个系统内部规定</p>
+</li>
+<li><p>相邻两层通过SAP进行交互，服务通过SAP提供给上层。每个SAP都有一个地址，是逻辑接口。</p>
+<ul>
+<li>应用层：用户界面</li>
+<li>传输层：端口号</li>
+<li>网络层：IP地址</li>
+<li>数据链路层：MAC地址(网卡地址)</li>
+<li>物理层：网卡接口</li>
+</ul>
+</li>
+</ul>
+<h3 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h3><ul>
+<li><p>下层为紧邻的上层提供的功能调用</p>
+<ul>
+<li>并非一层中完成的全部功能都是服务只有被高层看见的功能才是服务</li>
+</ul>
+</li>
+<li><p>服务原语</p>
+<ul>
+<li><p>请求</p>
+<ul>
+<li>服务用户(上层)发给服务提供者(下层)，请求完成某些工作</li>
+</ul>
+</li>
+<li><p>指示</p>
+<ul>
+<li>下→上，指示用户做某件事</li>
+</ul>
+</li>
+<li><p>响应</p>
+<ul>
+<li>上→下，对指示的响应</li>
+</ul>
+</li>
+<li><p>证实</p>
+<ul>
+<li>下→上，对请求的证实</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>分类</p>
+<ul>
+<li>面向连接服务、无连接服务</li>
+<li>可靠服务、不可靠服务</li>
+<li>有应答服务、无应答服务</li>
+</ul>
+</li>
+</ul>
+<h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h3><ul>
+<li><p>协议是控制两个或多个对等实体进行通信的规则的集合</p>
+<ul>
+<li>实体：任何可发送或接收信息的硬件或软件进程</li>
+</ul>
+</li>
+<li><p>组成</p>
+<ul>
+<li><p>语法</p>
+<ul>
+<li>定义传输数据的格式</li>
+</ul>
+</li>
+<li><p>语义</p>
+<ul>
+<li>所要完成的功能，需要发出何种控制信息、完成何种动作及作出何种应答</li>
+</ul>
+</li>
+<li><p>同步</p>
+<ul>
+<li>事件实现顺序的详细说明</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>特点</p>
+<ul>
+<li>协议必须把所有不利条件都事先估算到</li>
+<li>必须非常仔细地检查这个协议能否应付各种异常情况</li>
+</ul>
+</li>
+</ul>
+<h3 id="ISO-x2F-OSI参考模型TCP-x2F-IP模型"><a href="#ISO-x2F-OSI参考模型TCP-x2F-IP模型" class="headerlink" title="ISO&#x2F;OSI参考模型TCP&#x2F;IP模型"></a>ISO&#x2F;OSI参考模型TCP&#x2F;IP模型</h3><ul>
+<li><p>体系结构</p>
+<ul>
+<li><p>计算机网络各层及其协议的集合，抽象（真正在运行的计算机硬件和软件是具体的）</p>
+</li>
+<li><p>OSI 七层</p>
+<ul>
+<li><p>应用层</p>
+<ul>
+<li>为特定类型网络应用提供访问OSI环境的手段，提供用户与网络的接口，最复杂的一层</li>
+</ul>
+</li>
+<li><p>表示层</p>
+<ul>
+<li>处理在两个通信系统中交换信息的表示方式。采用抽象的标准方法定义数据结构，并采用标准编码形式；提供数据压缩、加密和解密功能</li>
+</ul>
+</li>
+<li><p>会话层</p>
+<ul>
+<li>允许不同主机上的各个进程之间进行会话，向表示层提供会话服务，即为表示层实体或用户进程间建立连接并在连接上有序地传输数据，也叫建立同步SYN</li>
+<li>负责建立、管理、终止主机进程间的会话，可以使用校验点使通信会话在通信失效时从校验点继续恢复通信，实现数据同步</li>
+</ul>
+</li>
+<li><p>运输层</p>
+<ul>
+<li>传输单位是报文段(TDP)或数据段(UDP)</li>
+<li>主要任务是主机中两个进程的通信</li>
+<li>功能是可靠传输、流量控制、差错服务、服务质量、数据传输管理</li>
+<li>传输层是端到端，不同主机的两个进程间，一个进程由一个端口标识；数据链路层是点到点，主机与主机</li>
+</ul>
+</li>
+<li><p>网络层</p>
+<ul>
+<li>传输单位是数据报；关心的是子网的运行控制，控制报文通过路由选择；</li>
+<li>主要任务是把网络层的协议数据单元(分组)，从源端传到目的端，为分组交换网上的不同主机提供通信服务</li>
+<li>功能是流量控制、拥塞控制、差错控制和网络互联</li>
+</ul>
+</li>
+<li><p>数据链路层</p>
+<ul>
+<li>传输单位是帧；保证数据正确的顺序和完整性</li>
+<li>任务是将网络层传来的IP数据报组装成帧；</li>
+<li>功能是成帧、差错控制、流量控制、传输管理、物理寻址。</li>
+<li>有一个特殊子层—介质访问子层，控制对共享信道的访问</li>
+</ul>
+</li>
+<li><p>物理层</p>
+<ul>
+<li><p>传输单位是比特；处理信号通过介质传输</p>
+</li>
+<li><p>任务是透明地传输比特流；</p>
+</li>
+<li><p>功能是传输原始比特流</p>
+</li>
+<li><p>研究内容</p>
+<ul>
+<li>通信链路与通信结点连接的电路接口(网线接口)，物理层规定了接口的参数</li>
+<li>规定通信链路上传输的信号的意义和电气特征</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>（物理媒体，如双绞线、光缆等，在物理层下面，第0层）</p>
+</li>
+</ul>
+</li>
+<li><p>TCP&#x2F;IP 四层</p>
+<ul>
+<li><p>应用层</p>
+<ul>
+<li>包含所有高层协议，Telnet、FTP、DNS、SMTP、HTTP</li>
+</ul>
+</li>
+<li><p>运输层 TCP或UDP</p>
+<ul>
+<li>相似</li>
+</ul>
+</li>
+<li><p>网络层 IP</p>
+<ul>
+<li>关键部分，与OSI网络层功能层非常相似IP是核心协议</li>
+</ul>
+</li>
+<li><p>网络接口层</p>
+<ul>
+<li>（没有具体内容）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>一些对比</p>
+<ul>
+<li><p>OSI在网络层同时提供无连接和面向连接服务，在传输层仅支持面向连接的通信</p>
+<ul>
+<li>TCP&#x2F;IP在网络层仅有无连接通信，在传输层同时提供无连接和面向连接服务</li>
+</ul>
+</li>
+<li><p>路由器有3层(OSI)2层(TCP&#x2F;IP)，转发分组最高到网络层</p>
+<ul>
+<li>TCP&#x2F;IP协议是互联网的核心技术</li>
+</ul>
+</li>
+<li><p>集线器hub工作在物理层，交换机(多端口网桥)工作在数据链路层</p>
+</li>
+</ul>
+</li>
+<li><p>五层协议</p>
+<ul>
+<li>5.应用层</li>
+<li>4.运输层</li>
+<li>3.网络层</li>
+<li>2.数据链路层</li>
+<li>1.物理层</li>
+</ul>
+</li>
+<li><p>我们的交流是进程在交流</p>
+<ul>
+<li>需要应用层协议，加上应用层首部，成为应用层PDU，只有对方应用层能看得懂（得知是发给哪一层）</li>
+<li>需要运输层运送，再加上运输层首部，成为运输层报文（表达本层功能）</li>
+<li>加上网络层首部，成为IP数据报（分组）</li>
+<li>加上链路层首部和底部，成为数据链路层帧</li>
+<li>物理层开始传送到物理媒介</li>
+<li>到另一物理层</li>
+<li>上交给数据链路层</li>
+<li>如果完整，剥去帧首尾部，取出数据交给3层</li>
+<li>如果完整剥去首部，交给4</li>
+<li>如果完整剥去首部，交给5</li>
+<li>上交给应用进程</li>
+</ul>
+</li>
+<li><p>各层中间设备</p>
+<ul>
+<li><p>中间设备，中继器。屏蔽上层所有协议不同，屏蔽下层所有物理接口不同</p>
+</li>
+<li><p>物理层</p>
+<ul>
+<li><p>转发器(中继器)、集线器</p>
+<ul>
+<li><p>不能隔离冲突域</p>
+<ul>
+<li>不能隔离广播域</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据链路层</p>
+<ul>
+<li><p>网桥(桥接器)，交换机</p>
+<ul>
+<li><p>能</p>
+<ul>
+<li>不能</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>网络层</p>
+<ul>
+<li><p>路由器，历史上也叫网关</p>
+<ul>
+<li><p>能</p>
+<ul>
+<li>能</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>网络层以上</p>
+<ul>
+<li><p>网关</p>
+<ul>
+<li>两个不兼容系统需要在高层进行协议转换</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  
+</article>
+    </main>
+    <footer id="footer">
+  Copyright &copy;
+  2022
+  BONE
+  
+  
+    <a class="social-links" target="_blank" rel="noopener" href="https://github.com/FloatinDLE"><i class="blogfont">&#xe6b7; </i></a>
+  
+    <a class="social-links" href="mailto:bone_n@foxmail.com"><i class="blogfont">&#xe61a; </i></a>
+  
+    <a class="social-links" href="/atom.xml"><i class="blogfont">&#xe640; </i></a>
+  
+  
+</footer>
+    <!-- scripts -->
+
+<script src="/scripts/main.js"></script>
+
+  </body>
+</html>
