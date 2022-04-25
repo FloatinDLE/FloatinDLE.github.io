@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html  lang=en>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+    <link rel="shortcut icon" href="/images/kou.ico ">
+    
+    
+    <link rel="icon" type="image/png" href="/images/favicon-android.png " sizes="192x192">
+    
+    
+    <link rel="apple-touch-icon" href="/images/favicon-apple.png " sizes="180x180">
+    
+  
+  <!-- title -->
+  <title>地下室 凸包问题 </title>
+  <!-- styles -->
+  <!-- styles -->
+
+<link rel="stylesheet" href="/styles/global.css">
+
+  <!-- rss -->
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+  <body>
+    <header id="header">
+  
+  <nav class="menu menu--right">
+  
+    <a class="menu__item" href="/">主页</a>
+    <a class="menu__item" href="/archives/">归档</a>
+    <a class="menu__item" href="/categories/">专题</a>
+    <a class="menu__item" href="/tags/">标签</a>
+    <!-- <a class="menu__item" href="/">作品</a> -->
+    <!-- <a class="menu__item" href="/about/">关于</a> -->
+  </nav>
+</header>
+    <main>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post__header">
+  <h1 class="post__title">凸包问题</h1>
+  
+  
+  <div class="post__meta">
+    
+<time class="post__date" datetime="2022-04-05T01:43:25.000Z" itemprop="datePublished">
+  
+  <i class="blogfont">&#xedff;</i>
+  
+  2022-04-05 09:43:25
+</time>
+
+    
+<div class="post__category">
+  <i class="blogfont">&#xe62d;</i>
+  <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+</div>
+  
+
+    
+
+    <div id="/2022/04/05/%E5%87%B8%E5%8C%85%E9%97%AE%E9%A2%98/" class="leancloud_visitors post__stat" data-flag-title="凸包问题">
+  <i class="blogfont">&#xe672;</i>
+  <span class="leancloud-visitors-count">loading...</span>
+</div>
+  </div>
+</header>
+  <aside class="post__aside">
+  <div class="post__actions">
+    <a id="backTop" class="post__top" href="javascript:">
+      <i class="blogfont">&#xe6b1;</i><!-- Top -->
+    </a>
+    <a id="share" class="post__share" href="javascript:">
+      <i class="blogfont">&#xe6c1;</i>
+    </a>
+  </div>
+  <ol class="post__toc"><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E7%AE%97%E6%B3%95"><span class="post__toc-text">算法</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">1.Jarvis步进法（包裹法）</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">2. Graham 算法</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">3. Andrew 算法</span></a></li></ol></li></ol>
+</aside>
+  <div class="post__content" itemprop="articleBody">
+    <p><img src="/images/ConvexHull.png"><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/erect-the-fence/">Leetcode 587.安装栅栏</a></p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3>1.Jarvis步进法（包裹法）</h3>
+首先必须要从凸包上的某一点开始，比如从给定点集中最左边的点开始，例如最左的一点A1​。然后选择A2​ 点使得所有点都在向量 A1-A2​
+​的左方或者右方，我们每次选择左方，需要比较所有点[ 以A1为原点的 ]极坐标角度。然后以 A2为原点，重复这个步骤，依次找到 A3,A4,…,Ak,总共有k步，时间复杂度为O(kn)。 
+
+<p>-&gt;<em>给定原点 p，如何找到点 q，满足其余的点 r 均在向量pq的左边:</em></p>
+<blockquote>
+<p>我们可以知道两个向量 pq,qr的积大于 0 时，则两个向量之间的夹角小于 180°，此时可以知道 r一定在 pq的左边；叉积等于 0 时，则表示两个向量之间平行，p,q,r 在同一条直线上；叉积小于 0 时，则表示两个向量之间的夹角大于 180°,此时可以知道 r 一定在 pq 的右边。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int cross(vector&lt;int&gt;&amp; p,vector&lt;int&gt; &amp;q,vector&lt;int&gt; &amp;r)&#123;</span><br><span class="line">        return (q[0]-p[0])*(r[1]-q[1])-(q[1]-p[1])*(r[0]-q[0]);</span><br><span class="line">    &#125;//判断r在pq的左边=pq、qr逆时针夹角&lt;180（&gt;0）、右边（&lt;0）</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; outerTrees(vector&lt;vector&lt;int&gt;&gt;&amp; trees) &#123;</span><br><span class="line">        int n=trees.size();</span><br><span class="line">        if(n&lt;4) return trees;</span><br><span class="line">        int leftest=0;</span><br><span class="line">        for(int i=1;i&lt;n;i++)&#123;</span><br><span class="line">            if(trees[i][0]&lt;trees[leftest][0]) </span><br><span class="line">                leftest=i;//找到最左边的点</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; ans;</span><br><span class="line">        vector&lt;bool&gt; visited(n,false); //记录是否访问过</span><br><span class="line">        int p=leftest;</span><br><span class="line">        do&#123;</span><br><span class="line">            int q=(p+1)%n;</span><br><span class="line">            for(int r=0;r&lt;n;r++)&#123;</span><br><span class="line">                if(cross(trees[p],trees[q],trees[r])&lt;0)</span><br><span class="line">                    q=r; //r在pq的右侧则q=r</span><br><span class="line">            &#125; //遍历所有点 r，找到对于点 p 来说逆时针方向最靠外的点 q</span><br><span class="line"></span><br><span class="line">            //找到在pq线上的点,和q一起加入边界</span><br><span class="line">            for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">                if(visited[i]||i==p||i==q) continue;</span><br><span class="line">                if(cross(trees[p],trees[q],trees[i])==0)&#123;</span><br><span class="line">                    ans.emplace_back(trees[i]);</span><br><span class="line">                    visited[i]=true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(!visited[q])&#123;</span><br><span class="line">                ans.emplace_back(trees[q]);</span><br><span class="line">                visited[q]=true;</span><br><span class="line">            &#125;</span><br><span class="line">            p=q;</span><br><span class="line">        &#125;while(p!=leftest);//回到原点，遍历完成;原点在最后一次循环加入答案</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3>2. Graham 算法</h3>
+
+<p>首先选择一个凸包上的初始点 bottom。我们选择 y 坐标最小的点为起始点，我们可以肯定 bottom 一定在凸包上，将给定点集按照相对的以 bottom 为原点的极角大小进行<strong>排序</strong>。</p>
+<h3>3. Andrew 算法</h3>
+
+<p>Andrew 使用单调链算法，该算法与Graham 扫描算分类似。它们主要的不同点在于凸壳上点的顺序。与 Graham 扫描算法按照点计较顺序排序不同，我们按照点的 x 坐标排序，如果两个点又相同的 x 坐标，那么就按照它们的 y 坐标排序。显然排序后的最大值与最小值一定在凸包上，而且因为是凸多边形，我们如果从一个点出发逆时针走，轨迹总是「左拐」的，一旦出现右拐，就说明这一段不在凸包上，因此我们可以用一个单调栈来维护上下凸壳。</p>
+
+  </div>
+  
+</article>
+    </main>
+    <footer id="footer">
+  Copyright &copy;
+  2022
+  BONE
+  
+  
+    <a class="social-links" target="_blank" rel="noopener" href="https://github.com/FloatinDLE"><i class="blogfont">&#xe6b7; </i></a>
+  
+    <a class="social-links" href="mailto:bone_n@foxmail.com"><i class="blogfont">&#xe61a; </i></a>
+  
+    <a class="social-links" href="/atom.xml"><i class="blogfont">&#xe640; </i></a>
+  
+  
+</footer>
+    <!-- scripts -->
+
+<script src="/scripts/main.js"></script>
+
+  </body>
+</html>

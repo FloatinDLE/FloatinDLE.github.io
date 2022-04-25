@@ -55,14 +55,14 @@
     
 <div class="post__category">
   <i class="blogfont">&#xe62d;</i>
-  <a class="category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">-项目搭建</a>
+  <a class="category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">项目搭建</a>
 </div>
   
 
     
 <div class="post__tag">
   <i class="blogfont">&#xe7ec;</i>
-  <a class="tag-link-link" href="/tags/Java%E5%90%8E%E7%AB%AF/" rel="tag">-Java后端</a>
+  <a class="tag-link-link" href="/tags/Java%E5%90%8E%E7%AB%AF/" rel="tag">Java后端</a>
 </div>
 
 
@@ -81,11 +81,811 @@
       <i class="blogfont">&#xe6c1;</i>
     </a>
   </div>
-  
+  <ol class="post__toc"><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E4%B8%80%E3%80%81-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%92%8C%E4%BE%9D%E8%B5%96"><span class="post__toc-text">一、 创建项目和依赖</span></a></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E4%BA%8C%E3%80%81-DAO%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BC%80%E5%8F%91"><span class="post__toc-text">二、 DAO层设计与开发</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">1. 数据库设计与编码</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">2. DAO实体和接口编码</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">3.基于MyBatis实现DAO</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">4. MyBatis整合Spring</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">5.DAO层单元测试</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E4%B8%89%E3%80%81Service%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BC%80%E5%8F%91"><span class="post__toc-text">三、Service层设计与开发</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">1.秒杀Service接口设计</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">2.秒杀Service接口实现</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">3.使用Spring托管Service依赖</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">3.使用Spring声明式事务配置</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">4.集成测试service逻辑</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E5%9B%9B%E3%80%81Web%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BC%80%E5%8F%91"><span class="post__toc-text">四、Web层设计与开发</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">1.整合配置Spring MVC框架</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">2.使用SpringMVC实现Restful接口</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">3.基于bootstrap开发页面结构</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">4.交互逻辑设计</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#%E4%BA%94%E3%80%81%E9%AB%98%E5%B9%B6%E5%8F%91%E4%BC%98%E5%8C%96"><span class="post__toc-text">五、高并发优化</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">1.Redis后端缓存优化</span></a></li></ol></li></ol>
 </aside>
   <div class="post__content" itemprop="articleBody">
-    <p>1.创建项目和依赖</p>
-<p>命令行：<br><code>mvn archetype:generate -DgroupId=org.seckill -DartifactId=seckill -DarchetypeArtifactId=maven-archetype-webapp </code></p>
+    <h2 id="一、-创建项目和依赖"><a href="#一、-创建项目和依赖" class="headerlink" title="一、 创建项目和依赖"></a>一、 创建项目和依赖</h2><blockquote>
+<p>maven的仓库在每台机器上创建一个本机仓库，把本机上所有maven项目依赖的jar包统一管理起来，而且这些jar包用“坐标”来唯一标识(注：坐标是另一个重要的概念，后面还会讲到，这里只要简单理解成“唯一识别某个jar包文件名、版本号”的标识即可)，这样所有maven项目就不需要再象以前那样把jar包复制到lib目录中，整个maven项目看起来十分清爽。</p>
+</blockquote>
+<p><strong>-命令行：</strong><br><code>mvn archetype:generate -DgroupId=org.seckill -DartifactId=seckill -DarchetypeArtifactId=maven-archetype-webapp </code></p>
+<p><strong>-信息：</strong></p>
+<p>Define value for property ‘groupId’: : org.seckill （可暂时先理解成类似package或namespace的名称，通常我们填写组织机构名称缩写）</p>
+<p>Define value for property ‘artifactId’: :seckill （组件名称，可暂时理解成项目名称）</p>
+<p>Define value for property ‘version’:  1.0-SNAPSHOT: : （版本号，直接回车，默认1.0-SNAPSHOT）</p>
+<p>Define value for property ‘package’:  org.seckill: : （打包后的jar文件名，相当于.net中项目最后生成的程序集dll名称）</p>
+<p>Confirm properties configuration:</p>
+<p>groupId: cnblogs</p>
+<p>artifactId: maven-hello-world</p>
+<p>version: 1.0-SNAPSHOT</p>
+<p>package: cnblogs</p>
+<p> Y: :  (直接回车确认)</p>
+<p>[INFO] —————————————————————————-</p>
+<p>[INFO] Using following parameters for creating project from Old (1.x) Archetype: maven-archetype-quickstart:1.1</p>
+<p>[INFO] —————————————————————————-</p>
+<p>[INFO] Parameter: package, Value: org.seckill</p>
+<p>[INFO] Parameter: groupId, Value: org.seckill</p>
+<p>[INFO] Parameter: artifactId, Value: seckill</p>
+<p>[INFO] Parameter: packageName, Value: org.seckill</p>
+<p>[INFO] Parameter: version, Value: 1.0-SNAPSHOT</p>
+<p>[INFO] ————————————————————————</p>
+<p>[INFO] BUILD SUCCESS (看到这个，表示项目创建成功！)</p>
+<p>[INFO] ————————————————————————</p>
+<p><strong>- 目录结构</strong></p>
+<p>├───src</p>
+<p>│&amp;emsp;├───main</p>
+<p>│&amp;emsp;│&amp;emsp;└───java  &#x2F;&#x2F;存放源代码</p>
+<p>│&amp;emsp;│&amp;emsp;&amp;emsp;└───cnblogs</p>
+<p>│&amp;emsp;└───test  &#x2F;&#x2F;存放单元测试代码</p>
+<p>│ &amp;emsp;&amp;emsp; └───java</p>
+<p>│ &amp;emsp;&amp;emsp;&amp;emsp;└───cnblogs</p>
+<p>└───target    &#x2F;&#x2F;存放编译、打包后的输出文件</p>
+<p>&amp;emsp;└───classes</p>
+<p>&amp;emsp;&amp;emsp;└───cnblogs</p>
+<p><strong>-在IDEA中import</strong></p>
+<p>直接选择创建好的项目中的pom.xml即可</p>
+<p><strong>-修改servlet版本</strong></p>
+<p>将tomcat&#x2F;webapps&#x2F;examples&#x2F;WEB-INF&#x2F;web.xml中的<webapp>信息粘贴到项目的web.xml中。<br><code>&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;          xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;          xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;          version=&quot;4.0&quot;          metadata-complete=&quot;true&quot;&gt; &lt;/web-app&gt;</code></p>
+<p><strong>-补全目录</strong></p>
+<p><img src="/images/newfloder.png" alt="project structure/modules"></p>
+<p><strong>-pom.xml下修改依赖</strong></p>
+<p>-使用Junit4: Junit3.0默认使用编程，4.0使用注解</p>
+<p>-补全项目依赖： </p>
+<p>1.日志 </p>
+<p>java日志：(规范&#x2F;接口）slf4j,（实现）log4j,logback,common-logging</p>
+<p>使用： slf4j + logback</p>
+<p>2.数据库</p>
+<p>驱动： MySQL</p>
+<p>连接池： c3p0</p>
+<p>3.DAO框架</p>
+<p>MyBatis: 自身 + 与spring的整合 mybatis-spring</p>
+<p>4.Servlet web</p>
+<p>JSP标签库： standard + jstl</p>
+<p>Jackson: json解析工具</p>
+<p>servlet-api</p>
+<p>5.spring</p>
+<p>spring 核心依赖：CORE, bean ,扩展</p>
+<p>spring dao层： 数据库事务管理器jdbc, 声明式事务tx</p>
+<p>spring web</p>
+<p>spring test</p>
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;4.11&lt;/version&gt;</span><br><span class="line">     &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;logback-core&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;1.2.3&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;!--实现核心功能--&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;logback-classic&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;1.2.3&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;!--实现并整合slf4j接口--&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;8.0.23&lt;/version&gt;</span><br><span class="line">     &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">	  &lt;groupId&gt;com.mchange&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;c3p0&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;0.9.5.2&lt;/version&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.mybatis&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;mybatis&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;3.5.2&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.mybatis&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;2.0.2&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;taglibs&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;standard&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;1.1.2&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;jstl&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;jstl&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;1.2&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;2.11.4&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;4.0.1&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-core&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;5.3.6&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;5.3.6&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-context&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;5.3.6&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;5.3.6&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;5.3.6&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-web&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;5.3.6&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;5.3.6&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-test&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;5.3.6&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h2 id="二、-DAO层设计与开发"><a href="#二、-DAO层设计与开发" class="headerlink" title="二、 DAO层设计与开发"></a>二、 DAO层设计与开发</h2><blockquote>
+<p>DAO(Data Access Object) 数据访问对象是一个面向对象的数据库接口</p>
+<p>这一步将完成接口设计和SQL编写</p>
+</blockquote>
+<h3>1. 数据库设计与编码</h3>
+
+<p><strong>-新建main&#x2F;sql&#x2F;schema.sql（初始化数据库脚本）</strong></p>
+<p>创建数据库：<br>CREATE DATABASE seckill;</p>
+<p>使用数据库：<br>use seckill;</p>
+<p>创建秒杀库存表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABKE seckill(</span><br><span class="line"></span><br><span class="line">`seckill_id`*主键* bigint *最大的int类型* NOT NULL AUTO_INCREMENT *自增* COMMENT &#x27;商品库存id&#x27;,</span><br><span class="line"></span><br><span class="line">`name` varchar(120) NOT NULL COMMENT &#x27;商品名称&#x27;,</span><br><span class="line"></span><br><span class="line">`number` int NOT NULL COMMENT &#x27;库存数量&#x27;,</span><br><span class="line"></span><br><span class="line">`start_time` timestamp NOT NULL COMMENT &#x27;秒杀开启时间&#x27;,</span><br><span class="line"></span><br><span class="line">`end_time` timestamp NOT NULL COMMENT &#x27;秒杀结束时间&#x27;,</span><br><span class="line"></span><br><span class="line">`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP  *默认当前时间* COMMENT &#x27;创建时间&#x27;,</span><br><span class="line"></span><br><span class="line">*设计索引*</span><br><span class="line"></span><br><span class="line">PRIMARY KEY (seckill_id),</span><br><span class="line"></span><br><span class="line">key idx_start_time(start_time),</span><br><span class="line"></span><br><span class="line">key idx_end_time(end_time),</span><br><span class="line"></span><br><span class="line">key idx_create_time(create_time) *加快搜索*</span><br><span class="line"></span><br><span class="line">)ENGINE=InnoDB *搜索引擎，只有InnoDB支持事务* AUTO_INCREMENT=1000 *自增主键，默认为1，设为1000* DEFAULT CHARSET=utf8 *默认字符集* COMMENT=&#x27;秒杀库存表&#x27; *注释*;</span><br></pre></td></tr></table></figure>
+
+<p>初始化数据：</p>
+<p>insert into seckill(name,number,start_time,end_time)</p>
+<p>values<br>(‘99元秒杀T恤福袋’,100,’2020-8-15 00:00:00’,’2020-8-16 00:00:00’);</p>
+<p>秒杀成功明细表：</p>
+<p><em>用户登录认证相关信息</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE success_killed(</span><br><span class="line">    `seckill_id` bigint NOT NULL COMMENT &#x27;商品库存id&#x27;,</span><br><span class="line">    `user_phone` bigint NOT NULL COMMENT &#x27;用户手机号&#x27;,</span><br><span class="line">    `state` tinyint NOT NULL  DEFAULT -1 COMMENT &#x27;状态，-1：无效，0：成功，1：已付款，2：已发货&#x27;,</span><br><span class="line">    `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP  COMMENT &#x27;创建时间&#x27;,</span><br><span class="line">    PRIMARY KEY (seckill_id,user_phone),//联合主键，唯一性</span><br><span class="line">    key idx_create_time(create_time)</span><br><span class="line">)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&#x27;秒杀成功明细表&#x27;; </span><br></pre></td></tr></table></figure>
+
+<p>连接数据库控制台：<br>mysql -uroot -p123456(密码)</p>
+<h3>2. DAO实体和接口编码</h3>
+
+<p><strong>-新建main&#x2F;java&#x2F;org.seckill&#x2F;dao和entity</strong></p>
+<p><strong>-entity下新建seckill类、successKilled类</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class seckill &#123;</span><br><span class="line">  //根据SecKill表创建属性</span><br><span class="line"></span><br><span class="line">    private long seckillId;</span><br><span class="line">    private String name;</span><br><span class="line">    private int number;</span><br><span class="line">    private Date startTIme;</span><br><span class="line">    private Date endTime;</span><br><span class="line">    private Date createTime;</span><br><span class="line"></span><br><span class="line">//按组合键：Alt+Insert，打开Generate(or Code-generate)，选择Getter and Setter 选项+ toString,再按 Ctrl+A 全选所有属性，回车</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>-DAO下新建seckillDao接口、successKilledDao接口(对实体的增删改查)</strong></p>
+<p>public interface seckillDao {<br>    &#x2F;&#x2F;减库存<br>    int reduceNumber(long seckillId, Date killTime);</p>
+<pre><code>//根据id查询对象
+seckill queryById(long seckillId);
+//根据偏移量查询列表
+List&lt;seckill&gt; queryAll(int offset,int limit);
+</code></pre>
+<p>}</p>
+<p>public interface successKilledDao {<br>    &#x2F;&#x2F;记录用户购买明细，可过滤重复（联合主键）<br>    int insertSuccessKilled(long seckillId,long userPhone);</p>
+<pre><code>//根据id查询当前秒杀成功对象并携带seckill实体
+successKilled queryByIdWithSeckill(long seckillId,long userPhone);
+</code></pre>
+<p>}</p>
+<h3>3.基于MyBatis实现DAO</h3>
+
+<blockquote>
+<p>MyBatis–对象关系半自动映射框架（还有HIBERNATE，封装性高、复杂、全自动化)。工作在映射层，把数据库中的数据映射到对象，对象映射到数据库。（JDBC需手写，mybatis内部封装了JDBC，简化加载驱动、创建连接等过程）最大化展现SQL技巧</p>
+<p>特点：自己提供的参数和SQL，通过内部API，对entity&#x2F;list做封装并返回结果。</p>
+<p>怎么用：XML提供SQL（推荐）&#x2F;注解提供SQL + Mapper自动实现DAO接口（推荐）&#x2F;API编程方式实现DAO接口</p>
+</blockquote>
+<blockquote>
+<p>万事不决，查阅<a target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/index.html">官方文档</a></p>
+</blockquote>
+<p><strong>-在&#x2F;main&#x2F;resource下创建mybatis全局文件mybatis-config.xml，创建存放SQL映射的目录mapper</strong></p>
+<p><strong>-mybatis-config.xml</strong></p>
+<p>从官方文档中拿到xml标签约束：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE configuration
+  PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+  &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+</code></pre>
+<p>配置：</p>
+<pre><code>&lt;configuration&gt;
+&lt;!--配置全局属性--&gt;
+&lt;settings&gt;
+&lt;!--使用jdbc的getGeneratedKeys获取数据库自增主键值--&gt;
+&lt;setting name=&quot;useGeneratedKeys&quot; value=&quot;true&quot;/&gt;
+&lt;!--使用列别名（name)替换列名（title），默认就是true == select name as title from title--&gt;
+&lt;setting name=&quot;useColumnLabel&quot; value=&quot;true&quot;/&gt;
+&lt;!--开启驼峰命名转换：table(create_time)(下划线规范） -&gt; Entity(creatTime)（驼峰命名规范）--&gt;
+&lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot;/&gt;
+&lt;/settings&gt;
+&lt;/configuration&gt;
+</code></pre>
+<p><strong>-mapper(mapper目的：为DAO接口方法提供SQL语句配置)</strong></p>
+<p>从官方文档中拿到mapper的xml配置：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper
+  PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+  &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+</code></pre>
+<p>secKillDao.xml:</p>
+<pre><code>&lt;mapper namespace=&quot;org.seckill.dao.seckillDao&quot;&gt;
+
+&lt;!--secKillDAO中的reduceNumber方法--&gt;
+&lt;update id=&quot;reduceNumber&quot;&gt;
+&lt;!--具体SQL--&gt;
+update seckill
+set number =number -1
+where seckill_id =#&#123;seckillId&#125;
+and start_time &lt;![CDATA[&lt;=]]#&#123;killTime&#125;
+and end_time &gt;= #&#123;killTime&#125;
+and number &gt;0;
+&lt;/update&gt;
+
+&lt;select id=&quot;queryById&quot; resultType=&quot;seckill&quot; parameterType=&quot;long&quot;&gt;
+select seckill_id, name,number,start_time,end_time,create_time
+from seckill
+where seckill_id = #&#123;seckillId&#125;
+&lt;/select&gt;
+
+&lt;select id=&quot;queryAll&quot; resultType=&quot;seckill&quot;&gt;
+select seckill_id,name, number,start_time,end_time,create_time
+from seckill
+order by create_time desc
+limit #&#123;offset&#125;,#&#123;limit&#125;
+&lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+<p>successKilledDao.xml:</p>
+<pre><code>&lt;mapper namespace=&quot;org.seckill.dao.successKilledDao&quot;&gt;
+&lt;insert id=&quot;insertSuccessKilled&quot;&gt;
+&lt;!--ignore:主键冲突时不报错，不插入返回0--&gt;
+insert ignore into success_killed(seckill_id,user_phone)
+values (#&#123;seckillId&#125;,#&#123;userPhone&#125;)
+&lt;/insert&gt;
+
+&lt;select id=&quot;queryByIdWithSeckill&quot; resultType=&quot;org.seckill.entity.successKilled&quot;&gt;
+&lt;!--如何告诉mybatis把结果映射到successKilled同时映射seckill属性--&gt;
+select
+sk.seckill_id,
+sk.user_phone,
+sk.create_time,
+sk.state,
+
+s.seckill_id &quot;seckill.seckill_id&quot;,
+s.name &quot;seckill.name&quot;,
+s.number &quot;seckill.number&quot;,
+s.start_time &quot;seckill.start_time&quot;,
+s.end_time &quot;seckill.end_time&quot;,
+s.create_time &quot;seckill.create_time&quot;
+from success_killed sk &lt;!--表别名--&gt;
+inner  join seckill s on sk.seckill_id =s.seckill_id &lt;!--链接条件--&gt;
+where sk.seckill_id = #&#123;seckillId&#125; and sk.user_phone=#&#123;userPhone&#125;
+&lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+<h3>4. MyBatis整合Spring</h3>
+
+<blockquote>
+<p>整合目标：</p>
+<p>更少编码（只写接口（结果集 行为（参数）），不写实现类）；</p>
+<p>更少配置（别名，package scan;配置扫描，自动扫描所有mapper下.xml文件作为SQL配置文件；dao实现，自动实现dao接口并自动注入spring容器)；<strong>约定 &gt; 配置</strong></p>
+<p>足够的灵活性（自己定制SQL，自由传参，结果集自动赋值）。</p>
+</blockquote>
+<p><strong>-&#x2F;main&#x2F;resource下新建spring目录（存放spring配置）</strong></p>
+<p><strong>-目录下新建spring-dao.xml（所有关于dao的配置）</strong>：</p>
+<p><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-framework#learn">spring官方文档</a> 下找到容器Container相关1.2.1中的xml配置：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+</code></pre>
+<p><strong>-配置整合mybati过程</strong>：</p>
+<p>1.配置数据库相关参数<br>    <code>&lt;context:property-placeholder location=&quot;classpath: jdbc.properties&quot;/&gt;</code></p>
+<p>  <em>在resourc下新建jdbc.properties:</em></p>
+<pre><code>jdbc.driver=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://127.0.0.1:3306/seckill?useUnicode=true&amp;characterEncoding=utf8
+jdbc.username=root
+jdbc.password=123456
+</code></pre>
+<p><em>查看端口号：mysql&gt; show global variables like ‘port’;</em></p>
+<p><em>127.x.x.x(主机号非全0全1）：本地回送地址&#x3D;localhost</em></p>
+<p>2.数据库连接池</p>
+<pre><code>&lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;
+    &lt;!--配置连接池属性--&gt;
+    &lt;property name=&quot;driverClass&quot; value=&quot;$&#123;jdbc.driver&#125;&quot;/&gt;
+    &lt;property name=&quot;jdbcUrl&quot; value=&quot;$&#123;jdbc.url&#125;&quot;/&gt;
+    &lt;property name=&quot;user&quot; value=&quot;$&#123;jdbc.username&#125;&quot;/&gt;
+    &lt;property name=&quot;password&quot; value=&quot;$&#123;jdbc.password&#125;&quot;/&gt;
+    &lt;!--配置c3p0连接池的私有属性，根据秒杀需求调整--&gt;
+    &lt;property name=&quot;maxPoolSize&quot; value=&quot;30&quot;/&gt;&lt;!--默认15--&gt;
+    &lt;property name=&quot;minPoolSize&quot; value=&quot;10&quot;/&gt;&lt;!--默认3--&gt;
+    &lt;property name=&quot;autoCommitOnClose&quot; value=&quot;false&quot;/&gt;&lt;!-- 连接关闭时默认将所有未提交的操作回滚。默认为false--&gt;
+    &lt;property name=&quot;checkoutTimeout&quot; value=&quot;1000&quot;/&gt;&lt;!--max用满时等待新连接的超时时间，默认为0，无限等待，死锁--&gt;
+    &lt;property name=&quot;acquireRetryAttempts&quot; value=&quot;2&quot;/&gt;&lt;!--获取连接失败时的重试次数--&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>3.配置SqlSessionFactory对象</p>
+<pre><code>&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+    &lt;!--注入数据库连接池--&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+    &lt;!--配置mybatis全局配置文件：mybatis-config.xml--&gt;
+    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:mybatis-config.xml&quot;/&gt;
+    &lt;!--扫描enti包，使用类名不带路径--&gt;
+    &lt;property name=&quot;typeAliasesPackage&quot; value=&quot;org.seckill.entity&quot;/&gt;
+    &lt;!--配置SQL配置文件：mapper需要的xml文件--&gt;
+    &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath:mapper/*.xml&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>4.配置扫描dao接口包，动态实现dao接口，并注入到spring容器中</p>
+<pre><code>    &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
+            &lt;!--注入sqlSessionFactory--&gt;
+            &lt;property name=&quot;sqlSessionFactoryBeanName&quot; value=&quot;sqlSessionFactory&quot;/&gt;
+            &lt;!--给出扫描dao接口包--&gt;
+            &lt;property name=&quot;basePackage&quot; value=&quot;org.seckill.dao&quot;/&gt;
+    &lt;/bean&gt;
+</code></pre>
+<h3>5.DAO层单元测试</h3>
+
+<p><strong>-测试seckillDAO</strong></p>
+<p>1.ctrl+shift+t  –&gt; create new test，选择Junit4，勾选所有方法</p>
+<p>2.配置spring和Junit整合</p>
+<p>Junit启动时加载Spring IOC容器</p>
+<pre><code>@RunWith(SpringJUnit4ClassRunner.class)
+</code></pre>
+<p>告诉Junit Spring配置文件</p>
+<pre><code>@ContextConfiguration(&#123;&quot;classpath:spring/spring-dao.xml&quot;&#125;)
+</code></pre>
+<p>开始测试：</p>
+<pre><code>public class seckillDaoTest &#123;
+//注入DAO实现类依赖
+@Resource
+private  seckillDao seckillDao;
+
+
+@Test
+public void testqueryById() throws Exception &#123;
+    long id=1000;
+    seckill seckill= seckillDao.queryById(id);
+    System.out.println((seckill.getName()));
+    System.out.println(seckill);
+    /**
+     * Debug结果：
+     * 99元秒杀T恤福袋
+     * seckill&#123;seckillId=1000, name=&#39;99元秒杀T恤福袋&#39;, number=100, startTIme=Sat Aug 15 08:00:00 CST 2020, endTime=Sun Aug 16 08:00:00 CST 2020, createTime=Tue Apr 19 04:46:59 CST 2022&#125;
+     */
+&#125;
+
+@Test
+public void queryAll() &#123;
+    /**
+     * Caused by: org.apache.ibatis.binding.BindingException:
+     * Parameter &#39;offset&#39; not found. Available parameters are [arg1, arg0, param1, param2]
+     */
+    //java没有保存形参的记录:queryAll(int offset,int limit) -&gt;queryAll(arg0,arg1)
+    //修改seckillDao.java:  List&lt;seckill&gt; queryAll(@Param(&quot;offset&quot;) int offset, @Param(&quot;limit&quot;) int limit);
+    List&lt;seckill&gt; seckills=seckillDao.queryAll(0,100);
+    for(seckill seckill:seckills)&#123;
+        System.out.println(seckill);
+    &#125;
+    /**
+     * 运行结果：
+     * seckill&#123;seckillId=1000, name=&#39;99元秒杀T恤福袋&#39;, number=100, startTIme=Sat Aug 15 08:00:00 CST 2020, endTime=Sun Aug 16 08:00:00 CST 2020, createTime=Tue Apr 19 04:46:59 CST 2022&#125;
+     * seckill&#123;seckillId=1001, name=&#39;198元秒杀22cm冰墩墩&#39;, number=50, startTIme=Sat Aug 15 08:00:00 CST 2020, endTime=Sun Aug 16 08:00:00 CST 2020, createTime=Tue Apr 19 04:46:59 CST 2022&#125;
+     * seckill&#123;seckillId=1002, name=&#39;4999元秒杀iPhone X&#39;, number=10, startTIme=Sat Aug 15 08:00:00 CST 2020, endTime=Sun Aug 16 08:00:00 CST 2020, createTime=Tue Apr 19 04:46:59 CST 2022&#125;
+     * seckill&#123;seckillId=1003, name=&#39;8000元秒杀尼康z镜头组&#39;, number=1000, startTIme=Sat Aug 15 08:00:00 CST 2020, endTime=Sun Aug 16 08:00:00 CST 2020, createTime=Tue Apr 19 04:46:59 CST 2022&#125;
+     */
+&#125;
+
+@Test
+public void reduceNumber() &#123;
+    //int reduceNumber(@Param(&quot;seckillId&quot;) long seckillId,@Param(&quot;killTime&quot;) Date killTime);
+    Date killTime=new Date();
+    int updateCount=seckillDao.reduceNumber(1000L,killTime);
+    System.out.println(&quot;更新时间:&quot;+updateCount);
+    /**
+     * 21:26:15.542 [main] DEBUG org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@f6d34c [wrapping: com.mysql.jdbc.JDBC4Connection@271dd6]]
+     * will not be managed by Spring ——没有被spring托管
+     * 21:26:15.549 [main] DEBUG org.seckill.dao.seckillDao.reduceNumber - ==&gt;  Preparing:
+     * update seckill
+     * set number =number -1
+     * where seckill_id =? and start_time &lt;= ? and end_time &gt;= ? and number &gt;0; ——我们的SQL语句
+     * 21:26:15.572 [main] DEBUG org.seckill.dao.seckillDao.reduceNumber - ==&gt; Parameters: 1000(Long), 2022-04-18 21:26:15.334(Timestamp), 2022-04-18 21:26:15.334(Timestamp)
+     * 21:26:15.577 [main] DEBUG org.seckill.dao.seckillDao.reduceNumber - &lt;==    Updates: 0 ——时间不对
+     * 更新时间:0
+     */
+&#125;
+&#125;
+</code></pre>
+<p><strong>-测试successKilledDAO</strong></p>
+<p>@RunWith(SpringJUnit4ClassRunner.class)<br>@ContextConfiguration({“classpath:spring&#x2F;spring-dao.xml”})<br>public class successKilledDaoTest {<br>    @Resource<br>    private  successKilledDao successKilledDao;</p>
+<pre><code>//int insertSuccessKilled(@Param(&quot;seckillId&quot;) long seckillId, @Param(&quot;userPhone&quot;) long userPhone);
+@Test
+public void insertSuccessKilled() &#123;
+    long id=1001L;
+    long phone=13502154786L;
+    int insertCount=successKilledDao.insertSuccessKilled(id,phone);
+    System.out.println(&quot;insertCount=&quot;+insertCount);
+    /**
+     * 第一次运行：
+     * insertCount=1
+     * 第二次运行：
+     * insertCount=0 （不允许重复插入，联合主键+ignore做到的）
+     */
+&#125;
+
+//successKilled queryByIdWithSeckill(@Param(&quot;seckillId&quot;) long seckillId, @Param(&quot;userPhone&quot;) long userPhone);
+@Test
+public void queryByIdWithSeckill() &#123;
+    long id=1000L;
+    long phone=13502154786L;
+    successKilled successKilled=successKilledDao.queryByIdWithSeckill(id,phone);
+    System.out.println(successKilled);
+    System.out.println(successKilled.getSeckill());
+    /**
+     * successKilled&#123;
+     * seckillId=1000,
+     * userPhone=13502154786,
+     * state=-1, ——无效
+     * createTime=Tue Apr 19 23:20:35 CST 2022
+     * &#125;
+     * seckill&#123;
+     * seckillId=1000,
+     * name=&#39;99元秒杀T恤福袋&#39;,
+     * number=100,
+     * startTIme=Sat Aug 15 08:00:00 CST 2020,
+     * endTime=Sun Aug 16 08:00:00 CST 2020,
+     * createTime=Tue Apr 19 04:46:59 CST 2022
+     * &#125;
+     *
+     * 修改successKilledDao.xml,插入时的state为0
+     * &lt;insert id=&quot;insertSuccessKilled&quot;&gt;
+     *     insert ignore into success_killed(seckill_id,user_phone,state)
+     *     values (#&#123;seckillId&#125;,#&#123;userPhone&#125;,0)
+     *&lt;/insert&gt;
+     *
+     * id改为1001再次测试：
+     *successKilled&#123;seckillId=1001, userPhone=13502154786,
+     * state=0,  ————成功
+     * createTime=Tue Apr 19 23:49:54 CST 2022&#125;
+     */
+&#125;
+</code></pre>
+<p>}</p>
+<center>✨DAO层设计完成！！✨</center>
+
+<hr>
+<h2 id="三、Service层设计与开发"><a href="#三、Service层设计与开发" class="headerlink" title="三、Service层设计与开发"></a>三、Service层设计与开发</h2><blockquote>
+<p>这一步将完成DAO拼接等逻辑</p>
+</blockquote>
+<h3>1.秒杀Service接口设计</h3>
+
+<p>-在&#x2F;main&#x2F;java&#x2F;org.seckill下新建service（存放service接口和实现类）、exception（存放异常，如重复秒杀）、dto（存放表示数据的类型，关注web和service间的数据传递）包。</p>
+<blockquote>
+<p>站在使用者的角度设计接口：</p>
+<p>1.方法定义粒度明确（秒杀系统应提供执行秒杀，而不是具体的减库存、插入成功记录）</p>
+<p>2.参数简练、直接</p>
+<p>3.返回类型友好</p>
+</blockquote>
+<p><strong>-在service包下新建SeckillService接口</strong></p>
+<pre><code>public interface SeckillService &#123;
+    //查询所有秒杀记录
+    List&lt;seckillgetSeckillList();
+    //查询单个秒杀记录
+    seckill getById(long seckillId);
+
+    //秒杀开始时输出（暴露）秒杀接口地址，否则输出系统时间和秒杀时间
+    //防止被恶意使用脚本秒杀
+    Exposer exportSeckillUrl(long seckillId);
+
+    //执行秒杀,md5验证用户URL是否被篡改
+    //如果执行异常
+    SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
+    throws SeckillException, RepeatKillException, SeckillCloseException;
+&#125;
+</code></pre>
+<p><strong>相应的DTO：</strong></p>
+<p>Exposer.java(暴露秒杀地址DTO,方便Service返回数据的封装):</p>
+<pre><code>public class Exposer &#123;
+    //秒杀是否开启
+    private  boolean exposed;
+    //一种加密措施
+    private  String md5;
+    //id
+    private  long seckillId;
+    //系统当前时间（毫秒）
+    private long now;
+    //开启时间
+    private long start;
+    //结束时间
+    private long end;
+    
+    //code-generate-constructor,不同构造方法方便对象初始化
+    public Exposer(boolean exposed, String md5, long seckillId) &#123;
+        this.exposed = exposed;
+        this.md5 = md5;
+        this.seckillId = seckillId;
+    &#125;
+    
+    public Exposer(boolean exposed, long seckillId) &#123;
+        this.exposed = exposed;
+        this.seckillId = seckillId;
+    &#125;
+    
+    public Exposer(boolean exposed, long seckillId,long now, long start, long end) &#123;
+        this.exposed = exposed;
+        this.seckillId = seckillId;
+        this.now = now;
+        this.start = start;
+        this.end = end;
+    &#125;
+        
+    //Getter and Setter--ctrl+A
+    
+&#125;
+</code></pre>
+<p>SeckillExecution.java（封装秒杀执行后结果）：</p>
+<pre><code>public class SeckillExecution &#123;
+    private  long seckillId;
+    //秒杀执行结果状态
+    private int state;
+    //状态表示
+    private String sateInfo;
+    //秒杀成功对象
+    private successKilled successKilled;
+    
+    //Constructor
+    public SeckillExecution(long seckillId, int state, String sateInfo, org.seckill.entity.successKilled successKilled) &#123;
+    this.seckillId = seckillId;
+    this.state = state;
+    this.sateInfo = sateInfo;
+    this.successKilled = successKilled;
+    &#125;
+    //失败
+    public SeckillExecution(long seckillId, int state, String sateInfo) &#123;
+    this.seckillId = seckillId;
+    this.state = state;
+    this.sateInfo = sateInfo;
+    &#125;
+    
+    //Getter and Setter————ALL
+&#125;
+</code></pre>
+<p><strong>相应的Exception:</strong></p>
+<p>SeckillException.java（秒杀相关业务异常（所有）（运行期异常）————还有编译期异常）:</p>
+<pre><code>public class SeckillException extends RuntimeException&#123;
+    //Constructor
+    public SeckillException(String message) &#123;
+        super(message);
+    &#125;
+    
+    public SeckillException(String message, Throwable cause) &#123;
+        super(message, cause);
+    &#125;
+&#125;
+</code></pre>
+<p>RepeatKillException.java（重复秒杀异常）:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class RepeatKillException extends SeckillException &#123;</span><br><span class="line">    public RepeatKillException(String message) &#123;</span><br><span class="line">        super(message);</span><br><span class="line">    &#125;</span><br><span class="line">    public RepeatKillException(String message, Throwable cause) &#123;</span><br><span class="line">        super(message, cause);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>SeckillCloseException.java(秒杀关闭异常):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SeckillCloseException</span> <span class="keyword">extends</span> <span class="title class_">SeckillException</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SeckillCloseException</span><span class="params">(String message)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(message);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SeckillCloseException</span><span class="params">(String message, Throwable cause)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(message, cause);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3>2.秒杀Service接口实现</h3>
+
+<p>-在service包下新建impl包，包中新建SeckillServiceImpl.java</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">public class SeckillServiceImpl implements SeckillService &#123;</span><br><span class="line">    //org.slf4j.LoggerFactory,统一的日志API</span><br><span class="line">    private Logger logger= LoggerFactory.getLogger(this.getClass());</span><br><span class="line">    private org.seckill.dao.seckillDao seckillDao;</span><br><span class="line">    private org.seckill.dao.successKilledDao successKilledDao;</span><br><span class="line"></span><br><span class="line">    //md5盐值字符串，用于混淆md5</span><br><span class="line">    private final String slat=&quot;23H•᷄ࡇ•᷅ZY9UKaq*@））￥8BFaR&quot;;</span><br><span class="line">    //code-generate-implementsMethod</span><br><span class="line">    public List&lt;seckill&gt; getSeckillList() &#123;</span><br><span class="line">        return seckillDao.queryAll(0,4);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public seckill getById(long seckillId) &#123;</span><br><span class="line">        return seckillDao.queryById(seckillId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Exposer exportSeckillUrl(long seckillId) &#123;</span><br><span class="line">        seckill seckill=seckillDao.queryById(seckillId);</span><br><span class="line">        if(seckill==null) return new Exposer(false,seckillId);</span><br><span class="line">        Date startTime=seckill.getStartTIme();</span><br><span class="line">        Date endTime=seckill.getEndTime();</span><br><span class="line">        Date nowTime= new Date();</span><br><span class="line">        if(nowTime.getTime()&lt;startTime.getTime()||nowTime.getTime()&gt;endTime.getTime())</span><br><span class="line">            return new Exposer(false,seckillId,nowTime.getTime(),startTime.getTime(),endTime.getTime());</span><br><span class="line">        //转化特定字符串的过程，不可逆</span><br><span class="line">        String md5=getMD5(seckillId);</span><br><span class="line">        return new Exposer(true,md5,seckillId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private String getMD5(long seckillId)&#123;</span><br><span class="line">        String base=seckillId+&quot;/&quot;+slat;</span><br><span class="line">        String md5= DigestUtils.md5DigestAsHex(base.getBytes());</span><br><span class="line">        return md5;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	//最重要的执行</span><br><span class="line">    public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5) throws SeckillException, RepeatKillException, SeckillCloseException &#123;</span><br><span class="line">        //检查md5</span><br><span class="line">        if(md5==null||md5.equals(getMD5(seckillId)))&#123;</span><br><span class="line">            throw new SeckillException(&quot;SECKILL DATA REWRITE&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //执行秒杀逻辑：减库存+记录购买行为</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            Date nowTime=new Date();</span><br><span class="line">            int updateCount=seckillDao.reduceNumber(seckillId,nowTime);</span><br><span class="line">            if(updateCount&lt;=0)&#123;</span><br><span class="line">                //没有更新到记录，秒杀结束</span><br><span class="line">                throw new SeckillCloseException(&quot;SECKILL IS CLOSED&quot;);</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                //成功，记录购买行为</span><br><span class="line">                int insertCount= successKilledDao.insertSuccessKilled(seckillId,userPhone);</span><br><span class="line">                if(insertCount&lt;=0)&#123;</span><br><span class="line">                    //重复秒杀</span><br><span class="line">                    throw new RepeatKillException(&quot;SECKILL REPEATED&quot;);</span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                    //秒杀成功</span><br><span class="line">                    successKilled successKilled=successKilledDao.queryByIdWithSeckill(seckillId,userPhone);</span><br><span class="line">                    return new SeckillExecution(seckillId,1,&quot;秒杀成功&quot;,successKilled);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch (SeckillCloseException e1)&#123;</span><br><span class="line">            throw e1;</span><br><span class="line">        &#125;catch (RepeatKillException e2)&#123;</span><br><span class="line">            throw e2;</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            logger.error(e.getMessage(),e);</span><br><span class="line">            //所有编译期异常转化为运行期异常</span><br><span class="line">            throw new SeckillException(&quot;seckill inner error:&quot;+e.getMessage());</span><br><span class="line">        &#125;//捕捉所有异常，一旦有错就回滚</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>-新建org.seckill.enums枚举包（表述常量的数据字典），新建enum类SecKillStateEnum（统一封装state和stateInfo常量）——修改方便，转换json方便</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public enum SeckillStateEnum &#123;</span><br><span class="line">    //枚举常量，枚举类的实例</span><br><span class="line">    SUCCESS(1,&quot;秒杀成功&quot;),</span><br><span class="line">    END(0,&quot;秒杀结束&quot;),</span><br><span class="line">    REPEAT_KILL(-1,&quot;重复秒杀&quot;),</span><br><span class="line">    INNER_ERROR(-2,&quot;系统异常&quot;),</span><br><span class="line">    DATA_REWRITE(-3,&quot;数据篡改&quot;);</span><br><span class="line"></span><br><span class="line">    //成员变量</span><br><span class="line">    private int state;</span><br><span class="line">    private String stateInfo;</span><br><span class="line"></span><br><span class="line">    //构造方法</span><br><span class="line">    SeckillStateEnum(int state, String stateInfo) &#123;</span><br><span class="line">        this.state = state;</span><br><span class="line">        this.stateInfo = stateInfo;</span><br><span class="line">    &#125;</span><br><span class="line">    //getter</span><br><span class="line"></span><br><span class="line">    public int getState() &#123;</span><br><span class="line">        return state;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getStateInfo() &#123;</span><br><span class="line">        return stateInfo;</span><br><span class="line">    &#125;</span><br><span class="line">    //普通方法，遍历所有state找到当前传入的index的状态</span><br><span class="line">    public static SeckillStateEnum stateOf(int index)&#123;</span><br><span class="line">        for (SeckillStateEnum state:values())&#123;</span><br><span class="line">            if(state.getState()==index)&#123;</span><br><span class="line">                return  state;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将相应的state和stateInfo都改为SeckillStateEnum</p>
+<p>SeckillServiceImpl.java:</p>
+<pre><code>                //秒杀成功
+                successKilled successKilled=successKilledDao.queryByIdWithSeckill(seckillId,userPhone);
+                return new SeckillExecution(seckillId, SeckillStateEnum.SUCCESS,successKilled);
+</code></pre>
+<p>SeckillExecution.java:</p>
+<pre><code>//Constructor
+public SeckillExecution(long seckillId, SeckillStateEnum stateEnum,  org.seckill.entity.successKilled successKilled) &#123;
+    this.seckillId = seckillId;
+    this.state = stateEnum.getState();
+    this.sateInfo = stateEnum.getStateInfo();
+    this.successKilled = successKilled;
+&#125;
+//失败
+public SeckillExecution(long seckillId, SeckillStateEnum stateEnum) &#123;
+    this.seckillId = seckillId;
+    this.state = stateEnum.getState();
+    this.sateInfo = stateEnum.getStateInfo();
+&#125;
+</code></pre>
+<h3>3.使用Spring托管Service依赖</h3>
+
+<blockquote>
+<p>Spring IOC(依赖注入)：</p>
+<p>1.创建对象-&gt;对象工厂-&gt;创建SeckillService的实现</p>
+<p>2.SeckillService的一系列DAO依赖-&gt;依赖管理-&gt;创建所有DAO的实现</p>
+<p>1+2.组合，给出一致的访问接口，可以获取任意实例</p>
+<p><img src="/images/ylt.png" alt="业务对象依赖图"></p>
+</blockquote>
+<blockquote>
+<p>为什么用IOC：</p>
+</blockquote>
+<blockquote>
+<p>对象创建的统一托管、规范的生命周期管理（在任意生命周期点上加入我们的逻辑）、灵活的依赖注入（注解、编程（ApplicationContext)、第三方框架（Mybatis））、一致的获取对象（Singleton单例）</p>
+</blockquote>
+<blockquote>
+<p>Spring IOC注入方式和场景：</p>
+<p><img src="/images/zrMethods.png"></p>
+</blockquote>
+<blockquote>
+<p>本项目IOC使用方式：XML配置-&gt;package-scan-&gt;Annotation注解</p>
+</blockquote>
+<p>-在main&#x2F;resources&#x2F;spring下新建spring-service.xml<br>（扫描service包下所有使用注解的类型）</p>
+<p>将xml描述复制过来+</p>
+<pre><code>&lt;context:component-scan base-package=&quot;org.seckill.service&quot;/&gt;
+</code></pre>
+<p>-配置注解（@Component——所有类型组件，@DAO，@Service，@Controll）</p>
+<p>SeckillServiceImpl.java:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">public class SeckillServiceImpl implements SeckillService &#123;</span><br><span class="line">    //注入Service依赖</span><br><span class="line">    @Autowired</span><br><span class="line">    private seckillDao seckillDao;</span><br><span class="line">    @Autowired</span><br><span class="line">    private successKilledDao successKilledDao;</span><br><span class="line">	···</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3>3.使用Spring声明式事务配置</h3>
+
+<blockquote>
+<p>事务：事务就是把一系列的动作当成一个独立的工作单元，这些动作要么全部完成，要么全部不起作用。具有原子性、隔离性、一致性、持久性。</p>
+</blockquote>
+<blockquote>
+<p>spring支持编程式事务管理和声明式事务管理两种方式。</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>编程式事务将事务管理代码嵌到业务方法中来控制事务的提交和回滚。使用TransactionTemplate或者直接使用底层的PlatformTransactionManager。对于编程式事务管理，spring推荐使用TransactionTemplate。</li>
+<li>声明式事务将事务管理代码从业务方法中分离出来，以声明的方式来实现事务管理。建立在AOP之上的。其本质是对方法前后进行拦截，然后在目标方法开始之前创建或者加入一个事务，在执行完目标方法之后根据执行情况提交或者回滚事务。声明式事务最大的优点就是不需要通过编程的方式管理事务，这样就不需要在业务逻辑代码中掺杂事务管理的代码，只需在配置文件中做相关的事务规则声明(或通过基于@Transactional注解的方式)，便可以将事务规则应用到业务逻辑中。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>抛出运行期异常时回滚事务——小心不当的try-catch</p>
+</blockquote>
+<p>spring-service.xml：</p>
+<p>-配置事务管理器(MyBatis使用的是JDBC)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span><br><span class="line">    &lt;!--注入数据库连接池--&gt;</span><br><span class="line">    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<p>-配置基于注解的声明式事务</p>
+<pre><code>&lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot;/&gt;
+</code></pre>
+<blockquote>
+<p>使用注解控制事务的优点：</p>
+<p>1.开发团队达成一致约定，明确标注事务方法的编程风格。</p>
+<p>2.保证事务方法的执行时间尽可能短，不要穿插其他网络操作，RPC&#x2F;HTTP请求，或者剥离到事务方法外（内部尽量是干净的数据库操作流程）</p>
+</blockquote>
+<blockquote>
+<p>3.不是所有方法都需要事务，如只有一条修改操作（两条以上需要）、只读操作不需要事务控制。</p>
+</blockquote>
+<p>-在SeckillServiceImpl中的 executeSeckill加上@Transactional注解</p>
+<h3>4.集成测试service逻辑</h3>
+
+<p>-配置slf4j</p>
+<p>在resource下新建logback.xml</p>
+<p>加入xml头</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+</code></pre>
+<p>从<a target="_blank" rel="noopener" href="https://logback.qos.ch/manual/configuration.html">logback官网</a>中获取配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line"></span><br><span class="line">  &lt;appender name=&quot;STDOUT&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;</span><br><span class="line">    &lt;!-- encoders are assigned the type</span><br><span class="line">         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default --&gt;</span><br><span class="line">    &lt;encoder&gt;</span><br><span class="line">      &lt;pattern&gt;%d&#123;HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;36&#125; - %msg%n&lt;/pattern&gt;</span><br><span class="line">    &lt;/encoder&gt;</span><br><span class="line">  &lt;/appender&gt;</span><br><span class="line"></span><br><span class="line">  &lt;root level=&quot;debug&quot;&gt;</span><br><span class="line">    &lt;appender-ref ref=&quot;STDOUT&quot; /&gt;</span><br><span class="line">  &lt;/root&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>-SeckillService.java下ctrl+shift+t  –&gt; create new test，选择Junit4，勾选所有方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">@RunWith(SpringJUnit4ClassRunner.class)</span><br><span class="line">@ContextConfiguration(&#123;</span><br><span class="line">        &quot;classpath:spring/spring-dao.xml&quot;,</span><br><span class="line">        &quot;classpath:spring/spring-service.xml&quot;&#125;)</span><br><span class="line">//service依赖于dao的配置</span><br><span class="line">public class SeckillServiceTest &#123;</span><br><span class="line">    private final Logger logger= LoggerFactory.getLogger(this.getClass());</span><br><span class="line">    @Autowired</span><br><span class="line">    private SeckillService seckillService;</span><br><span class="line">    @Test</span><br><span class="line">    public void getSeckillList() &#123;</span><br><span class="line">        List&lt;seckill&gt; list =seckillService.getSeckillList();</span><br><span class="line">        logger.info(&quot;list=&#123;&#125;&quot;,list);</span><br><span class="line">        /**</span><br><span class="line">         * Closing non transactional SqlSession --不是在事务控制下</span><br><span class="line">         * list=[seckill&#123;seckillId=1000, name=&#x27;99元秒杀T恤福袋&#x27;, number=100, startTIme=Sat Aug 15 08:00:00 CST 2020, endTime=Sun Aug 16 08:00:00 CST 2020, createTime=Tue Apr 19 04:46:59 CST 2022&#125;, seckill&#123;seckillId=1001, name=&#x27;198元秒杀22cm冰墩墩&#x27;, number=50, startTIme=Sat Aug 15 08:00:00 CST 2020, endTime=Sun Aug 16 08:00:00 CST 2020, createTime=Tue Apr 19 04:46:59 CST 2022&#125;, seckill&#123;seckillId=1002, name=&#x27;4999元秒杀iPhone X&#x27;, number=10, startTIme=Sat Aug 15 08:00:00 CST 2020, endTime=Sun Aug 16 08:00:00 CST 2020, createTime=Tue Apr 19 04:46:59 CST 2022&#125;, seckill&#123;seckillId=1003, name=&#x27;8000元秒杀尼康z镜头组&#x27;, number=1000, startTIme=Sat Aug 15 08:00:00 CST 2020, endTime=Sun Aug 16 08:00:00 CST 2020, createTime=Tue Apr 19 04:46:59 CST 2022&#125;]</span><br><span class="line">         */</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void getById() &#123;</span><br><span class="line">        long id=1000;</span><br><span class="line">        seckill seckill=seckillService.getById(id);</span><br><span class="line">        logger.info(&quot;seckill=&#123;&#125;&quot;,seckill);</span><br><span class="line">        //测试结果：seckill=seckill&#123;seckillId=1000, name=&#x27;99元秒杀T恤福袋&#x27;, number=100, startTIme=Sat Aug 15 08:00:00 CST 2020, endTime=Sun Aug 16 08:00:00 CST 2020, createTime=Tue Apr 19 04:46:59 CST 2022&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void exportSeckillUrl() &#123;</span><br><span class="line">        long id=1000;</span><br><span class="line">        Exposer exposer=seckillService.exportSeckillUrl(id);</span><br><span class="line">        //给exposer加一个toString方法方便打印</span><br><span class="line">        logger.info(&quot;exposer=&#123;&#125;&quot;,exposer);</span><br><span class="line">        //运行结果：exposer=Exposer&#123;exposed=false, md5=&#x27;null&#x27;, seckillId=1000, now=1650625817031, start=1597449600000, end=1597536000000&#125;</span><br><span class="line">        //修改秒杀开启时间后：exposer=Exposer&#123;exposed=true, md5=&#x27;748ce9796964bd49b496095fccd88d31&#x27;, seckillId=1000, now=0, start=0, end=0&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void executeSeckill() &#123;</span><br><span class="line">        long id=1000,userPhone=13544687520L;</span><br><span class="line">        String md5=&quot;748ce9796964bd49b496095fccd88d31&quot;;</span><br><span class="line">        SeckillExecution seckillExecution=seckillService.executeSeckill(id,userPhone,md5);</span><br><span class="line">        logger.info(&quot;SeckillExecution=&#123;&#125;&quot;,seckillExecution);</span><br><span class="line">        //报错：org.seckill.exception.SeckillException: SECKILL DATA REWRITE</span><br><span class="line">        //修改：【!】md5.equals(getMD5(seckillId)</span><br><span class="line">        /**</span><br><span class="line">         * 19:19:55.602 [main] DEBUG o.s.j.d.DataSourceTransactionManager - Initiating transaction commit--事务提交</span><br><span class="line">         * 19:19:55.602 [main] DEBUG o.s.j.d.DataSourceTransactionManager - Committing JDBC transaction on Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@bac7bc [wrapping: com.mysql.jdbc.JDBC4Connection@1798ca7]]</span><br><span class="line">         * 19:19:55.604 [main] DEBUG o.s.j.d.DataSourceTransactionManager - Releasing JDBC Connection [com.mchange.v2.c3p0.impl.NewProxyConnection@bac7bc [wrapping: com.mysql.jdbc.JDBC4Connection@1798ca7]] after transaction</span><br><span class="line">         * 19:19:55.605 [main] INFO  o.seckill.service.SeckillServiceTest - SeckillExecution=org.seckill.dto.SeckillExecution@cbeb64</span><br><span class="line">         */</span><br><span class="line">    &#125;</span><br><span class="line">    @Test</span><br><span class="line">    public void seckillLogic()&#123;</span><br><span class="line">        //集成以上两个,测试完整执行逻辑</span><br><span class="line">        long id=1000;</span><br><span class="line">        Exposer exposer=seckillService.exportSeckillUrl(id);</span><br><span class="line">        if(exposer.isExposed())&#123;//如果秒杀开启</span><br><span class="line">            logger.info(&quot;exposer=&#123;&#125;&quot;,exposer);</span><br><span class="line">            long userPhone=13502145622L;</span><br><span class="line">            String md5=exposer.getMd5();</span><br><span class="line">            try &#123;</span><br><span class="line">                SeckillExecution seckillExecution=seckillService.executeSeckill(id,userPhone,md5);</span><br><span class="line">                logger.info(&quot;SeckillExecution=&#123;&#125;&quot;,seckillExecution);</span><br><span class="line">            &#125;catch (RepeatKillException e)&#123;//测试可重复执行</span><br><span class="line">                logger.error(e.getMessage());</span><br><span class="line">            &#125;catch (SeckillCloseException e)&#123;</span><br><span class="line">                logger.error(e.getMessage());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;//秒杀未开启</span><br><span class="line">            logger.warn(&quot;exposer=&#123;&#125;&quot;,exposer);</span><br><span class="line">        &#125;</span><br><span class="line">        //WARN  o.seckill.service.SeckillServiceTest - exposer=Exposer&#123;exposed=false, md5=&#x27;null&#x27;, seckillId=1000, now=1650627057718, start=1650655195000, end=1651363200000&#125;</span><br><span class="line">        //开启时间突然变成当前时间，再次修改： SeckillExecution=SeckillExecution&#123;seckillId=1000, state=1, sateInfo=&#x27;秒杀成功&#x27;, successKilled=successKilled&#123;seckillId=1000, userPhone=13502145622, state=0, createTime=Sat Apr 23 03:33:35 CST 2022&#125;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<center>🔥Service层开发也完成啦！！🔥</center>
+
+<hr>
+<h2 id="四、Web层设计与开发"><a href="#四、Web层设计与开发" class="headerlink" title="四、Web层设计与开发"></a>四、Web层设计与开发</h2><blockquote>
+<p>将完成：前端交互设计、Restful、Spring MVC、bootstrap+jquery</p>
+</blockquote>
+<h3>1.整合配置Spring MVC框架</h3>
+>Spring MVC:
+>
+>![SpringMVC执行流程](/images/springmvcLiuc)
+>
+>--SpringMVC执行流程：
+
+<blockquote>
+<p>01、用户发送出请求被前端控制器DispatcherServlet拦截进行处理。</p>
+<p>02、DispatcherServlet收到请求调用HandlerMapping（处理器映射器）。</p>
+<p>03、HandlerMapping找到具体的处理器(查找xml配置或注解配置)，生成处理器对象及处理器拦截器(如果有)，再一起返回给DispatcherServlet。</p>
+<p>04、DispatcherServlet调用HandlerAdapter（处理器适配器）。</p>
+<p>05、HandlerAdapter经过适配调用具体的处理器（Handler&#x2F;Controller）。</p>
+<p>06、Controller执行完成返回ModelAndView对象。</p>
+<p>07、HandlerAdapter将Controller执行结果ModelAndView返回给DispatcherServlet。</p>
+<p>08、DispatcherServlet将ModelAndView传给ViewReslover（视图解析器）。</p>
+<p>09、ViewReslover解析ModelAndView后返回具体View（视图）给DispatcherServlet。</p>
+<p>10、DispatcherServlet根据View进行渲染视图（即将模型数据填充至视图中）。</p>
+<p>11、DispatcherServlet响应View给用户。</p>
+<p>–涉及组件分析：</p>
+<p>1、前端控制器DispatcherServlet（不需要程序员开发）由框架提供，在web.xml中配置。<br>作用：接收请求，响应结果，相当于转发器，中央处理器。</p>
+<p>2、处理器映射器HandlerMapping（不需要程序员开发）由框架提供。<br>作用：根据请求的url查找Handler（处理器&#x2F;Controller），可以通过XML和注解方式来映射。</p>
+<p>3、处理器适配器HandlerAdapter（不需要程序员开发）由框架提供。<br>作用：按照特定规则（HandlerAdapter要求的规则）去执行Handler中的方法。</p>
+<p>4、处理器Handler（也称之为Controller，需要程序员开发）<br><em>注意：编写Handler时按照HandlerAdapter的要求去做，这样适配器才可以去正确执行Handler。</em><br>作用：接受用户请求信息，调用业务方法处理请求，也称之为后端控制器。</p>
+<p>5、视图解析器ViewResolver（不需要程序员开发）由框架提供。<br>作用：进行视图解析，把逻辑视图解析成真正的物理视图。<br>SpringMVC框架支持多种View视图技术，包括：jstlView、freemarkerView、ThymeleafView等。</p>
+<p>6、视图View（需要工程师开发）<br>作用：把数据展现给用户的页面<br>View是一个接口，实现类支持不同的View技术（jsp、freemarker、pdf等）</p>
+<p>–根据以上分析，SpringMVC需要程序员完成的工作有三个：</p>
+<p>【1】配置前端控制器DispatcherServlet。</p>
+<p>【2】开发后端控制器Handler&#x2F;Controller。</p>
+<p>【3】开发视图View。</p>
+</blockquote>
+<p>-打开&#x2F;webapp&#x2F;WEB-INF&#x2F;web.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置DispatcherServlet--&gt;</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;seckill-dispatcher&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</span><br><span class="line">    &lt;!--配置springmvc需要加载的配置文件：spring-dao.xml，spring-service.xml,spring-web.xml--&gt;</span><br><span class="line">    &lt;!--整合顺序：mybati-&gt;spring-&gt;springmvc--&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">        &lt;param-value&gt;classpath:spring/spring-*.xml&lt;/param-value&gt;</span><br><span class="line">    &lt;/init-param&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;seckill-dispatcher&lt;/servlet-name&gt;</span><br><span class="line">    &lt;!--默认匹配所有请求--&gt;</span><br><span class="line">    &lt;url-pattern&gt;/&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>-在spring下新建spring-web.xml</p>
+<p>复制xml头，使用Ctrl+Alt+O清除无效schema。</p>
+<p>配置SpringMVC：</p>
+<p> 1.开启SpringMVC注解模式</p>
+<p>   -&gt;简化配置：</p>
+<p>（1）自动注册DefaultAnnotationHandlerMapping(使用注解驱动的handler映射）, AnnotationMethondHandlerAdapter（基于注解方法的handler适配器)</p>
+<p>（2）提供一系列功能：数据绑定，数字和日期的format（转换）@NumberFormat、@DateTimeFormat,xml、json默认读写支持。</p>
+<pre><code>&lt;mvc:annotation-driven/&gt;
+</code></pre>
+<p>2.静态资源默认sevlet配置</p>
+<p>（1）加入对静态资源的处理：js,gif,png</p>
+<p>（2）允许使用“&#x2F;”做整体映射（之前servlet-mapping映射路径配置为：“&#x2F;“）</p>
+<pre><code>&lt;mvc:default-servlet-handler/&gt;
+</code></pre>
+<p>3.配置JSP显示ViewResolver</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;viewClass&quot; value=&quot;org.springframework.web.servlet.view.JstlView&quot;/&gt; //view实现类</span><br><span class="line">    &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp&quot;/&gt;//前缀，默认放在jsp文件夹下</span><br><span class="line">    &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;//结尾</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<p>4.扫描web相关的bean</p>
+<pre><code>&lt;context:component-scan base-package=&quot;org.seckill.web&quot;/&gt;
+</code></pre>
+<h3>2.使用SpringMVC实现Restful接口</h3>
+
+<blockquote>
+<p>Restful定义：</p>
+<ul>
+<li><p>REST 是 Representational State Transfer的缩写，如果一个架构符合REST原则，就称它为RESTful架构</p>
+</li>
+<li><p>RESTful 架构可以充分的利用 HTTP 协议的各种功能，是 HTTP 协议的最佳实践</p>
+</li>
+<li><p>RESTful API 是一种软件架构风格、设计风格，可以让软件更加清晰，更简洁，更有层次，可维护性更好</p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Restful规范:</p>
+<ul>
+<li>GET    &#x2F;zoos：列出所有动物园</li>
+<li>POST   &#x2F;zoos：新建一个动物园</li>
+<li>GET    &#x2F;zoos&#x2F;ID：获取某个指定动物园的信息</li>
+<li>PUT    &#x2F;zoos&#x2F;ID：更新某个指定动物园的信息（提供该动物园的全部信息）</li>
+<li>PATCH  &#x2F;zoos&#x2F;ID：更新某个指定动物园的信息（提供该动物园的部分信息）</li>
+<li>DELETE &#x2F;zoos&#x2F;ID：删除某个动物园</li>
+<li>GET    &#x2F;zoos&#x2F;ID&#x2F;animals：列出某个指定动物园的所有动物</li>
+<li>DELETE &#x2F;zoos&#x2F;ID&#x2F;animals&#x2F;ID：删除某个指定动物园的指定动物</li>
+</ul>
+</blockquote>
+<p>-URL设计：</p>
+<p><img src="/images/seckillURL.png"></p>
+<p>-新建org.seckill.web包，新建SeckillController类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;/seckill&quot;)//模块--url:/模块/资源/&#123;id&#125;/细分/seckill/list</span><br><span class="line">public class SeckillController &#123;</span><br><span class="line">    private final Logger logger= LoggerFactory.getLogger(this.getClass());</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private SeckillService seckillService;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/list&quot;,method = RequestMethod.GET)//不是get的HTTP请求全部被驳回</span><br><span class="line">    public String list(Model model)&#123;</span><br><span class="line">        //list.jsp(页面模板)+model(数据)=ModelAndView</span><br><span class="line">        //获取列表页</span><br><span class="line">        List&lt;seckill&gt; list=seckillService.getSeckillList();</span><br><span class="line">        model.addAttribute(&quot;list&quot;,list);//model存放数据</span><br><span class="line">        return &quot;list&quot;; // =/WEB-INF/jsp/&quot;list&quot;.jsp</span><br><span class="line">    &#125;</span><br><span class="line">    //详情页,&#123;seckillId&#125;--占位符</span><br><span class="line">    @RequestMapping(value = &quot;/&#123;seckillId&#125;/detail&quot;,method = RequestMethod.GET)</span><br><span class="line">    public String detail(@PathVariable(&quot;seckillId&quot;) Long seckillId, Model model)&#123;</span><br><span class="line">        if(seckillId==null) return &quot;redirect:/seckill/list&quot;;//重定向到列表页</span><br><span class="line">        seckill seckill=seckillService.getById(seckillId);</span><br><span class="line">        if(seckill==null) return &quot;forward:/seckill/list&quot;; //请求转发</span><br><span class="line">        model.addAttribute(&quot;seckill&quot;,seckill);</span><br><span class="line">        return &quot;detail&quot;; //符合要求就跳转到detail页</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * ajax json</span><br><span class="line">     * AJAX 就是异步 JavaScript 和 XML，</span><br><span class="line">     * 遵循 AJAX 模型，Web 应用程序可以以异步的方式发送数据以及从服务器上检索数据，而不影响现有页面的显示行为。</span><br><span class="line">     * 在客户端和服务器之间使用 JSON 传递 AJAX 更新</span><br><span class="line">     */</span><br><span class="line">    //暴露秒杀接口</span><br><span class="line">    @RequestMapping(value = &quot;/&#123;seckillId&#125;/exposer&quot;,</span><br><span class="line">            method = RequestMethod.POST,</span><br><span class="line">            produces = &#123;&quot;application/json;charset=utf-8&quot;&#125;)//表示功能处理方法将生产json格式的数据</span><br><span class="line">    @ResponseBody //将返回的数据类型(这里是SeckillResult&lt;Exposer&gt;)封装为json</span><br><span class="line">    public SeckillResult&lt;Exposer&gt; exposer(Long seckillId)&#123;</span><br><span class="line">        //在dto下新建SeckillResult类</span><br><span class="line">        SeckillResult&lt;Exposer&gt; result;</span><br><span class="line">        try&#123;</span><br><span class="line">            Exposer exposer=seckillService.exportSeckillUrl(seckillId);</span><br><span class="line">            result=new SeckillResult&lt;Exposer&gt;(true,exposer);</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            logger.error(e.getMessage(),e);</span><br><span class="line">            result=new SeckillResult&lt;Exposer&gt;(false,e.getMessage());</span><br><span class="line">        &#125;//ctrl+alt+t--自动生成代码块</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //执行秒杀</span><br><span class="line">    @RequestMapping(value = &quot;/&#123;seckillId&#125;/&#123;md5&#125;/execution&quot;,</span><br><span class="line">        method = RequestMethod.POST,</span><br><span class="line">        produces = &#123;&quot;application/json;charset=utf-8&quot;&#125;)</span><br><span class="line">    @ResponseBody</span><br><span class="line">    public SeckillResult&lt;SeckillExecution&gt; execute(@PathVariable(&quot;seckillId&quot;) Long seckillId,</span><br><span class="line">                                                   @PathVariable(&quot;md5&quot;) String md5,</span><br><span class="line">                                                   @CookieValue(value = &quot;killPhone&quot;,required = false) Long phone)&#123;</span><br><span class="line">        //require=false,不是必需，验证逻辑我们自己来处理</span><br><span class="line">        if(phone==null)&#123;</span><br><span class="line">            return new SeckillResult&lt;SeckillExecution&gt;(false,&quot;未注册&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        SeckillResult&lt;SeckillExecution&gt; result;</span><br><span class="line">        try &#123;</span><br><span class="line">            SeckillExecution execution=seckillService.executeSeckill(seckillId,phone,md5);</span><br><span class="line">            return new SeckillResult&lt;SeckillExecution&gt;(true,execution);</span><br><span class="line">        &#125;catch (RepeatKillException e)&#123;</span><br><span class="line">            SeckillExecution execution=new SeckillExecution(seckillId, SeckillStateEnum.REPEAT_KILL);</span><br><span class="line">            return new SeckillResult&lt;SeckillExecution&gt;(false,execution);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (SeckillCloseException e)&#123;</span><br><span class="line">            SeckillExecution execution=new SeckillExecution(seckillId, SeckillStateEnum.END);</span><br><span class="line">            return new SeckillResult&lt;SeckillExecution&gt;(false,execution);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (Exception e) &#123;</span><br><span class="line">            logger.error(e.getMessage(),e);</span><br><span class="line">            SeckillExecution execution=new SeckillExecution(seckillId, SeckillStateEnum.INNER_ERROR);</span><br><span class="line">            return new SeckillResult&lt;SeckillExecution&gt;(false,execution);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //获取系统时间</span><br><span class="line">    @RequestMapping(value = &quot;/time/now&quot;,method = RequestMethod.GET)</span><br><span class="line">	@ResponseBody</span><br><span class="line">    public SeckillResult&lt;Long&gt; time()&#123;</span><br><span class="line">        Date now=new Date();</span><br><span class="line">        return new SeckillResult&lt;Long&gt;(true,now.getTime());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>-SeckillResult.java</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//所有ajax的返回类型,封装json结果</span><br><span class="line">public class SeckillResult &lt;T&gt;&#123;//泛型</span><br><span class="line">    private boolean success;//判断是否成功</span><br><span class="line">    private T data;</span><br><span class="line">    private String error;</span><br><span class="line"></span><br><span class="line">    //成功，带数据</span><br><span class="line">    public SeckillResult(boolean success, T data) &#123;</span><br><span class="line">        this.success = success;</span><br><span class="line">        this.data = data;</span><br><span class="line">    &#125;</span><br><span class="line">    //失败，传入错误信息</span><br><span class="line">    public SeckillResult(boolean success, String error) &#123;</span><br><span class="line">        this.success = success;</span><br><span class="line">        this.error = error;</span><br><span class="line">    &#125;</span><br><span class="line">    //GetterandSetter</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3>3.基于bootstrap开发页面结构</h3>
+
+<blockquote>
+<p>Bootstrap 是一个用于快速开发 Web 应用程序和网站的前端框架。</p>
+</blockquote>
+<p>-如Controller中所述，在WEB-INF下新建JSP文件夹，创建list.jsp和detail.jsp。</p>
+<p>复制Bootstrap模板，采用cdn方法引入<em>加速功能点</em>（–还有本地引入）：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>Bootstrap 模板<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 引入 Bootstrap --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">      <span class="comment">&lt;!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--[if lt IE 9]&gt;</span></span><br><span class="line"><span class="comment">         &lt;script src=&quot;https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">         &lt;script src=&quot;https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">      &lt;![endif]--&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 新 Bootstrap 核心 CSS 文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">&lt;!-- jQuery文件。务必在bootstrap.min.js 之前引入 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">&lt;!-- 最新的 Bootstrap 核心 JavaScript 文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>-将相同的头文件放入新建的jsp&#x2F;common&#x2F;head.js中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">&lt;!-- 引入 Bootstrap --&gt;</span><br><span class="line">&lt;link href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 --&gt;</span><br><span class="line">&lt;!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 --&gt;</span><br><span class="line">&lt;!--[if lt IE 9]&gt;</span><br><span class="line">&lt;script src=&quot;https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure>
+<p>-引入jstl的tag，放入&#x2F;common&#x2F;tag.jsp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;</span><br><span class="line">&lt;%@taglib prefix=&quot;fmt&quot; uri=&quot;http://java.sun.com/jsp/jstl/fmt&quot; %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>-删去无用的，得到list.jsp和detail.jsp共同模板</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;</span><br><span class="line">&lt;%@include file=&quot;common/tag.jsp&quot;%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;秒杀列表页&lt;/title&gt;</span><br><span class="line">    &lt;%@include file=&quot;common/head.jsp&quot;%&gt;&lt;!--静态包含--&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;!-- jQuery文件。务必在bootstrap.min.js 之前引入 --&gt;</span><br><span class="line">&lt;script src=&quot;https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;!-- 最新的 Bootstrap 核心 JavaScript 文件 --&gt;</span><br><span class="line">&lt;script src=&quot;https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>-list.jsp页面开发：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--页面显示部分--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span><span class="comment">&lt;!--class内都是bootstrap提供的模板样式--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;panel panel-default&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;panel-heading text-center&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">h2</span>&gt;</span>秒杀列表<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;panel-body&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">&quot;table table-hover&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">th</span>&gt;</span>名称<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">th</span>&gt;</span>库存<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">th</span>&gt;</span>开始时间<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">th</span>&gt;</span>结束时间<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">th</span>&gt;</span>创建时间<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">th</span>&gt;</span>详情页<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--jstl标签，迭代list中的对象--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">c:forEach</span> <span class="attr">var</span>=<span class="string">&quot;sk&quot;</span> <span class="attr">items</span>=<span class="string">&quot;$&#123;list&#125;&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;sk.name&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;sk.number&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                            <span class="comment">&lt;!--$&#123;sk.startTime&#125;为tostring--&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">fmt:formatDate</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;sk.startTime&#125;&quot;</span> <span class="attr">pattern</span>=<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>/&gt;</span> <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">fmt:formatDate</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;sk.endTime&#125;&quot;</span> <span class="attr">pattern</span>=<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>/&gt;</span> <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">fmt:formatDate</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;sk.createTime&#125;&quot;</span> <span class="attr">pattern</span>=<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>/&gt;</span> <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-info&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/seckill/$&#123;sk.seckillId&#125;/detail&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>link<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">c:forEach</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>-detail.jsp:(框架）</p>
+<pre><code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;panel panel-default text-center&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;panel-heading&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">h1</span>&gt;</span>$&#123;seckill.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;panel-body&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;text-danger&quot;</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--显示time图标--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;glyphicon glyphicon-time&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--显示倒计时--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;glyphicon&quot;</span> <span class="attr">id</span>=<span class="string">&quot;seckill-box&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--登录弹出层，输入电话--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;killPhoneModal&quot;</span> <span class="attr">class</span>=<span class="string">&quot;modal fade&quot;</span>&gt;</span><span class="comment">&lt;!--modal-弹出模块框--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-dialog&quot;</span>&gt;</span><span class="comment">&lt;!--对话框--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-content&quot;</span>&gt;</span><span class="comment">&lt;!--内容--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-header&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;modal-title text-center&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;glyphicon glyphicon-phone&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                        秒杀电话：</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-body&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-xs-8 col-xs-offset-2&quot;</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;killPhone&quot;</span> <span class="attr">id</span>=<span class="string">&quot;killPhoneKey&quot;</span></span></span><br><span class="line"><span class="tag">                                    <span class="attr">placeholder</span>=<span class="string">&quot;请填写您的手机号&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span>/&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-footer&quot;</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--验证信息--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;killPhoneMessage&quot;</span> <span class="attr">class</span>=<span class="string">&quot;glyphicon&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">id</span>=<span class="string">&quot;killPhoneBtn&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-success&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;glyphicon glyphicon-phone&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                        Submit</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.bootcdn.cn/">获取所需js</a>：</p>
+<p>搜索jquery-countdown：<br>    <script src="https://cdn.bootcss.com/jquery.countdown/2.2.0/jquery.countdown.min.js"></script></p>
+<p>搜索jquery-cookie:<br>    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script></p>
+<p>-简单测试一下</p>
+<p>配置Tomcat:</p>
+<p>1.点击导航栏 Run-&gt;Edit Configurations-&gt;+,找到Tomcat-&gt;local</p>
+<p>2.点击Application server栏旁的configure，选择本地Tomcat路径</p>
+<p>3.选择deployment页，左侧+-&gt;Artificate,添加项目</p>
+<p>4.将下方的Application context改为配置的&#x2F;。</p>
+<p>运行结果：</p>
+<p><img src="/images/listPage.png"></p>
+<p><img src="/images/detailPageTemp.png"></p>
+<h3>4.交互逻辑设计</h3>
+
+<blockquote>
+<p>前端交互设计：</p>
+<p><img src="/images/feLiuC.png" alt="前端页面流程"></p>
+<p><img src="/images/detailLiuC" alt="详情页流程"></p>
+</blockquote>
+<p>1.cookie登录交互</p>
+<p>-新建&#x2F;webapp&#x2F;resources&#x2F;script&#x2F;seckill.js</p>
+<p>-在detail.jsp尾部(</html>上方)加入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;/resources/script/seckill.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;!--直接/&gt;不会加载--&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">   $(function () &#123;</span><br><span class="line">       //使用EL表达式将参数传给js</span><br><span class="line">       seckill.detail.init(&#123;</span><br><span class="line">           seckillId : $&#123;seckill.seckillId&#125;,</span><br><span class="line">           startTime : $&#123;seckill.startTime.time&#125;,//转换为毫秒</span><br><span class="line">           endTime : $&#123;seckill.endTime.time&#125;</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>-seckill.js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存放主要交互逻辑js代码</span></span><br><span class="line"><span class="comment">//JavaScript 模块化</span></span><br><span class="line"><span class="keyword">var</span> seckill=&#123;</span><br><span class="line">    <span class="comment">//封装秒杀相关ajax的url,方便维护修改，不用到交互代码中找</span></span><br><span class="line">    <span class="variable constant_">URL</span> : &#123;</span><br><span class="line">        <span class="attr">now</span>:<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;/seckill/time/now&#x27;</span>;</span><br><span class="line">        &#125;,</span><br><span class="line">        exposer :<span class="keyword">function</span> (<span class="params">seckillId</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;/seckill/&#x27;</span>+seckillId+<span class="string">&#x27;/exposer&#x27;</span>;</span><br><span class="line">        &#125;,</span><br><span class="line">        execution :<span class="keyword">function</span> (<span class="params">seckillId,md5</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;/seckill/&#x27;</span>+seckillId+<span class="string">&#x27;/&#x27;</span>+md5+<span class="string">&#x27;/execution&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">handleSeckillkill</span>: <span class="keyword">function</span>(<span class="params">seckillId,node</span>)&#123;</span><br><span class="line">        <span class="comment">//获取秒杀地址，控制显示逻辑，执行秒杀</span></span><br><span class="line">        <span class="comment">// 秒杀按钮，开始时隐藏</span></span><br><span class="line">        node.<span class="title function_">hide</span>()</span><br><span class="line">            .<span class="title function_">html</span>(<span class="string">&#x27;&lt;button class=&quot;btn btn-primary btn-lg&quot; id=&quot;killBtn&quot;&gt;开始秒杀&lt;/button&gt;&#x27;</span>);</span><br><span class="line">        $.<span class="title function_">post</span>(seckill.<span class="property">URL</span>.<span class="title function_">exposer</span>(seckillId),&#123;&#125;,<span class="keyword">function</span> (<span class="params">result</span>) &#123;</span><br><span class="line">            <span class="comment">//在回调函数中执行交互流程</span></span><br><span class="line">            <span class="keyword">if</span>(result &amp;&amp; result[<span class="string">&#x27;success&#x27;</span>])&#123;</span><br><span class="line">                <span class="keyword">var</span> exposer =result[<span class="string">&#x27;data&#x27;</span>];</span><br><span class="line">                <span class="keyword">if</span>(exposer[<span class="string">&#x27;exposed&#x27;</span>])&#123;</span><br><span class="line">                    <span class="comment">//已经开启秒杀</span></span><br><span class="line">                    <span class="comment">//获取秒杀地址</span></span><br><span class="line">                    <span class="keyword">var</span> md5=exposer[<span class="string">&#x27;md5&#x27;</span>];</span><br><span class="line">                    <span class="keyword">var</span> killUrl=seckill.<span class="property">URL</span>.<span class="title function_">execution</span>(seckillId,md5);</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;killURL:&quot;</span>+killUrl);</span><br><span class="line">                    <span class="comment">//绑定一次点击事件，防止用户多次点击造成服务器压力</span></span><br><span class="line">                    $(<span class="string">&#x27;#killBtn&#x27;</span>).<span class="title function_">one</span>(<span class="string">&#x27;click&#x27;</span>,<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                        <span class="comment">//执行秒杀请求</span></span><br><span class="line">                        <span class="comment">//1.先禁用按钮</span></span><br><span class="line">                        $(<span class="variable language_">this</span>).<span class="title function_">addClass</span>(<span class="string">&#x27;disabled&#x27;</span>);</span><br><span class="line">                        <span class="comment">//2.发送秒杀请求</span></span><br><span class="line">                        $.<span class="title function_">post</span>(killUrl,&#123;&#125;,<span class="keyword">function</span> (<span class="params">result</span>) &#123;</span><br><span class="line">                            <span class="keyword">if</span>(result &amp;&amp; result[<span class="string">&#x27;success&#x27;</span>])&#123;</span><br><span class="line">                                <span class="keyword">var</span> killResult=result[<span class="string">&#x27;data&#x27;</span>];</span><br><span class="line">                                <span class="keyword">var</span> state=killResult[<span class="string">&#x27;state&#x27;</span>];</span><br><span class="line">                                <span class="keyword">var</span> stateInfo=killResult[<span class="string">&#x27;stateInfo&#x27;</span>];</span><br><span class="line">                                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;stateInfo:&quot;</span>+stateInfo);</span><br><span class="line">                                <span class="comment">//3.显示秒杀结果</span></span><br><span class="line">                                node.<span class="title function_">html</span>(<span class="string">&#x27;&lt;span class=&quot;label label-success&quot;&gt;&#x27;</span>+stateInfo+<span class="string">&#x27;&lt;/span&gt;&#x27;</span>)</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;);</span><br><span class="line">                    &#125;);</span><br><span class="line">                    node.<span class="title function_">show</span>();</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">//未开启秒杀，说明用户电脑时间快了点,重新进入计时</span></span><br><span class="line">                    <span class="keyword">var</span> now=exposer[<span class="string">&#x27;now&#x27;</span>];</span><br><span class="line">                    <span class="keyword">var</span> start=exposer[<span class="string">&#x27;start&#x27;</span>];</span><br><span class="line">                    <span class="keyword">var</span> end =exposer[<span class="string">&#x27;end&#x27;</span>];</span><br><span class="line">                    seckill.<span class="title function_">countdown</span>(seckillId,now,start,end);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;result:&#x27;</span>+result);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//验证手机号。多个地方都用得到，所以放上面</span></span><br><span class="line">    validatePhone : <span class="keyword">function</span>(<span class="params">phone</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(phone &amp;&amp; phone.<span class="property">length</span>==<span class="number">11</span> &amp;&amp;!<span class="built_in">isNaN</span>(phone))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//开始倒计时</span></span><br><span class="line">    countdown : <span class="keyword">function</span>(<span class="params">seckillId,nowTime,startTime,endTime</span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> seckillBox=$(<span class="string">&#x27;#seckill-box&#x27;</span>)</span><br><span class="line">        <span class="comment">//时间判断</span></span><br><span class="line">        <span class="keyword">if</span>(nowTime&gt;endTime)&#123;</span><br><span class="line">            <span class="comment">//秒杀结束</span></span><br><span class="line">            seckillBox.<span class="title function_">html</span>(<span class="string">&#x27;秒杀已结束！&#x27;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nowTime&lt;startTime)&#123;</span><br><span class="line">            <span class="comment">//秒杀未开始,倒计时</span></span><br><span class="line">            <span class="keyword">var</span> killTime=<span class="keyword">new</span> <span class="title class_">Date</span>(startTime+<span class="number">1000</span>);<span class="comment">//加1秒防止用户时间偏移</span></span><br><span class="line">            <span class="comment">//每一次时间变化都回调函数</span></span><br><span class="line">            seckillBox.<span class="title function_">countdown</span>(killTime,<span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">                <span class="comment">//控制时间格式，输出到span标签</span></span><br><span class="line">                <span class="keyword">var</span> format=event.<span class="title function_">strftime</span>(<span class="string">&#x27;秒杀倒计时： %D天 %H时 %M分 %S秒&#x27;</span>);</span><br><span class="line">                seckillBox.<span class="title function_">html</span>(format);</span><br><span class="line">            &#125;).<span class="title function_">on</span>(<span class="string">&#x27;finish.countdown&#x27;</span>,<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="comment">//倒计时结束后回调事件，秒杀开始</span></span><br><span class="line">                seckill.<span class="title function_">handleSeckillkill</span>(seckillId,seckillBox);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//秒杀开始</span></span><br><span class="line">            seckill.<span class="title function_">handleSeckillkill</span>(seckillId,seckillBox);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//详情页秒杀逻辑</span></span><br><span class="line">    <span class="comment">//相当于seckill.detail.init(params);</span></span><br><span class="line">    <span class="attr">detail</span>: &#123;</span><br><span class="line">        <span class="comment">//详情页初始化</span></span><br><span class="line">        init :<span class="keyword">function</span> (<span class="params">params</span>) &#123;</span><br><span class="line">            <span class="comment">//手机验证和登录，计时交互</span></span><br><span class="line">            <span class="comment">//规划交互流程</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//1.验证</span></span><br><span class="line">            <span class="comment">//在cookie查找手机号</span></span><br><span class="line">            <span class="keyword">var</span> killPhone=$.<span class="title function_">cookie</span>(<span class="string">&#x27;killPhone&#x27;</span>);</span><br><span class="line">            <span class="comment">//拿到detail.jsp从params中传来的参数</span></span><br><span class="line">            <span class="keyword">var</span> id=params[<span class="string">&#x27;seckillId&#x27;</span>];</span><br><span class="line">            <span class="keyword">var</span> startTime=params[<span class="string">&#x27;startTime&#x27;</span>];</span><br><span class="line">            <span class="keyword">var</span> endTime=params[<span class="string">&#x27;endTime&#x27;</span>];</span><br><span class="line">            <span class="keyword">if</span>(!seckill.<span class="title function_">validatePhone</span>(killPhone))&#123;</span><br><span class="line">                <span class="comment">//killPhone为空，需要绑定手机号</span></span><br><span class="line">                <span class="keyword">var</span> killPhoneModal =$(<span class="string">&#x27;#killPhoneModal&#x27;</span>);</span><br><span class="line">                <span class="comment">//显示弹出层</span></span><br><span class="line">                killPhoneModal.<span class="title function_">modal</span>(&#123;</span><br><span class="line">                    <span class="attr">show</span>:<span class="literal">true</span>,<span class="comment">//显示弹出层，默认fade隐藏</span></span><br><span class="line">                    <span class="comment">//不准关闭弹出层</span></span><br><span class="line">                    <span class="attr">backdrop</span>:<span class="string">&#x27;static&#x27;</span>,<span class="comment">//禁止位置关闭</span></span><br><span class="line">                    <span class="attr">keyboard</span>: <span class="literal">false</span> <span class="comment">//关闭键盘事件</span></span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="comment">//绑定按钮事件</span></span><br><span class="line">                $(<span class="string">&#x27;#killPhoneBtn&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                    <span class="keyword">var</span> inputPhone=$(<span class="string">&#x27;#killPhoneKey&#x27;</span>).<span class="title function_">val</span>();</span><br><span class="line">                    <span class="keyword">if</span> (seckill.<span class="title function_">validatePhone</span>(inputPhone))&#123;</span><br><span class="line">                        <span class="comment">//电话写入cookie，有效期为7天，只在/seckill下有效</span></span><br><span class="line">                        $.<span class="title function_">cookie</span>(<span class="string">&#x27;killPhone&#x27;</span>,inputPhone,&#123;<span class="attr">expires</span>:<span class="number">7</span>,<span class="attr">path</span>:<span class="string">&#x27;/seckill&#x27;</span>&#125;)</span><br><span class="line">                        <span class="comment">//刷新页面</span></span><br><span class="line">                        <span class="variable language_">window</span>.<span class="property">location</span>.<span class="title function_">reload</span>();</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="comment">//用户输入的手机号有问题,先隐藏，放内容，过300毫秒显示</span></span><br><span class="line">                        $(<span class="string">&#x27;#killPhoneMessage&#x27;</span>).<span class="title function_">hide</span>().<span class="title function_">html</span>(<span class="string">&#x27;&lt;label class=&quot;label label-danger&quot;&gt;无效手机号！请输入11位纯数字。&lt;/label&gt;&#x27;</span>).<span class="title function_">show</span>(<span class="number">300</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//已经登录</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//2.计时交互，未开始显示倒计时</span></span><br><span class="line">            $.<span class="title function_">get</span>(seckill.<span class="property">URL</span>.<span class="title function_">now</span>(),&#123;&#125;,<span class="keyword">function</span> (<span class="params">result</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(result &amp;&amp; result[<span class="string">&#x27;success&#x27;</span>])&#123;</span><br><span class="line">                    <span class="keyword">var</span> nowTime=result[<span class="string">&#x27;data&#x27;</span>];</span><br><span class="line">                    <span class="comment">//时间判断</span></span><br><span class="line">                    seckill.<span class="title function_">countdown</span>(id,nowTime,startTime,endTime);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;result:&#x27;</span>+result);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>-运行Tomcat查看成果</p>
+<p><img src="/images/seckillRes1.png"></p>
+<p><img src="/images/seckillRes2.png"></p>
+<p><img src="/images/seckillRes3.png"></p>
+<p><img src="/images/seckillRes4.png"></p>
+<p><img src="/images/seckillRes5.png"></p>
+<p><img src="/images/seckillRes6.png"></p>
+<p><img src="/images/seckillRes7.png"></p>
+<p><img src="/images/seckillRes8.png"></p>
+<p><img src="/images/seckillRes9.png"></p>
+<center>🎺🥳Web层开发完成！！咱们已经有一个完整的网站了！🥳🎺</center>
+
+<h2 id="五、高并发优化"><a href="#五、高并发优化" class="headerlink" title="五、高并发优化"></a>五、高并发优化</h2><blockquote>
+<p>QPS（Query Per Second）：每秒请求数，就是说服务器在一秒的时间内处理了多少个请求</p>
+</blockquote>
+<blockquote>
+<p>优化：</p>
+<p>1.按钮防重复，ajaxURL请求核心功能点分离</p>
+<p>2.动静态数据分离：</p>
+<p>CDN(内容分发网络)：加速用户获取数据的系统——部署在离用户最近的网络节点上；命中CDN不需要访问后端服务器；互联网公司会自己搭建或租用</p>
+</blockquote>
+<blockquote>
+<p>会变化的数据–&gt;无法使用CDN缓存–&gt;Redis服务端缓存，一致性维护成本低</p>
+<p>3.事务竞争优化:减少行级锁(事务锁)的处理时间。把客户端逻辑放到MySQL服务端，避免网络延迟和GC影响</p>
+</blockquote>
+<h3>1.Redis后端缓存优化</h3>
+
+<p>-pom.xml中引入Redis（可在<a target="_blank" rel="noopener" href="http://www.redis.cn/clients.html">官网</a>中找到不同语言访问客户端）:Java-Jedis</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;redis.clients&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;jedis&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;2.9.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!--protostuff序列化依赖--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;com.dyuproject.protostuff&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;protostuff-core&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.2.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;com.dyuproject.protostuff&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;protostuff-runtime&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.2.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>-SeckillServiceImpl.java，优化接口暴露exportSeckillUrl方法</p>
+<pre><code>     伪代码：
+     get from cache
+     if null
+           get db
+      else
+          put cache
+      logic
+</code></pre>
+<p>-新建org.seckill.dao.cache,新建RedisDao类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">public class RedisDao &#123;</span><br><span class="line">    private final Logger logger = LoggerFactory.getLogger(this.getClass());</span><br><span class="line">    private final JedisPool jedisPool;</span><br><span class="line">    //seckill.class类的字节码，通过反射拿到字节码的属性，RuntimeSchema基于class做一个模式，在创建对象时会根据模式来赋予相应的值</span><br><span class="line">    private RuntimeSchema&lt;seckill&gt; schema =RuntimeSchema.createFrom(seckill.class);</span><br><span class="line"></span><br><span class="line">    private RedisDao(String ip,int port)&#123;</span><br><span class="line">        jedisPool =new JedisPool(ip,port);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //通过Redis拿到seckill对象</span><br><span class="line">    public seckill getSeckill(long seckillId)&#123;</span><br><span class="line">        //Redis操作逻辑</span><br><span class="line">        try &#123;</span><br><span class="line">            Jedis jedis =jedisPool.getResource();</span><br><span class="line">            try &#123;</span><br><span class="line">                String key=&quot;seckill:&quot;+seckillId;</span><br><span class="line">                //jedis没有实现内部序列化操作</span><br><span class="line">                //get到的是一个二进制数组，需要通过反序列化拿到seckill类型Object</span><br><span class="line">                //采用自定义序列化 Protostuff</span><br><span class="line">                byte[] bytes=jedis.get(key.getBytes());</span><br><span class="line">                if(bytes !=null)&#123;//从缓存中获取到</span><br><span class="line">                    seckill seckill=schema.newMessage();//空对象</span><br><span class="line">                    ProtostuffIOUtil.mergeFrom(bytes,seckill,schema);//seckill被反序列化</span><br><span class="line">                    return seckill;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;finally &#123;</span><br><span class="line">                jedis.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            logger.error(e.getMessage(),e);</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">    //发现缓存中没有时放入</span><br><span class="line">    public String putSeckill(seckill seckill)&#123;</span><br><span class="line">        //set: 把object序列化为字节数组</span><br><span class="line">        try&#123;</span><br><span class="line">            Jedis jedis=jedisPool.getResource();</span><br><span class="line">            try &#123;</span><br><span class="line">                String key=&quot;seckill:&quot;+seckill.getSeckillId();</span><br><span class="line">                //缓存器</span><br><span class="line">                byte[] bytes=ProtostuffIOUtil.toByteArray(seckill,schema, LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));</span><br><span class="line">                //超时缓存</span><br><span class="line">                int timeout=60*60;//1小时</span><br><span class="line">                String result=jedis.setex(key.getBytes(),timeout,bytes);</span><br><span class="line">                return result;</span><br><span class="line">            &#125;finally &#123;</span><br><span class="line">                jedis.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            logger.error(e.getMessage(),e);</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>-测试</p>
+<p>在spring-dao.xml中加入</p>
+<pre><code>    &lt;!--RedisDao--&gt;
+    &lt;bean id=&quot;redisDao&quot; class=&quot;org.seckill.dao.cache.RedisDao&quot;&gt;
+            &lt;constructor-arg index=&quot;0&quot; value=&quot;localhost&quot;/&gt;
+            &lt;constructor-arg index=&quot;1&quot; value=&quot;6379&quot;/&gt;
+    &lt;/bean&gt;
+</code></pre>
 
   </div>
   
