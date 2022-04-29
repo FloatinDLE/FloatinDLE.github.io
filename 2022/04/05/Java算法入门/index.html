@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html  lang=en>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+    <link rel="shortcut icon" href="/images/kou.ico ">
+    
+    
+    <link rel="icon" type="image/png" href="/images/favicon-android.png " sizes="192x192">
+    
+    
+    <link rel="apple-touch-icon" href="/images/favicon-apple.png " sizes="180x180">
+    
+  
+  <!-- title -->
+  <title>地下室 Java 算法入门 </title>
+  <!-- styles -->
+  <!-- styles -->
+
+<link rel="stylesheet" href="/styles/global.css">
+
+  <!-- rss -->
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+  <body>
+    <header id="header">
+  
+  <nav class="menu menu--right">
+  
+    <a class="menu__item" href="/">主页</a>
+    <a class="menu__item" href="/archives/">归档</a>
+    <a class="menu__item" href="/categories/">专题</a>
+    <a class="menu__item" href="/tags/">标签</a>
+    <!-- <a class="menu__item" href="/">作品</a> -->
+    <!-- <a class="menu__item" href="/about/">关于</a> -->
+  </nav>
+</header>
+    <main>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post__header">
+  <h1 class="post__title">Java 算法入门</h1>
+  
+  
+  <div class="post__meta">
+    
+<time class="post__date" datetime="2022-04-05T01:43:25.000Z" itemprop="datePublished">
+  
+  <i class="blogfont">&#xedff;</i>
+  
+  2022-04-05 09:43:25
+</time>
+
+    
+<div class="post__category">
+  <i class="blogfont">&#xe62d;</i>
+  <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+</div>
+  
+
+    
+<div class="post__tag">
+  <i class="blogfont">&#xe7ec;</i>
+  <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>
+</div>
+
+
+    <div id="/2022/04/05/Java%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/" class="leancloud_visitors post__stat" data-flag-title="Java 算法入门">
+  <i class="blogfont">&#xe672;</i>
+  <span class="leancloud-visitors-count">loading...</span>
+</div>
+  </div>
+</header>
+  <aside class="post__aside">
+  <div class="post__actions">
+    <a id="backTop" class="post__top" href="javascript:">
+      <i class="blogfont">&#xe6b1;</i><!-- Top -->
+    </a>
+    <a id="share" class="post__share" href="javascript:">
+      <i class="blogfont">&#xe6c1;</i>
+    </a>
+  </div>
+  <ol class="post__toc"><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#1-%E5%AF%B9%E8%B1%A1%E3%80%81%E7%B1%BB%E3%80%81%E6%96%B9%E6%B3%95%E5%92%8C%E7%A4%BA%E4%BE%8B%E5%8F%98%E9%87%8F"><span class="post__toc-text">1.对象、类、方法和示例变量</span></a></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#2-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="post__toc-text">2.基本数据类型</span></a></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#3-%E5%8F%98%E9%87%8F"><span class="post__toc-text">3.变量</span></a></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#4-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="post__toc-text">4.运算符</span></a></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#5-%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="post__toc-text">5.包装类</span></a></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#6-String%E7%B1%BB"><span class="post__toc-text">6.String类</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">创建</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">char charAt(int index)</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">byte[] byt &#x3D; str.getBytes();</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">public char[] toCharArray()</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text"> split() </span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">contains()</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#7-Number%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="post__toc-text">7.Number类方法</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">parseInt()</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">ceil()&#x2F; floor()&#x2F; rint()&#x2F; round()</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">pow() &#x2F; sqrt() </span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">random()</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">toString</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#8-Character%E7%B1%BB"><span class="post__toc-text">8.Character类</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">isLetter()</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">isDigit()</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">isWhitespace()</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">isUpperCase&#x2F;toUpperCase()</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">toString</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">For-Each 循环</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#10-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="post__toc-text">10. 输入输出</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">输入（Scanner类）</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">输出（print，println，printf）:</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#11-%E6%96%B9%E6%B3%95"><span class="post__toc-text">11.方法</span></a><ol class="post__toc-child"><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">构造方法</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">finalize() 方法</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">Object pop( )</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">Object push(Object element)</span></a></li><li class="post__toc-item post__toc-level-3"><a class="post__toc-link"><span class="post__toc-text">     Object peek( )</span></a></li></ol></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#HashSet"><span class="post__toc-text">HashSet</span></a></li><li class="post__toc-item post__toc-level-2"><a class="post__toc-link" href="#HashMap"><span class="post__toc-text">HashMap</span></a></li></ol>
+</aside>
+  <div class="post__content" itemprop="articleBody">
+    <h2 id="1-对象、类、方法和示例变量"><a href="#1-对象、类、方法和示例变量" class="headerlink" title="1.对象、类、方法和示例变量"></a>1.对象、类、方法和示例变量</h2><p>对象：对象是类的一个实例，有状态和行为。例如，一条狗是一个对象，它的状态有：颜色、名字、品种；行为有：摇尾巴、叫、吃等。</p>
+<p>类：类是一个模板，它描述一类对象的行为和状态。</p>
+<p>方法：方法就是行为，一个类可以有很多方法。逻辑运算、数据修改以及所有动作都是在方法中完成的。</p>
+<p>构造方法：每个类都有构造方法。如果没有显式地为类定义构造方法，Java 编译器将会为该类提供一个默认构造方法。</p>
+<p>实例变量：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定。</p>
+<h2 id="2-基本数据类型"><a href="#2-基本数据类型" class="headerlink" title="2.基本数据类型"></a>2.基本数据类型</h2><p>一共八种,byte&#x2F;short&#x2F;int&#x2F;long&#x2F;boolean&#x2F;char&#x2F;float&#x2F;double:</p>
+<p>byte：</p>
+<ul>
+<li>byte 数据类型是8位、有符号的，以二进制补码表示的整数；</li>
+<li>最小值是 -128（-2^7）；</li>
+<li>最大值是 127（2^7-1）；</li>
+<li>默认值是 0；</li>
+<li>byte 类型用在大型数组中节约空间，主要代替整数，因为 byte 变量占用的空间只有 int 类型的四分之一；</li>
+<li>例子：byte a &#x3D; 100，byte b &#x3D; -50。</li>
+</ul>
+<p>short：</p>
+<ul>
+<li>short 数据类型是 16 位、有符号的以二进制补码表示的整数</li>
+<li>最小值是 -32768（-2^15）；</li>
+<li>最大值是 32767（2^15 1）；</li>
+<li>Short 数据类型也可以像 byte 那样节省空间。一个short变量是int型变量所占空间的二分之一；</li>
+<li>默认值是 0；</li>
+<li>例子：short s &#x3D; 1000，short r &#x3D; -20000。</li>
+</ul>
+<p>int：</p>
+<ul>
+<li>int 数据类型是32位、有符号的以二进制补码表示的整数；</li>
+<li>最小值是 -2,147,483,648（-2^31）；</li>
+<li>最大值是 2,147,483,647（2^31 1）；</li>
+<li>一般地整型变量默认为 int 类型；</li>
+<li>默认值是 0 ；</li>
+<li>例子：int a &#x3D; 100000, int b &#x3D; -200000。</li>
+</ul>
+<p>long：</p>
+<ul>
+<li>long 数据类型是 64 位、有符号的以二进制补码表示的整数；</li>
+<li>最小值是 -9,223,372,036,854,775,808（-2^63）；</li>
+<li>最大值是 9,223,372,036,854,775,807（2^63 -1）；</li>
+<li>这种类型主要使用在需要比较大整数的系统上；</li>
+<li>默认值是 0L；</li>
+<li>例子： long a &#x3D; 100000L，long b &#x3D; -200000L。</li>
+<li>“L”理论上不分大小写，但是若写成”l”容易与数字”1”混淆，不容易分辩。所以最好大写。</li>
+</ul>
+<p>float：</p>
+<ul>
+<li>float 数据类型是单精度、32位、符合IEEE 754标准的浮点数；</li>
+<li>float 在储存大型浮点数组的时候可节省内存空间；</li>
+<li>默认值是 0.0f；</li>
+<li>浮点数不能用来表示精确的值，如货币；</li>
+<li>例子：float f1 &#x3D; 234.5f。</li>
+</ul>
+<p>double：</p>
+<ul>
+<li>double 数据类型是双精度、64 位、符合 IEEE 754 标准的浮点数；</li>
+<li>浮点数的默认类型为 double 类型；</li>
+<li>double类型同样不能表示精确的值，如货币；</li>
+<li>默认值是 0.0d；</li>
+<li>例子：</li>
+<li>double   d1  &#x3D; 7D ;</li>
+<li>double   d2  &#x3D; 7.; </li>
+<li>double   d3  &#x3D;  8.0; </li>
+<li>double   d4  &#x3D;  8.D; </li>
+<li>double   d5  &#x3D;  12.9867; </li>
+<li>7 是一个 int 字面量，而 7D，7. 和 8.0 是 double 字面量。</li>
+</ul>
+<p>boolean：</p>
+<ul>
+<li>boolean数据类型表示一位的信息；</li>
+<li>只有两个取值：true 和 false；</li>
+<li>这种类型只作为一种标志来记录 true&#x2F;false 情况；</li>
+<li>默认值是 false；</li>
+<li>例子：boolean one &#x3D; true。</li>
+</ul>
+<p>char：</p>
+<ul>
+<li><pre><code>char 类型是一个单一的 16 位 Unicode 字符；
+</code></pre>
+</li>
+<li><pre><code>最小值是 \u0000（十进制等效值为 0）；
+</code></pre>
+</li>
+<li><pre><code>最大值是 \uffff（即为 65535）；
+</code></pre>
+</li>
+<li><pre><code>char 数据类型可以储存任何字符；
+</code></pre>
+</li>
+<li><pre><code>例子：char letter = &#39;A&#39;;
+</code></pre>
+</li>
+</ul>
+<h2 id="3-变量"><a href="#3-变量" class="headerlink" title="3.变量"></a>3.变量</h2><p>类变量（静态变量）：独立于方法之外的变量，用 static 修饰。静态变量初始化后不可改变。储存在静态存储区，在内存中只有一份，</p>
+<p>实例变量：独立于方法之外的变量，不过没有 static 修饰。实例变量在对象创建的时候创建，在对象被销毁的时候销毁。</p>
+<p>局部变量：类的方法中的变量。</p>
+<p><em>static 修饰符</em>：</p>
+<ul>
+<li><p>静态变量：</p>
+<p>  static 关键字用来声明独立于对象的静态变量，无论一个类实例化多少对象，它的静态变量只有一份拷贝。 静态变量也被称为类变量。局部变量不能被声明为 static 变量。</p>
+</li>
+<li><p>静态方法：</p>
+<p>  static 关键字用来声明独立于对象的静态方法。静态方法不能使用类的非静态变量。静态方法从参数列表得到数据，然后计算这些数据。</p>
+</li>
+</ul>
+<p><em>final 修饰符：</em></p>
+<ul>
+<li>用来修饰类、方法和变量，final 修饰的类不能够被继承；修饰的方法不能被继承类重新定义，可以继承不能重写；修饰的变量为常量，是不可修改的。</li>
+</ul>
+<p><em>abstract 修饰符</em>：</p>
+<ul>
+<li><p>抽象类：</p>
+<p>  抽象类不能用来实例化对象，声明抽象类的唯一目的是为了将来对该类进行扩充。</p>
+<p>  一个类不能同时被 abstract 和 final 修饰。如果一个类包含抽象方法，那么该类一定要声明为抽象类，否则将出现编译错误。</p>
+<p>  抽象类可以包含抽象方法和非抽象方法。 </p>
+</li>
+<li><p>抽象方法：</p>
+<p>  抽象方法是一种没有任何实现的方法，该方法的具体实现由子类提供。</p>
+<p>  抽象方法不能被声明成 final 和 static。</p>
+<p>  任何继承抽象类的子类必须实现父类的所有抽象方法，除非该子类也是抽象类。</p>
+<p>  如果一个类包含若干个抽象方法，那么该类必须声明为抽象类。抽象类可以不包含抽象方法。</p>
+<p>  抽象方法的声明以分号结尾，例如：public abstract sample();</p>
+</li>
+</ul>
+<p><em>synchronized 修饰符</em>：</p>
+<ul>
+<li>synchronized 关键字声明的方法同一时间只能被一个线程访问。synchronized 修饰符可以应用于四个访问修饰符（default：包内、public：任何类，其他包需import、private：类内、protected：包内+子类）。</li>
+</ul>
+<h2 id="4-运算符"><a href="#4-运算符" class="headerlink" title="4.运算符"></a>4.运算符</h2><p>位运算符：&amp;：按位与；|：按位或；^：按位异或；~：按位取反</p>
+<p>三元运算符：variable x &#x3D; (expression) ? value if true : value if false</p>
+<p>instanceof 运算符： 运算符左侧变量所指的对象，是操作符右侧类或接口(class&#x2F;interface)的一个对象，那么结果为真。</p>
+<pre><code>String name = &quot;James&quot;;
+boolean result = name instanceof String; // 由于 name 是 String 类型，所以返回真
+</code></pre>
+<h2 id="5-包装类"><a href="#5-包装类" class="headerlink" title="5.包装类"></a>5.包装类</h2><ul>
+<li>基本数据类型方便、简单、高效，但泛型不支持、集合元素不支持</li>
+<li>基本数据类型不符合面向对象思维</li>
+<li>包装类提供很多方法，方便使用，如 Integer 类 toHexString(int i)、parseInt(String s) 方法等等</li>
+</ul>
+<p><img src="/images/WrapperClass.png"></p>
+<p>内置数据类型被当作对象使用的时候，编译器会把内置类型装箱为包装类。相似的，编译器也可以把一个对象拆箱为内置类型。</p>
+<pre><code>Double d=Double.valueOf(10.5);
+double dd=d.doubleValue();
+</code></pre>
+<p>自动装箱和拆箱是从Java 1.5开始引入的，目的是将原始类型值转自动地转换成对应的包装类</p>
+<pre><code>Integer i = 100;//自动装箱
+int k = i;//自动拆箱
+</code></pre>
+<p><strong>&#x3D;&#x3D; 既可以用于数值进行比较，也可以用于对象进行比较。当用于对象与对象之间比较时，比较的不是对象代表的值，而是检查两个对象是否是同一对象，这个比较过程中不会发生自动装箱。如果想要进行对象值比较，不应该使用&#x3D;&#x3D;，而应该使用对象对应的equals方法。</strong></p>
+<h2 id="6-String类"><a href="#6-String类" class="headerlink" title="6.String类"></a>6.String类</h2><h3>创建</h3>
+    String s2 = "Runoob";  // String 直接创建
+    String s3 = s1;// 相同引用
+    String s4 = new String("Runoob");   // String 对象创建
+
+<h3>char charAt(int index)</h3>
+
+<h3>byte[] byt = str.getBytes();</h3>
+使用平台的默认字符集将字符串编码为 byte 序列，并将结果存储到一个新的 byte 数组中。
+
+<p>byte[] Str2 &#x3D; Str1.getBytes( “UTF-8” );</p>
+<h3>public char[] toCharArray()</h3>
+
+<p>Str.toCharArray() ;&#x2F;&#x2F;将字符串转换为字符数组。</p>
+<h3> split() </h3>
+
+<p>public String[] split(String regex, int limit)</p>
+<pre><code>String str = &quot;小学,初中,高中,大专,本科,研究生,博士&quot;;
+String[] buff = str.split(&quot;,&quot;);
+for(int i=0;i&lt;buff.length;i++)&#123;
+System.out.println(buff[i]);
+</code></pre>
+<p><em>注意： . 、 $、 | 和 * 等转义字符，必须得加 \。</em></p>
+<p><em>注意：多个分隔符，可以用 | 作为连字符。</em></p>
+<h3>contains()</h3>
+
+<p>public boolean contains(CharSequence chars) 判断字符串中是否包含指定的字符或字符串。</p>
+<pre><code>myStr.contains(&quot;Run&quot;);
+</code></pre>
+<h2 id="7-Number类方法"><a href="#7-Number类方法" class="headerlink" title="7.Number类方法"></a>7.Number类方法</h2><h3>parseInt()</h3>
+    static int parseInt(String s)
+
+<pre><code>static int parseInt(String s, int radix)
+</code></pre>
+<p>使用：</p>
+<pre><code>    int x =Integer.parseInt(&quot;9&quot;);//9
+    double c = Double.parseDouble(&quot;5&quot;);//5.0
+    int b = Integer.parseInt(&quot;444&quot;,16);//1092
+</code></pre>
+<h3>ceil()/ floor()/ rint()/ round()</h3>
+
+<p>double ceil(double d&#x2F; float f): 返回大于等于( &gt;&#x3D; )给定参数的的最小整数，返回类型为double</p>
+<p>double floor(double d&#x2F; float f): 返回小于等于（&lt;&#x3D;）给定参数的最大整数 。</p>
+<p>double rint(double d): 返回与参数最接近的整数。返回类型为double。</p>
+<p>long round(double d)&#x2F;int round(float f): 它表示四舍五入，算法为 Math.floor(x+0.5)，即将原来的数字加上 0.5 后再向下取整，所以，Math.round(11.5) 的结果为12，Math.round(-11.5) 的结果为-11。</p>
+<h3>pow() / sqrt() </h3>
+
+<p>double pow(a,b): 返回a的b次方</p>
+<p>double sqrt(a): 返回a的算术平方根</p>
+<h3>random()</h3>
+
+<p>static double random():返回一个随机数，随机数范围为 0.0 &#x3D;&lt; Math.random &lt; 1.0。 </p>
+<h3>toString</h3>
+
+<h2 id="8-Character类"><a href="#8-Character类" class="headerlink" title="8.Character类"></a>8.Character类</h2><h3>isLetter()</h3>
+<h3>isDigit()</h3>
+<h3>isWhitespace()</h3>
+<h3>isUpperCase/toUpperCase()</h3>
+<h3>toString</h3>
+
+<p>##9.数组##</p>
+<h3>For-Each 循环</h3>
+
+<p>JDK 1.5 引进了一种新的循环类型，被称为 For-Each 循环或者加强型循环，它能在不使用下标的情况下遍历数组。</p>
+<p>语法格式如下：</p>
+<pre><code>for(type element: array)
+&#123;
+    System.out.println(element);
+&#125;
+</code></pre>
+<h2 id="10-输入输出"><a href="#10-输入输出" class="headerlink" title="10. 输入输出"></a>10. 输入输出</h2><h3>输入（Scanner类）</h3>
+
+<p>Scanner 是 Java5 的新特征，在java.util包里，可以完成用户输入，使用如下：</p>
+<ol>
+<li><p>导入java.util包；</p>
+<p> <code>import java.util.Scanner;</code></p>
+</li>
+<li><p>构造Scanner对象，参数为标准输入流System.in；</p>
+<p> <code>Scanner sc=new Scanner(System.in);</code></p>
+</li>
+<li><p>使用next()方法系列接收数据；常用方法如下：</p>
+<p> String s&#x3D;sc.nextLine()</p>
+</li>
+</ol>
+<p>接收输入的一行内容（以回车作为分隔符）</p>
+<pre><code>String next()
+</code></pre>
+<p>  接收输入的一个单词（以空格作为分隔符）</p>
+<pre><code>int nextInt()
+double nextDouble()
+</code></pre>
+<p>  接收输入的一个整数或浮点数</p>
+<pre><code>boolean hasNext()
+</code></pre>
+<p>  检测是否还有单词输入</p>
+<pre><code>boolean hasNextInt()boolean hasNextDouble()
+</code></pre>
+<h3>输出（print，println，printf）:</h3>
+
+<p>System.out.print()：是最常用的输出语句，它会把括号里的内容转换成字符串输出到输出窗口（控制台）。</p>
+<p>System.out.println()：与print()基本一样，区别就是输出完成后执行换行。</p>
+<p>System.out.printf()：这个方法延续了C语言的输出方式，通过格式化文本和参数列表输出。</p>
+<p>重点说一下printf()，这个方法能按照我们的需求进行格式化的输出，如输出要控制小数的位数、数字前补0、输出对齐、加分隔符等等。</p>
+<p>基本格式：两个参数，第一个是格式控制符，第二个可变长，表示待输出数据对象。</p>
+<p>System.out.printf(“格式控制”，表达式1，表达式2，……，表达式n)</p>
+<p>每个格式控制以%开始，后跟被格式化的数值类型，如：%d表示int型。输出时每个格式控制都用后面相应位置的表达式值替换。</p>
+<pre><code>System.out.printf(&quot;字符串：%s；%n数字：%d；%n小数（默认六位）：%f&quot;,name,nl,cj);
+</code></pre>
+<h2 id="11-方法"><a href="#11-方法" class="headerlink" title="11.方法"></a>11.方法</h2><h3>构造方法</h3>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 一个简单的构造函数</span><br><span class="line"></span><br><span class="line">class MyClass &#123;</span><br><span class="line">  int x;</span><br><span class="line"> </span><br><span class="line">  // 以下是构造函数</span><br><span class="line">  MyClass(int i ) &#123;</span><br><span class="line">    x = i;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  MyClass() &#123;</span><br><span class="line">    x = 10;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>finalize() 方法</h3>
+
+<p>它在对象被垃圾收集器析构(回收)之前调用，这个方法叫做 finalize( )，它用来清除回收对象。</p>
+<p>例如，你可以使用 finalize() 来确保一个对象打开的文件被关闭了。 </p>
+<pre><code>protected void finalize()
+&#123;
+   // 在这里终结代码
+&#125;
+</code></pre>
+<p>##Stack类##</p>
+<p>Stack<Integer> st &#x3D; new Stack<Integer>();</p>
+<h3>Object pop( )</h3>
+<h3>Object push(Object element)</h3>
+<h3>     Object peek( )</h3>
+
+<h2 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h2><h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2>
+  </div>
+  
+</article>
+    </main>
+    <footer id="footer">
+  Copyright &copy;
+  2022
+  BONE
+  
+  
+    <a class="social-links" target="_blank" rel="noopener" href="https://github.com/FloatinDLE"><i class="blogfont">&#xe6b7; </i></a>
+  
+    <a class="social-links" href="mailto:bone_n@foxmail.com"><i class="blogfont">&#xe61a; </i></a>
+  
+    <a class="social-links" href="/atom.xml"><i class="blogfont">&#xe640; </i></a>
+  
+  
+</footer>
+    <!-- scripts -->
+
+<script src="/scripts/main.js"></script>
+
+  </body>
+</html>
