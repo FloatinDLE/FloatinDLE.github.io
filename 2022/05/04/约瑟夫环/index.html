@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html  lang=en>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+    <link rel="shortcut icon" href="/images/kou.ico ">
+    
+    
+    <link rel="icon" type="image/png" href="/images/favicon-android.png " sizes="192x192">
+    
+    
+    <link rel="apple-touch-icon" href="/images/favicon-apple.png " sizes="180x180">
+    
+  
+  <!-- title -->
+  <title>地下室 约瑟夫环 Josephus problem </title>
+  <!-- styles -->
+  <!-- styles -->
+
+<link rel="stylesheet" href="/styles/global.css">
+
+  <!-- rss -->
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+  <body>
+    <header id="header">
+  
+  <nav class="menu menu--right">
+  
+    <a class="menu__item" href="/">主页</a>
+    <a class="menu__item" href="/archives/">归档</a>
+    <a class="menu__item" href="/categories/">专题</a>
+    <a class="menu__item" href="/tags/">标签</a>
+    <!-- <a class="menu__item" href="/">作品</a> -->
+    <!-- <a class="menu__item" href="/about/">关于</a> -->
+  </nav>
+</header>
+    <main>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post__header">
+  <h1 class="post__title">约瑟夫环 Josephus problem</h1>
+  
+  
+  <div class="post__meta">
+    
+<time class="post__date" datetime="2022-05-04T01:43:25.000Z" itemprop="datePublished">
+  
+  <i class="blogfont">&#xedff;</i>
+  
+  2022-05-04 09:43:25
+</time>
+
+    
+<div class="post__category">
+  <i class="blogfont">&#xe62d;</i>
+  <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+</div>
+  
+
+    
+
+    <div id="/2022/05/04/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/" class="leancloud_visitors post__stat" data-flag-title="约瑟夫环 Josephus problem">
+  <i class="blogfont">&#xe672;</i>
+  <span class="leancloud-visitors-count">loading...</span>
+</div>
+  </div>
+</header>
+  <aside class="post__aside">
+  <div class="post__actions">
+    <a id="backTop" class="post__top" href="javascript:">
+      <i class="blogfont">&#xe6b1;</i><!-- Top -->
+    </a>
+    <a id="share" class="post__share" href="javascript:">
+      <i class="blogfont">&#xe6c1;</i>
+    </a>
+  </div>
+  
+</aside>
+  <div class="post__content" itemprop="articleBody">
+    <blockquote>
+<p>约瑟夫环问题：0,1,…,n−1 这 n 个数字排成一个圆圈，从数字 0 开始，每次从这个圆圈里删除第 m 个数字。求出这个圆圈里剩下的最后一个数字。<br>##思路##</p>
+</blockquote>
+<p>f(n,m)&#x3D;(f(n-1,m)+m)%n</p>
+<p>f(n,m)——约瑟夫环在this.n&#x3D;n,this.m&#x3D;m情况下的答案</p>
+<p>在第一次删除一个数后，环中还有n-1个数，接下来将以m+1这个数作为新的1开始进行新的一轮删除，并得到一个结果f(n-1,m)。但是由于这个结果是由新的1到n-1的编号得到的，所以不能直接作为n，m的结果，必须要将得到编号还原为n，m中的编号才行。而还原编号的方法则正好是编号方法的逆向过程。在上面编码的过程是将m+1变为1，也就是减m，因此反过来就是加m。最后由于求余得到范围内的编号。</p>
+<p><img src="/images/jsfP1.png"></p>
+<p><img src="/images/jsfP2.png"></p>
+
+  </div>
+  
+</article>
+    </main>
+    <footer id="footer">
+  Copyright &copy;
+  2022
+  BONE
+  
+  
+    <a class="social-links" target="_blank" rel="noopener" href="https://github.com/FloatinDLE"><i class="blogfont">&#xe6b7; </i></a>
+  
+    <a class="social-links" href="mailto:bone_n@foxmail.com"><i class="blogfont">&#xe61a; </i></a>
+  
+    <a class="social-links" href="/atom.xml"><i class="blogfont">&#xe640; </i></a>
+  
+  
+</footer>
+    <!-- scripts -->
+
+<script src="/scripts/main.js"></script>
+
+  </body>
+</html>
